@@ -1,0 +1,34 @@
+.about-3-col ul,
+.about-1-col ul,
+.contact-follow-us ul,
+.contact-body ul,
+.inner-sub-wrap ul,
+.service-1-first ul {
+  margin-left: -40px; }
+  .about-3-col ul li,
+  .about-1-col ul li,
+  .contact-follow-us ul li,
+  .contact-body ul li,
+  .inner-sub-wrap ul li,
+  .service-1-first ul li {
+    list-style: none; }
+
+.first-wrap ul li {
+  list-style: none; }
+
+ul.cnt-social {
+  margin-bottom: 60px; }
+  ul.cnt-social li {
+    float: left; }
+
+.user-login .dropdown a i {
+  color: #fff; }
+.user-login li {
+  margin-left: 20px;
+  list-style: none;
+  float: left; }
+
+.site-header.size-lg.innerpage {
+  padding: 60px 0; }
+
+/*# sourceMappingURL=mystyle.css.map */

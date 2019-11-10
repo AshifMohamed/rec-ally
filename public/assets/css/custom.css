@@ -1,0 +1,22 @@
+.demo-btn-margin .btn{margin-bottom:6px}
+
+.ptnr-list{
+    background: #f5f1f17a;
+    padding-bottom: 10px;
+}
+
+.ptnr-list p{
+	font-size: 13px;
+    line-height: 20px;
+    margin-top: 12px;
+}
+
+.ptner-list-link h6{
+    font-size: 13px;
+    color: #000;
+	margin-bottom:5px!important;
+}
+
+.ptner-list-link a{
+    font-size: 13px;
+}

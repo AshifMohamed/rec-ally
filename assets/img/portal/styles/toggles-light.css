@@ -1,0 +1,106 @@
+.toggle-space{
+margin-left:10px;
+}
+
+.toggle-green .toggle-slide {
+  border-radius: 9999px;
+  box-shadow: 0 0 0 1px #999;
+}
+.toggle-green .toggle-on,
+.toggle-green .toggle-off {
+  font-size: 11px;
+  font-weight: 500;
+}
+.toggle-green .toggle-on,
+.toggle-green .toggle-select .toggle-inner .active {
+  background: #45a31f;
+  box-shadow: inset 2px 2px 6px rgba(0, 0, 0, 0.2);
+  text-shadow: 1px 1px rgba(0, 0, 0, 0.2);
+  color: rgba(255, 255, 255, 0.8);
+}
+.toggle-green .toggle-off,
+.toggle-green .toggle-select .toggle-on {
+  color: rgba(0, 0, 0, 0.6);
+  text-shadow: 0 1px rgba(255, 255, 255, 0.2);
+  background: -webkit-linear-gradient(#cfcfcf, #f5f5f5);
+  background: linear-gradient(#cfcfcf, #f5f5f5);
+}
+.toggle-green .toggle-blob {
+  border-radius: 50px;
+  background: -webkit-linear-gradient(#f5f5f5, #cfcfcf);
+  background: linear-gradient(#f5f5f5, #cfcfcf);
+  box-shadow: 1px 1px 2px #888;
+}
+.toggle-green .toggle-blob:hover {
+  background: -webkit-linear-gradient(#e4e4e4, #f9f9f9);
+  background: linear-gradient(#e4e4e4, #f9f9f9);
+}
+
+.toggle-blue .toggle-slide {
+  border-radius: 9999px;
+  box-shadow: 0 0 0 1px #999;
+}
+.toggle-blue .toggle-on,
+.toggle-blue .toggle-off {
+  font-size: 11px;
+  font-weight: 500;
+}
+.toggle-blue .toggle-on,
+.toggle-blue .toggle-select .toggle-inner .active {
+    background: #006BD2;
+    box-shadow: inset 2px 2px 6px rgba(0, 0, 0, 0.2);
+    text-shadow: 1px 1px rgba(0, 0, 0, 0.2);
+    color: rgba(255, 255, 255, 0.8);
+}
+.toggle-blue .toggle-off,
+.toggle-blue .toggle-select .toggle-on {
+  color: rgba(0, 0, 0, 0.6);
+  text-shadow: 0 1px rgba(255, 255, 255, 0.2);
+  background: -webkit-linear-gradient(#cfcfcf, #f5f5f5);
+  background: linear-gradient(#cfcfcf, #f5f5f5);
+}
+.toggle-blue .toggle-blob {
+  border-radius: 50px;
+  background: -webkit-linear-gradient(#f5f5f5, #cfcfcf);
+  background: linear-gradient(#f5f5f5, #cfcfcf);
+  box-shadow: 1px 1px 2px #888;
+}
+.toggle-blue .toggle-blob:hover {
+  background: -webkit-linear-gradient(#e4e4e4, #f9f9f9);
+  background: linear-gradient(#e4e4e4, #f9f9f9);
+}
+
+
+.toggle-orange .toggle-slide {
+  border-radius: 9999px;
+  box-shadow: 0 0 0 1px #999;
+}
+.toggle-orange .toggle-on,
+.toggle-orange .toggle-off {
+  font-size: 11px;
+  font-weight: 500;
+}
+.toggle-orange .toggle-on,
+.toggle-orange .toggle-select .toggle-inner .active {
+    background: #FF5C0E;
+    box-shadow: inset 2px 2px 6px rgba(0, 0, 0, 0.2);
+    text-shadow: 1px 1px rgba(0, 0, 0, 0.2);
+    color: rgba(255, 255, 255, 0.8);
+}
+.toggle-orange .toggle-off,
+.toggle-orange .toggle-select .toggle-on {
+  color: rgba(0, 0, 0, 0.6);
+  text-shadow: 0 1px rgba(255, 255, 255, 0.2);
+  background: -webkit-linear-gradient(#cfcfcf, #f5f5f5);
+  background: linear-gradient(#cfcfcf, #f5f5f5);
+}
+.toggle-orange .toggle-blob {
+  border-radius: 50px;
+  background: -webkit-linear-gradient(#f5f5f5, #cfcfcf);
+  background: linear-gradient(#f5f5f5, #cfcfcf);
+  box-shadow: 1px 1px 2px #888;
+}
+.toggle-orange .toggle-blob:hover {
+  background: -webkit-linear-gradient(#e4e4e4, #f9f9f9);
+  background: linear-gradient(#e4e4e4, #f9f9f9);
+}

@@ -1,0 +1,432 @@
+
+.stepsForm {
+    box-sizing: border-box;
+    line-height: 1;
+    width: 100%;
+}
+.stepsForm .sf-error {
+    border: 1px solid #c00 !important;
+}
+.stepsForm .sf-error + span {
+    border-color: #c00 !important;
+}
+.stepsForm #sf-msg {
+    display: inline-block;
+    padding: 1rem;
+}
+.stepsForm .sf-msg-error {
+    color: #c00;
+}
+.stepsForm .sf-msg-success {
+    color: #090;
+}
+.stepsForm .sf-steps {
+    box-sizing: border-box;
+    height: auto;
+    padding: 0 1rem;
+    width: 100%;
+}
+.stepsForm .sf-steps .sf-steps-content {
+    border-bottom: 2px solid #2096cd;
+    box-sizing: border-box;
+    font-size: 18px;
+    width: 100%;
+}
+.stepsForm .sf-steps-content > div {
+    background: #ccc none repeat scroll 0 0;
+    border-radius: 3px;
+    color: #fff;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 13px;
+    overflow: hidden;
+    padding: 1rem 1rem 1rem 5rem;
+    position: relative;
+}
+.stepsForm .sf-steps-center > div {
+    background: #ccc none repeat scroll 0 0;
+    border-radius: 3px;
+    box-sizing: border-box;
+    color: #fff;
+    cursor: pointer;
+    display: block;
+    overflow: hidden;
+    padding: 1rem 2rem 1rem 4;
+    position: relative;
+}
+.stepsForm .sf-steps-content > div.sf-active {
+    background: #2096cd none repeat scroll 0 0;
+}
+.stepsForm .sf-steps-content > div > span {
+    background: #aaa none repeat scroll 0 0;
+    bottom: 0;
+    font-size: 24px;
+    left: 0;
+    padding: 0.8rem 1rem;
+    position: absolute;
+    top: 0;
+}
+.stepsForm .sf-steps-content > div > i {
+    background: rgba(0, 0, 0, 0) url("../img/sf-steps-activated.png") no-repeat scroll center center;
+    bottom: 0;
+    padding: 1rem;
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+.stepsForm .sf-steps-content > div.sf-active > span {
+    background: #1b7fad none repeat scroll 0 0;
+}
+.stepsForm .sf-steps-content > div > span::after {
+    background: rgba(0, 0, 0, 0) url("data:image/svg+xml; charset=utf-8,<svg width=\"100%\" height=\"100%\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 10 20\" preserveAspectRatio=\"none\"><path d=\"m0,0 l10,10 l-10,10 l-0,-20z\" stroke-width=\"1.5\" fill=\"#AAA\"/></svg>") no-repeat scroll 0 0;
+    content: "";
+    display: block;
+    height: 100%;
+    position: absolute;
+    right: -10px;
+    top: 0;
+    width: 10px;
+}
+.stepsForm .sf-steps-content > div.sf-active > span::after {
+    background: rgba(0, 0, 0, 0) url("data:image/svg+xml; charset=utf-8,<svg width=\"100%\" height=\"100%\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 10 20\" preserveAspectRatio=\"none\"><path d=\"m0,0 l10,10 l-10,10 l-0,-20z\" stroke-width=\"1.5\" fill=\"#1b7fad\"/></svg>") no-repeat scroll 0 0;
+}
+.stepsForm .sf-steps-form {
+    display: block;
+    position: relative;
+}
+.stepsForm .sf-steps-navigation {
+    padding: 0 1rem;
+}
+.sf-steps-navigation {
+    margin-top: 20px;
+}
+.stepsForm .sf-button {
+    background: #2096cd none repeat scroll 0 0;
+    border: medium none;
+    color: #fff;
+    cursor: pointer;
+    outline: medium none;
+    padding: 1rem 2rem;
+}
+.stepsForm .sf-content {
+    box-sizing: border-box;
+    display: none;
+    list-style-type: none;
+    margin: 30px 0 0;
+    overflow: hidden;
+    padding: 0;
+    width: 100%;
+}
+.stepsForm .sf-content > li {
+    height: auto;
+    margin-bottom: 2rem;
+    overflow: hidden;
+    padding: 3px 0;
+    width: 100%;
+}
+.stepsForm input[type="text"], .stepsForm input[type="tel"], .stepsForm input[type="email"], .stepsForm input[type="password"] {
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    outline: medium none;
+    padding: 1rem;
+    width: 100%;
+}
+.stepsForm textarea {
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    height: 100px;
+    outline: medium none;
+    overflow: auto;
+    padding: 1rem;
+    width: 100%;
+}
+.stepsForm label.sf-select {
+    display: block;
+    position: relative;
+}
+.stepsForm label.sf-select > select {
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    outline: medium none;
+    padding: 1rem;
+    width: 100%;
+}
+.stepsForm label.sf-select > span {
+    background-color: #e8e8e8;
+    border-left: 1px solid #ddd;
+    bottom: 1px;
+    box-sizing: border-box;
+    display: inline-block;
+    pointer-events: none;
+    position: absolute;
+    right: 1px;
+    text-align: center;
+    top: 1px;
+    width: 3.5rem;
+}
+.stepsForm label.sf-select > span::after {
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    border-color: #fff;
+    border-image: none;
+    border-style: solid;
+    border-width: 0 0 0.25em 0.25em;
+    content: "";
+    display: inline-block;
+    height: 20%;
+    transform: rotate(-45deg) translate(-80%, 80%);
+    width: 20%;
+}
+.stepsForm label.sf-select > select:focus + span {
+    background-color: #2096cd;
+}
+.stepsForm .sf-radio, .stepsForm .sf-check {
+    height: auto;
+    padding: 1rem 0;
+    width: 100%;
+}
+.stepsForm .sf-radio label, .stepsForm .sf-check label {
+    display: inline-block;
+    margin-right: 20px;
+}
+.stepsForm .sf-radio label input[type="radio"], .stepsForm .sf-check label input[type="checkbox"] {
+    height: 10px;
+    margin: 0;
+    opacity: 0;
+    padding: 0;
+    pointer-events: none;
+    position: absolute;
+}
+.stepsForm .sf-radio label input[type="radio"] + span, .stepsForm .sf-check label input[type="checkbox"] + span {
+    background-color: #fff;
+    border: 1px solid #cecece;
+    box-sizing: border-box;
+    display: inline-block;
+    height: 18px;
+    text-align: center;
+    vertical-align: top;
+    width: 18px;
+}
+.stepsForm .sf-radio label input[type="radio"] + span::after, .stepsForm .sf-check label input[type="checkbox"] + span::after {
+    box-sizing: border-box;
+    content: "";
+    display: inline-block;
+    height: 100%;
+    opacity: 0;
+    transition: all 200ms ease 0s;
+    width: 100%;
+}
+.stepsForm .sf-radio label input[type="radio"]:focus + span, .stepsForm .sf-check label input[type="checkbox"]:focus + span, .stepsForm .sf-radio label input[type="radio"]:active + span, .stepsForm .sf-check label input[type="checkbox"]:active + span {
+    border-color: #2096cd;
+}
+.stepsForm .sf-radio label input[type="radio"]:checked + span::after, .stepsForm .sf-check label input[type="checkbox"]:checked + span::after {
+    opacity: 1;
+}
+.stepsForm .sf-radio label input.error[type="radio"] + span, .stepsForm .sf-check label input.error[type="checkbox"] + span {
+    border-color: #e2513f;
+    border-width: 2px;
+}
+.stepsForm .sf-radio label input[type="radio"] + span {
+    border-radius: 2em;
+    box-shadow: 0 0 5px #ddd;
+}
+.stepsForm .sf-radio label input[type="radio"] + span::after {
+    background-color: #2096cd;
+    border-radius: 1em;
+}
+.stepsForm .sf-radio label input[type="radio"]:checked + span::after {
+    border: 0.2em solid #fff;
+}
+.stepsForm .sf-check label input[type="checkbox"] + span {
+    border-radius: 2px;
+    box-shadow: 0 0 5px #ddd;
+}
+.stepsForm .sf-check label input[type="checkbox"] + span::after {
+    background-color: transparent;
+    border: 0 solid #2096cd;
+    height: 45%;
+    transform: rotate(-45deg) translate(50%, -75%);
+    vertical-align: bottom;
+    width: 75%;
+}
+.stepsForm .sf-check label input[type="checkbox"]:checked + span::after {
+    border-bottom-width: 0.2em;
+    border-left-width: 0.2em;
+}
+.stepsForm input[type="text"]:focus, .stepsForm input[type="tel"]:focus, .stepsForm input[type="password"]:focus, .stepsForm input[type="email"]:focus, .stepsForm label.sf-select > select:focus, .stepsForm textarea:focus {
+    border-color: #2096cd;
+    box-shadow: 0 0 5px 0 rgba(32, 150, 205, 1);
+}
+.stepsForm input, .stepsForm select, .stepsForm textarea, .stepsForm button {
+    border-radius: 3px;
+}
+.sf-shadow input, .sf-shadow select, .sf-shadow textarea {
+    box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.1);
+}
+.stepsForm .sf_columns {
+    box-sizing: border-box;
+    display: inline-block;
+    float: left;
+    min-height: 30px;
+    padding: 0 1rem;
+}
+.sf-align-right {
+    text-align: right;
+}
+.sf-align-center {
+    text-align: center;
+}
+.sf-align-center > span#sf-msg {
+    clear: both;
+    display: block;
+    margin: 0 auto;
+}
+.sf-align-center > button {
+    clear: both;
+    display: block;
+    margin: 0 auto 10px;
+}
+.stepsForm .column_1 {
+    width: 16.6667%;
+}
+.stepsForm .column_2 {
+    width: 33.3333%;
+}
+.stepsForm .column_3 {
+    width: 50%;
+}
+.stepsForm .column_4 {
+    width: 66.6667%;
+}
+.stepsForm .column_5 {
+    width: 83.3333%;
+}
+.stepsForm .column_6 {
+    width: 100%;
+}
+.sf-theme-red .sf-steps .sf-steps-content {
+    border-color: #f44a56;
+}
+.sf-theme-red .sf-steps .sf-steps-content > div.sf-active {
+    background: #f44a56 none repeat scroll 0 0;
+}
+.sf-theme-red .sf-steps .sf-steps-content > div.sf-active > span {
+    background: #c63943 none repeat scroll 0 0;
+}
+.sf-theme-red .sf-steps .sf-steps-content > div.sf-active > span::after {
+    background: rgba(0, 0, 0, 0) url("data:image/svg+xml; charset=utf-8,<svg width=\"100%\" height=\"100%\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 10 20\" preserveAspectRatio=\"none\"><path d=\"m0,0 l10,10 l-10,10 l-0,-20z\" stroke-width=\"1.5\" fill=\"#c63943\"/></svg>") no-repeat scroll 0 0;
+}
+.sf-theme-red .sf-radio label input[type="radio"]:focus + span, .sf-theme-red .sf-check label input[type="checkbox"]:focus + span, .sf-theme-red .sf-radio label input[type="radio"]:active + span, .sf-theme-red .sf-check label input[type="checkbox"]:active + span {
+    border-color: #f44a56;
+}
+.sf-theme-red .sf-radio label input[type="radio"] + span::after {
+    background-color: #f44a56;
+}
+.sf-theme-red .sf-check label input[type="checkbox"] + span::after {
+    border-color: #f44a56;
+}
+.sf-theme-red label.sf-select > select:focus + span {
+    background-color: #f44a56;
+}
+.sf-theme-red input[type="text"]:focus, .sf-theme-red input[type="tel"]:focus, .sf-theme-red input[type="password"]:focus, .sf-theme-red input[type="email"]:focus, .sf-theme-red label.sf-select > select:focus, .sf-theme-red textarea:focus {
+    border-color: #f44a56;
+    box-shadow: 0 0 5px 0 rgba(244, 74, 85, 1);
+}
+.sf-theme-red .sf-steps-navigation > button {
+    background: #f44a56 none repeat scroll 0 0;
+}
+.sf-theme-purple .sf-steps .sf-steps-content {
+    border-color: #795aac;
+}
+.sf-theme-purple .sf-steps .sf-steps-content > div.sf-active {
+    background: #795aac none repeat scroll 0 0;
+}
+.sf-theme-purple .sf-steps .sf-steps-content > div.sf-active > span {
+    background: #60478a none repeat scroll 0 0;
+}
+.sf-theme-purple .sf-steps .sf-steps-content > div.sf-active > span::after {
+    background: rgba(0, 0, 0, 0) url("data:image/svg+xml; charset=utf-8,<svg width=\"100%\" height=\"100%\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 10 20\" preserveAspectRatio=\"none\"><path d=\"m0,0 l10,10 l-10,10 l-0,-20z\" stroke-width=\"1.5\" fill=\"#60478a\"/></svg>") no-repeat scroll 0 0;
+}
+.sf-theme-purple .sf-radio label input[type="radio"]:focus + span, .sf-theme-purple .sf-check label input[type="checkbox"]:focus + span, .sf-theme-purple .sf-radio label input[type="radio"]:active + span, .sf-theme-purple .sf-check label input[type="checkbox"]:active + span {
+    border-color: #795aac;
+}
+.sf-theme-purple .sf-radio label input[type="radio"] + span::after {
+    background-color: #795aac;
+}
+.sf-theme-purple .sf-check label input[type="checkbox"] + span::after {
+    border-color: #795aac;
+}
+.sf-theme-purple label.sf-select > select:focus + span {
+    background-color: #795aac;
+}
+.sf-theme-purple input[type="text"]:focus, .sf-theme-purple input[type="tel"]:focus, .sf-theme-purple input[type="password"]:focus, .sf-theme-purple input[type="email"]:focus, .sf-theme-purple label.sf-select > select:focus, .sf-theme-purple textarea:focus {
+    border-color: #795aac;
+    box-shadow: 0 0 5px 0 rgba(121, 90, 172, 1);
+}
+.sf-theme-purple .sf-steps-navigation > button {
+    background: #795aac none repeat scroll 0 0;
+}
+.sf-theme-green .sf-steps .sf-steps-content {
+    border-color: #27ae60;
+}
+.sf-theme-green .sf-steps .sf-steps-content > div.sf-active {
+    background: #27ae60 none repeat scroll 0 0;
+}
+.sf-theme-green .sf-steps .sf-steps-content > div.sf-active > span {
+    background: #1d864a none repeat scroll 0 0;
+}
+.sf-theme-green .sf-steps .sf-steps-content > div.sf-active > span::after {
+    background: rgba(0, 0, 0, 0) url("data:image/svg+xml; charset=utf-8,<svg width=\"100%\" height=\"100%\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 10 20\" preserveAspectRatio=\"none\"><path d=\"m0,0 l10,10 l-10,10 l-0,-20z\" stroke-width=\"1.5\" fill=\"#1d864a\"/></svg>") no-repeat scroll 0 0;
+}
+.sf-theme-green .sf-radio label input[type="radio"]:focus + span, .sf-theme-green .sf-check label input[type="checkbox"]:focus + span, .sf-theme-green .sf-radio label input[type="radio"]:active + span, .sf-theme-green .sf-check label input[type="checkbox"]:active + span {
+    border-color: #27ae60;
+}
+.sf-theme-green .sf-radio label input[type="radio"] + span::after {
+    background-color: #27ae60;
+}
+.sf-theme-green .sf-check label input[type="checkbox"] + span::after {
+    border-color: #27ae60;
+}
+.sf-theme-green label.sf-select > select:focus + span {
+    background-color: #27ae60;
+}
+.sf-theme-green input[type="text"]:focus, .sf-theme-green input[type="tel"]:focus, .sf-theme-green input[type="password"]:focus, .sf-theme-green input[type="email"]:focus, .sf-theme-green label.sf-select > select:focus, .sf-theme-green textarea:focus {
+    border-color: #27ae60;
+    box-shadow: 0 0 5px 0 rgba(29, 134, 74, 1);
+}
+.sf-theme-green .sf-steps-navigation > button {
+    background: #27ae60 none repeat scroll 0 0;
+}
+.sf-theme-turquoise .sf-steps .sf-steps-content {
+    border-color: #1fb5ad;
+}
+.sf-theme-turquoise .sf-steps .sf-steps-content > div.sf-active {
+    background: #1fb5ad none repeat scroll 0 0;
+}
+.sf-theme-turquoise .sf-steps .sf-steps-content > div.sf-active > span {
+    background: #18908a none repeat scroll 0 0;
+}
+.sf-theme-turquoise .sf-steps .sf-steps-content > div.sf-active > span::after {
+    background: rgba(0, 0, 0, 0) url("data:image/svg+xml; charset=utf-8,<svg width=\"100%\" height=\"100%\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 10 20\" preserveAspectRatio=\"none\"><path d=\"m0,0 l10,10 l-10,10 l-0,-20z\" stroke-width=\"1.5\" fill=\"#18908a\"/></svg>") no-repeat scroll 0 0;
+}
+.sf-theme-turquoise .sf-radio label input[type="radio"]:focus + span, .sf-theme-turquoise .sf-check label input[type="checkbox"]:focus + span, .sf-theme-turquoise .sf-radio label input[type="radio"]:active + span, .sf-theme-turquoise .sf-check label input[type="checkbox"]:active + span {
+    border-color: #1fb5ad;
+}
+.sf-theme-turquoise .sf-radio label input[type="radio"] + span::after {
+    background-color: #1fb5ad;
+}
+.sf-theme-turquoise .sf-check label input[type="checkbox"] + span::after {
+    border-color: #1fb5ad;
+}
+.sf-theme-turquoise label.sf-select > select:focus + span {
+    background-color: #1fb5ad;
+}
+.sf-theme-turquoise input[type="text"]:focus, .sf-theme-turquoise input[type="tel"]:focus, .sf-theme-turquoise input[type="password"]:focus, .sf-theme-turquoise input[type="email"]:focus, .sf-theme-turquoise label.sf-select > select:focus, .sf-theme-turquoise textarea:focus {
+    border-color: #1fb5ad;
+    box-shadow: 0 0 5px 0 rgba(31, 181, 174, 1);
+}
+.sf-theme-turquoise .sf-steps-navigation > button {
+    background: #1fb5ad none repeat scroll 0 0;
+}

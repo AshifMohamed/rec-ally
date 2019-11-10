@@ -1,0 +1,123 @@
+[Thu Dec 13 09:12:57 2018] ::1:39414 [200]: /
+[Thu Dec 13 09:13:03 2018] ::1:39438 [404]: /favicon.ico - No such file or directory
+[Thu Dec 13 09:13:19 2018] ::1:39442 [200]: /
+[Thu Dec 13 09:13:21 2018] ::1:39458 [200]: /assets/img/logo.png
+[Thu Dec 13 09:13:21 2018] ::1:39464 [200]: /assets/img/bg-banner1.jpg
+[Thu Dec 13 09:13:21 2018] ::1:39466 [404]: /uploads/company_logos/57a80f20dabb1company_logo.jpg - No such file or directory
+[Thu Dec 13 09:13:21 2018] ::1:39468 [200]: /assets/img/partner-img1.png
+[Thu Dec 13 09:13:21 2018] ::1:39472 [404]: /uploads/company_logos/59afe5eaa7eb2company_logo.png - No such file or directory
+[Thu Dec 13 09:13:21 2018] ::1:39470 [404]: /uploads/company_logos/57664f3f180cfcompany_logo.jpg - No such file or directory
+[Thu Dec 13 09:13:21 2018] ::1:39474 [200]: /assets/img/bg-facts.jpg
+[Thu Dec 13 09:13:22 2018] ::1:39478 [200]: /assets/img/bg-pattern.png
+[Thu Dec 13 09:13:33 2018] ::1:39482 [200]: /
+[Thu Dec 13 09:13:33 2018] ::1:39486 [200]: /assets/css/app.min.css
+[Thu Dec 13 09:13:33 2018] ::1:39488 [200]: /assets/css/owl.carousel.min.css
+[Thu Dec 13 09:13:34 2018] ::1:39490 [200]: /assets/css/custom.css
+[Thu Dec 13 09:13:34 2018] ::1:39492 [200]: /assets/css/owl.theme.default.min.css
+[Thu Dec 13 09:13:34 2018] ::1:39498 [200]: /assets/css/my_style.css
+[Thu Dec 13 09:13:34 2018] ::1:39502 [200]: /assets/css/mystyle.css
+[Thu Dec 13 09:13:34 2018] ::1:39504 [200]: /assets/img/logo.png
+[Thu Dec 13 09:13:34 2018] ::1:39506 [404]: /uploads/company_logos/59afe5eaa7eb2company_logo.png - No such file or directory
+[Thu Dec 13 09:13:35 2018] ::1:39508 [200]: /assets/js/custom.js
+[Thu Dec 13 09:13:35 2018] ::1:39510 [200]: /assets/js/app.min.js
+[Thu Dec 13 09:13:35 2018] ::1:39512 [200]: /assets/js/jquery.ezmark.js
+[Thu Dec 13 09:13:35 2018] ::1:39516 [404]: /uploads/company_logos/57a80f20dabb1company_logo.jpg - No such file or directory
+[Thu Dec 13 09:13:35 2018] ::1:39514 [200]: /assets/js/owl.carousel.js
+[Thu Dec 13 09:13:35 2018] ::1:39520 [404]: /uploads/company_logos/57664f3f180cfcompany_logo.jpg - No such file or directory
+[Thu Dec 13 09:13:35 2018] ::1:39522 [200]: /assets/img/partner-img1.png
+[Thu Dec 13 09:13:36 2018] ::1:39524 [200]: /assets/img/bg-facts.jpg
+[Thu Dec 13 09:13:36 2018] ::1:39526 [200]: /assets/js/script.js
+[Thu Dec 13 09:13:36 2018] ::1:39528 [200]: /assets/img/bg-banner1.jpg
+[Thu Dec 13 09:13:36 2018] ::1:39530 [200]: /assets/img/bg-pattern.png
+[Thu Dec 13 09:13:36 2018] ::1:39532 [200]: /assets/fonts/themify9f24.woff?-fvbane
+[Thu Dec 13 09:13:36 2018] ::1:39534 [200]: /assets/fonts/fontawesome-webfont3e6e.html?v=4.7.0
+[Thu Dec 13 09:13:51 2018] ::1:39554 [404]: /favicon.ico - No such file or directory
+[Thu Dec 13 09:14:31 2018] ::1:39586 [200]: /
+[Thu Dec 13 09:14:32 2018] ::1:39588 [200]: /assets/css/custom.css
+[Thu Dec 13 09:14:32 2018] ::1:39590 [200]: /assets/css/my_style.css
+[Thu Dec 13 09:14:32 2018] ::1:39592 [200]: /assets/css/app.min.css
+[Thu Dec 13 09:14:32 2018] ::1:39594 [200]: /assets/css/owl.theme.default.min.css
+[Thu Dec 13 09:14:32 2018] ::1:39596 [200]: /assets/css/owl.carousel.min.css
+[Thu Dec 13 09:14:33 2018] ::1:39602 [200]: /assets/css/mystyle.css
+[Thu Dec 13 09:14:33 2018] ::1:39604 [200]: /assets/img/logo.png
+[Thu Dec 13 09:14:33 2018] ::1:39606 [404]: /uploads/company_logos/59afe5eaa7eb2company_logo.png - No such file or directory
+[Thu Dec 13 09:14:34 2018] ::1:39608 [200]: /assets/js/app.min.js
+[Thu Dec 13 09:14:34 2018] ::1:39610 [200]: /assets/js/custom.js
+[Thu Dec 13 09:14:34 2018] ::1:39612 [200]: /assets/js/owl.carousel.js
+[Thu Dec 13 09:14:34 2018] ::1:39614 [200]: /assets/js/jquery.ezmark.js
+[Thu Dec 13 09:14:34 2018] ::1:39616 [404]: /uploads/company_logos/57a80f20dabb1company_logo.jpg - No such file or directory
+[Thu Dec 13 09:14:34 2018] ::1:39618 [404]: /uploads/company_logos/57664f3f180cfcompany_logo.jpg - No such file or directory
+[Thu Dec 13 09:14:35 2018] ::1:39620 [200]: /assets/fonts/themify9f24.woff?-fvbane
+[Thu Dec 13 09:14:35 2018] ::1:39622 [200]: /assets/img/bg-banner1.jpg
+[Thu Dec 13 09:14:35 2018] ::1:39624 [200]: /assets/fonts/fontawesome-webfont3e6e.html?v=4.7.0
+[Thu Dec 13 09:14:35 2018] ::1:39626 [200]: /assets/img/partner-img1.png
+[Thu Dec 13 09:14:35 2018] ::1:39628 [200]: /assets/js/script.js
+[Thu Dec 13 09:14:35 2018] ::1:39632 [200]: /assets/img/bg-facts.jpg
+[Thu Dec 13 09:14:36 2018] ::1:39634 [200]: /assets/img/bg-pattern.png
+[Thu Dec 13 09:14:39 2018] ::1:39636 [200]: /
+[Thu Dec 13 09:14:40 2018] ::1:39644 [200]: /assets/css/app.min.css
+[Thu Dec 13 09:14:40 2018] ::1:39646 [200]: /assets/css/custom.css
+[Thu Dec 13 09:14:40 2018] ::1:39650 [200]: /assets/css/owl.carousel.min.css
+[Thu Dec 13 09:14:41 2018] ::1:39652 [200]: /assets/css/my_style.css
+[Thu Dec 13 09:14:41 2018] ::1:39654 [200]: /assets/css/owl.theme.default.min.css
+[Thu Dec 13 09:14:41 2018] ::1:39656 [200]: /assets/css/mystyle.css
+[Thu Dec 13 09:14:41 2018] ::1:39658 [404]: /uploads/company_logos/59afe5eaa7eb2company_logo.png - No such file or directory
+[Thu Dec 13 09:14:41 2018] ::1:39660 [200]: /assets/img/logo.png
+[Thu Dec 13 09:14:42 2018] ::1:39662 [200]: /assets/js/app.min.js
+[Thu Dec 13 09:14:42 2018] ::1:39664 [200]: /assets/js/custom.js
+[Thu Dec 13 09:14:42 2018] ::1:39666 [200]: /assets/js/jquery.ezmark.js
+[Thu Dec 13 09:14:42 2018] ::1:39668 [404]: /uploads/company_logos/57664f3f180cfcompany_logo.jpg - No such file or directory
+[Thu Dec 13 09:14:42 2018] ::1:39670 [200]: /assets/js/owl.carousel.js
+[Thu Dec 13 09:14:42 2018] ::1:39672 [404]: /uploads/company_logos/57a80f20dabb1company_logo.jpg - No such file or directory
+[Thu Dec 13 09:14:43 2018] ::1:39674 [200]: /assets/img/bg-banner1.jpg
+[Thu Dec 13 09:14:43 2018] ::1:39676 [200]: /assets/js/script.js
+[Thu Dec 13 09:14:43 2018] ::1:39678 [200]: /assets/img/partner-img1.png
+[Thu Dec 13 09:14:43 2018] ::1:39680 [200]: /assets/img/bg-facts.jpg
+[Thu Dec 13 09:14:43 2018] ::1:39682 [200]: /assets/img/bg-pattern.png
+[Thu Dec 13 09:14:44 2018] ::1:39684 [200]: /assets/fonts/themify9f24.woff?-fvbane
+[Thu Dec 13 09:14:44 2018] ::1:39688 [200]: /assets/fonts/fontawesome-webfont3e6e.html?v=4.7.0
+[Thu Dec 13 09:14:56 2018] ::1:39692 [200]: /
+[Thu Dec 13 09:14:57 2018] ::1:39696 [200]: /assets/css/app.min.css
+[Thu Dec 13 09:14:57 2018] ::1:39698 [200]: /assets/css/custom.css
+[Thu Dec 13 09:14:58 2018] ::1:39700 [200]: /assets/css/owl.carousel.min.css
+[Thu Dec 13 09:14:58 2018] ::1:39704 [200]: /assets/css/owl.theme.default.min.css
+[Thu Dec 13 09:14:58 2018] ::1:39706 [200]: /assets/css/my_style.css
+[Thu Dec 13 09:14:58 2018] ::1:39708 [200]: /assets/css/mystyle.css
+[Thu Dec 13 09:14:59 2018] ::1:39710 [404]: /uploads/company_logos/59afe5eaa7eb2company_logo.png - No such file or directory
+[Thu Dec 13 09:14:59 2018] ::1:39712 [200]: /assets/img/logo.png
+[Thu Dec 13 09:14:59 2018] ::1:39714 [200]: /assets/js/app.min.js
+[Thu Dec 13 09:14:59 2018] ::1:39716 [200]: /assets/js/owl.carousel.js
+[Thu Dec 13 09:14:59 2018] ::1:39718 [200]: /assets/js/custom.js
+[Thu Dec 13 09:14:59 2018] ::1:39720 [200]: /assets/js/jquery.ezmark.js
+[Thu Dec 13 09:14:59 2018] ::1:39722 [404]: /uploads/company_logos/57664f3f180cfcompany_logo.jpg - No such file or directory
+[Thu Dec 13 09:14:59 2018] ::1:39724 [404]: /uploads/company_logos/57a80f20dabb1company_logo.jpg - No such file or directory
+[Thu Dec 13 09:15:00 2018] ::1:39726 [200]: /assets/img/bg-banner1.jpg
+[Thu Dec 13 09:15:00 2018] ::1:39728 [200]: /assets/img/bg-facts.jpg
+[Thu Dec 13 09:15:00 2018] ::1:39730 [200]: /assets/js/script.js
+[Thu Dec 13 09:15:00 2018] ::1:39732 [200]: /assets/img/partner-img1.png
+[Thu Dec 13 09:15:00 2018] ::1:39734 [200]: /assets/img/bg-pattern.png
+[Thu Dec 13 09:15:01 2018] ::1:39736 [200]: /assets/fonts/themify9f24.woff?-fvbane
+[Thu Dec 13 09:15:01 2018] ::1:39740 [200]: /assets/fonts/fontawesome-webfont3e6e.html?v=4.7.0
+[Thu Dec 13 09:15:47 2018] ::1:39750 [200]: /
+[Fri Dec 14 09:53:48 2018] ::1:45646 [200]: /
+[Fri Dec 14 09:53:50 2018] ::1:45656 [200]: /assets/css/app.min.css
+[Fri Dec 14 09:53:50 2018] ::1:45662 [200]: /assets/css/custom.css
+[Fri Dec 14 09:53:50 2018] ::1:45664 [200]: /assets/css/owl.theme.default.min.css
+[Fri Dec 14 09:53:50 2018] ::1:45668 [200]: /assets/css/owl.carousel.min.css
+[Fri Dec 14 09:53:50 2018] ::1:45666 [200]: /assets/css/my_style.css
+[Fri Dec 14 09:53:51 2018] ::1:45670 [200]: /assets/css/mystyle.css
+[Fri Dec 14 09:53:53 2018] ::1:45672 [200]: /assets/img/logo.png
+[Fri Dec 14 09:53:53 2018] ::1:45674 [404]: /uploads/company_logos/59afe5eaa7eb2company_logo.png - No such file or directory
+[Fri Dec 14 09:53:54 2018] ::1:45684 [404]: /uploads/company_logos/57664f3f180cfcompany_logo.jpg - No such file or directory
+[Fri Dec 14 09:53:54 2018] ::1:45680 [200]: /assets/js/custom.js
+[Fri Dec 14 09:53:54 2018] ::1:45678 [200]: /assets/js/app.min.js
+[Fri Dec 14 09:53:54 2018] ::1:45686 [404]: /uploads/company_logos/57a80f20dabb1company_logo.jpg - No such file or directory
+[Fri Dec 14 09:53:54 2018] ::1:45688 [200]: /assets/js/jquery.ezmark.js
+[Fri Dec 14 09:53:54 2018] ::1:45690 [200]: /assets/js/owl.carousel.js
+[Fri Dec 14 09:53:54 2018] ::1:45692 [200]: /assets/img/partner-img1.png
+[Fri Dec 14 09:53:55 2018] ::1:45694 [200]: /assets/js/script.js
+[Fri Dec 14 09:53:55 2018] ::1:45696 [200]: /assets/img/bg-banner1.jpg
+[Fri Dec 14 09:53:55 2018] ::1:45698 [200]: /assets/img/bg-facts.jpg
+[Fri Dec 14 09:53:56 2018] ::1:45700 [200]: /assets/img/bg-pattern.png
+[Fri Dec 14 09:53:56 2018] ::1:45704 [200]: /assets/fonts/fontawesome-webfont3e6e.html?v=4.7.0
+[Fri Dec 14 09:53:56 2018] ::1:45702 [200]: /assets/fonts/themify9f24.woff?-fvbane

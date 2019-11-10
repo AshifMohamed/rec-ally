@@ -1,0 +1,46 @@
+
+.about-3-col, 
+.about-1-col,  
+.contact-follow-us,  
+.contact-body,  
+.inner-sub-wrap,  
+.service-1-first {
+    ul {
+        margin-left: -40px;
+        li {
+            list-style: none;
+        }
+    }
+}
+.first-wrap {
+    ul {
+        li {
+            list-style: none;
+        }
+    }
+}
+ul {
+    &.cnt-social {
+        margin-bottom: 60px;
+        li {
+            float: left;
+        }
+    }
+}
+.user-login {
+    .dropdown {
+        a {
+            i {
+                color: #fff;
+            }
+        }
+    }
+    li {
+        margin-left: 20px;
+        list-style: none;
+        float: left;
+    }
+}
+.site-header.size-lg.innerpage {
+    padding: 60px 0;
+}
