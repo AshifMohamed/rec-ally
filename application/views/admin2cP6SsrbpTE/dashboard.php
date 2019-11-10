@@ -1921,15 +1921,16 @@
 
                     function calculateDiff(current,previous)
                     {
-                        return current == 0 ? 0 : ((current_value - six_month_value) / six_month_value) * 100;                       
+                        let val = previous == 0 ? 0 : ((current - previous) / previous) * 100;
+                        return Math.abs(val).toFixed(2);                      
                     }
                     function format_label(month_name)
                     {
                         let index = month_names.indexOf(month_name);
-                        let six_sum = merged_registered_candidates_total.slice(6 + index - 6 ,6 + index + 1).reduce((a,b) => a + b,0);
-                        let current_value = merged_registered_candidates_total[6 + index];
-                        let previous_value = merged_registered_candidates_total[6 + index - 1];
-                        let six_month_value = six_sum/6 ;
+                        let six_sum = merged_registered_candidates_total.slice(6 + index - 6 ,6 + index + 1).reduce((a,b) => parseInt(a) + parseInt(b),0);
+                        let current_value = parseInt(merged_registered_candidates_total[6 + index]);
+                        let previous_value = parseInt(merged_registered_candidates_total[6 + index - 1]);
+                        let six_month_value = (six_sum/6).toFixed(2) ;
                         let six_month_diff = calculateDiff(current_value,six_month_value);
                         let one_month_diff = calculateDiff(current_value,previous_value);
 
