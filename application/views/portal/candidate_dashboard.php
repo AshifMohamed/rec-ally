@@ -141,4 +141,5 @@
                             </div>
                          </div>
                 <!--END CONTENT-->
+<?php $this->load->view('partial/how_to_improve_cv.php'); ?>
 <?php $this->load->view('partial/portal_footer.php'); ?>

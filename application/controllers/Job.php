@@ -16,8 +16,8 @@ class Job extends CI_Controller {
     {
         $data = $this->get_search_info();
         $data['jobs'] = new stdClass();
-        if($data['keyword'] == '' && $data['keyword_s'] == '')
-                $data['keyword'] = $keyword;
+        // if($data['keyword'] == '' && $data['keyword_s'] == '')
+        //         $data['keyword'] = $keyword;
         // print_r($data);exit;
 
         $data['jobs'] = $jobs = $this->account_model->get_job_profiles_by_search_options($data,true);

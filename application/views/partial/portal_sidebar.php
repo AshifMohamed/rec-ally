@@ -47,6 +47,12 @@
                     </a>
                 </li>
             </ul>
+            <div class="cv-compare">
+                <ul>
+                    <li><a data-toggle="modal" data-target="#improveCvModal" href="#"><button class="btn btn-primary cv-btn">How to improve CV</button></a>
+                    </li>   
+                </ul>									
+			</div>
             <?php }
              else if(get_user_type() != 'candidate'){ ?>
                 <ul id="side-menu" class="nav">
