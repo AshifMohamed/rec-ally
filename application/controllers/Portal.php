@@ -2518,12 +2518,14 @@ class Portal extends CI_Controller
 
             set_message('Candidate Message has been successfully sent!','alert-success');
             
-            if ($this->email->send() == true) {
-                $status = 1;
-            } else {
-                print_r($this->email->print_debugger());
-            }
-            
+            // if ($this->email->send() == true) {
+            //     $status = 1;
+            // } else {
+			// 	$status = 0;
+            //    // print_r($this->email->print_debugger());
+			// }
+			
+			redirect(base_url().'employer/job_profile','refresh');
         }
 
         //OLD
@@ -3138,6 +3140,24 @@ class Portal extends CI_Controller
 		//$this->account_model->insert_all_countries();
 		//print_r($data['saved_jobs']);exit;
 		$this->load->view('portal/candidate_job_history',$data);
+	}
+
+	public function reply_to_message()
+	{
+		$data['page_title'] = 'History';
+		$user_profile_id = $this->account_model->get_user_profile_id_by_email($this->session->userdata('logged_email'));
+		
+		$data['jobs_profiles'] = $this->account_model->get_saved_jobs_by_candidate_profile_id($user_profile_id);
+		//$this->account_model->insert_all_countries();
+		//print_r($data['saved_jobs']);exit;
+		$this->load->view('portal/candidate_job_history',$data);
+	}
+
+	public function view_messages()
+	{
+		$data['received_messages'] = $this->account_model->get_candidate_messages_by_candidate_id($this->session->userdata('logged_email'));
+            
+        $this->load->view('/portal/candidate_received_message_list', $data);
 	}
 
 }

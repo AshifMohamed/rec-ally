@@ -1851,7 +1851,7 @@ class Account_model extends CI_Model
                     return $query->result_array();
 		}
 		else
-                    return null;
+                    return array();
 	}
 
     public function get_all_advertisements()
@@ -2058,6 +2058,24 @@ class Account_model extends CI_Model
 
 		$query = $this->db->query($sql);	
 		return $this->db_results_fn($query);
+	}
+
+	public function get_candidate_messages_by_candidate_id($email)
+	{
+		$this->db->select('cm.*');
+		$this->db->from('candidate_message cm');
+		$this->db->join('candidate_profile cp','cp.candidate_profile_id = cm.candidate_profile_id');
+		$this->db->join('user_profile up','up.user_profile_id = cp.user_profile_id');
+		$this->db->join('login l', 'l.login_id = up.login_id');
+		// $this->db->where('cm.candidate_profile_id',$candidate_profile_id);
+		$this->db->where('l.email', $email);
+		$query = $this->db->get();
+		if($query->num_rows() > 0)
+		{
+                    return $query->result_array();
+		}
+		else
+                    return array();
 	}
 	
 }

@@ -46,6 +46,14 @@
                         <span class="menu-title">Settings</span>
                     </a>
                 </li>
+                <li>
+                    <a href="<?=base_url().$user_type;?>/view_messages">
+                        <i class="fa fa-envelope">
+                            <div class="icon-bg bg-pink"></div>
+                        </i>
+                        <span class="menu-title">Messages</span>
+                    </a>
+                </li>
             </ul>
             <div class="cv-compare">
                 <ul>

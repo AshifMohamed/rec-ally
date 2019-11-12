@@ -117,6 +117,8 @@ $route['candidate/public_profile'] 				= "Portal/public_profile";
 $route['candidate/delete_cv_item'] 				= "Portal/delete_cv_item";
 $route['candidate/view_candidate'] 				= "Portal/view_candidate";
 $route['candidate/job_history'] 				= "Portal/candidate_job_history";
+$route['candidate/reply_to_message'] 				= "Portal/reply_to_message";
+$route['candidate/view_messages'] 				= "Portal/view_messages";
 
 /* Employer/Company Pages */
 $route['employer'] 						= "Portal/employer_dashboard";

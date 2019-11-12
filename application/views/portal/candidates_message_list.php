@@ -36,7 +36,7 @@
                                                     <div class="modal-body">
                                                         <p><b>Candidate Name : </b><?=isset($messages['first_name']) ? $messages['first_name'].' '.$messages['last_name'] : ''?></p>
                                                         <p><b>Candidate Email : </b><span class="cn_email"><?=isset($messages['receiver_email'])? $messages['receiver_email'] :'-'?></span></p>
-                                                        <p><b>Sent On : </b><?=$messages['sent_on']?></p
+                                                        <p><b>Sent On : </b><?=$messages['sent_on']?></p>
                                                         <p><b>Subject : </b><?=$messages['subject']?></p>
                                                         <p><b>Message : </b><?=$messages['message']?></p>
                                                     </div>
