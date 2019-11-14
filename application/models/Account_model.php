@@ -1845,6 +1845,7 @@ class Account_model extends CI_Model
 		$this->db->from('candidate_message cm');
 		$this->db->join('candidate_profile cp','cp.candidate_profile_id = cm.candidate_profile_id');
 		$this->db->where('cm.sent_by',$job_profile_id);
+		$this->db->order_by('cm.sent_on', 'DESC');
 		$query = $this->db->get();
 		if($query->num_rows() > 0)
 		{
@@ -2069,6 +2070,47 @@ class Account_model extends CI_Model
 		$this->db->join('login l', 'l.login_id = up.login_id');
 		// $this->db->where('cm.candidate_profile_id',$candidate_profile_id);
 		$this->db->where('l.email', $email);
+		$this->db->order_by('cm.sent_on', 'DESC');
+		$query = $this->db->get();
+		if($query->num_rows() > 0)
+		{
+                    return $query->result_array();
+		}
+		else
+                    return array();
+	}
+
+	public function get_candidate_sent_messages_by_candidate_id($email)
+	{
+		$this->db->select('csm.*');
+		$this->db->from('candidate_sent_message csm');
+		$this->db->join('candidate_message cm','cm.candidate_message_id = csm.candidate_message_id');
+		$this->db->join('candidate_profile cp','cp.candidate_profile_id = cm.candidate_profile_id');
+		$this->db->join('user_profile up','up.user_profile_id = cp.user_profile_id');
+		$this->db->join('login l', 'l.login_id = up.login_id');
+		// $this->db->where('cm.candidate_profile_id',$candidate_profile_id);
+		$this->db->where('l.email', $email);
+		$this->db->order_by('csm.sent_on', 'DESC');
+		$query = $this->db->get();
+		if($query->num_rows() > 0)
+		{
+                    return $query->result_array();
+		}
+		else
+                    return array();
+	}
+
+	public function get_received_message_list($email)
+	{
+		$this->db->select('csm.*');
+		$this->db->from('candidate_sent_message csm');
+		$this->db->join('candidate_message cm','cm.candidate_message_id = csm.candidate_message_id');
+		// $this->db->join('candidate_profile cp','cp.candidate_profile_id = cm.candidate_profile_id');
+		$this->db->join('user_profile up','up.user_profile_id = cm.sent_by');
+		$this->db->join('login l', 'l.login_id = up.login_id');
+		// $this->db->where('cm.candidate_profile_id',$candidate_profile_id);
+		$this->db->where('l.email', $email);
+		$this->db->order_by('csm.sent_on', 'DESC');
 		$query = $this->db->get();
 		if($query->num_rows() > 0)
 		{

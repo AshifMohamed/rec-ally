@@ -119,6 +119,7 @@ $route['candidate/view_candidate'] 				= "Portal/view_candidate";
 $route['candidate/job_history'] 				= "Portal/candidate_job_history";
 $route['candidate/reply_to_message'] 				= "Portal/reply_to_message";
 $route['candidate/view_messages'] 				= "Portal/view_messages";
+$route['candidate/sent_messages'] 				= "Portal/sent_messages";
 
 /* Employer/Company Pages */
 $route['employer'] 						= "Portal/employer_dashboard";
@@ -133,6 +134,7 @@ $route['employer/candidate_message'] 				= "Portal/candidate_message";
 $route['employer/send_candidate_message'] 			= "Portal/send_candidate_message";
 
 $route['employer/candidate_message_list'] 	                = "Portal/candidate_message_list";
+$route['employer/received_message_list'] 	                = "Portal/received_message_list";
 
 $route['employer/search_candidate'] 				= "Portal/search_candidate_ajax";
 $route['employer/search_candidate_ajax'] 			= "Portal/search_candidate_ajax";

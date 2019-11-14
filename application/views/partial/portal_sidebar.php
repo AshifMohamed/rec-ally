@@ -54,6 +54,14 @@
                         <span class="menu-title">Messages</span>
                     </a>
                 </li>
+                <li>
+                    <a href="<?=base_url().$user_type;?>/sent_messages">
+                        <i class="fa fa-envelope">
+                            <div class="icon-bg bg-pink"></div>
+                        </i>
+                        <span class="menu-title">Sent Messages</span>
+                    </a>
+                </li>
             </ul>
             <div class="cv-compare">
                 <ul>
@@ -87,9 +95,13 @@
                         <div class="icon-bg bg-pink"></div>
                         </i><span class="menu-title">Reports</span></a>
                     </li>
-                    <li><a href="<?=base_url().$user_type;?>/candidate_message_list"><i class="fa fa-envelope">
+                    <li><a href="<?=base_url().$user_type;?>/received_message_list"><i class="fa fa-envelope">
                         <div class="icon-bg bg-pink"></div>
                         </i><span class="menu-title">Messages</span></a>
+                    </li>
+                    <li><a href="<?=base_url().$user_type;?>/candidate_message_list"><i class="fa fa-envelope">
+                        <div class="icon-bg bg-pink"></div>
+                        </i><span class="menu-title">Sent Messages</span></a>
                     </li>
 
                 </ul>

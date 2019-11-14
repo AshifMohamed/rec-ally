@@ -108,7 +108,6 @@
                                             <td><?=$messages['sent_on']?></td> 
                                             <td><a data-toggle="modal" href="#modal_individual_process_results<?=$key?>"><span class="label label-sm label-info">View Message</span></a>
                                             <a data-toggle="modal" href="#modal_reply_to_message<?=$key?>"><span class="label label-sm label-info">Send Reply</span></a>
-                                            <a data-toggle="modal" href="#modal_individual_process_results<?=$key?>"><span class="label label-sm label-info">View Reply</span></a>
                                             </td>
                                         </tr>
                                         <?php endforeach; ?>

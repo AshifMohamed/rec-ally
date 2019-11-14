@@ -3143,14 +3143,18 @@ class Portal extends CI_Controller
 	}
 
 	public function reply_to_message()
-	{
-		$data['page_title'] = 'History';
-		$user_profile_id = $this->account_model->get_user_profile_id_by_email($this->session->userdata('logged_email'));
-		
-		$data['jobs_profiles'] = $this->account_model->get_saved_jobs_by_candidate_profile_id($user_profile_id);
-		//$this->account_model->insert_all_countries();
-		//print_r($data['saved_jobs']);exit;
-		$this->load->view('portal/candidate_job_history',$data);
+	{    
+            $message_data = [];
+            
+            $message_data["candidate_message_id"] = $this->input->post('candidate_message_id');
+            $message_data["message"] = $this->input->post('message');
+            $message_data["sent_on"] = date("Y-m-d H:i:s");
+            //print $job_profile_data["job_profile_id"];exit;
+            $this->account_model->insert_data($message_data,'candidate_sent_message_id','candidate_sent_message');
+
+            set_message('Message has been successfully sent!','alert-success');
+            
+			redirect(base_url().'candidate/view_messages','refresh');
 	}
 
 	public function view_messages()
@@ -3160,6 +3164,20 @@ class Portal extends CI_Controller
         $this->load->view('/portal/candidate_received_message_list', $data);
 	}
 
+	public function sent_messages()
+	{
+		$data['sent_messages'] = $this->account_model->get_candidate_sent_messages_by_candidate_id($this->session->userdata('logged_email'));
+            
+        $this->load->view('/portal/candidate_sent_message_list', $data);
+	}
+
+	public function received_message_list()
+	{
+		$data['received_messages'] = $this->account_model->get_received_message_list($this->session->userdata('logged_email'));
+            
+        $this->load->view('/portal/employer_message_list', $data);
+	}
+	
 }
 
 ?>
