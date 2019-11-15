@@ -300,6 +300,47 @@ class Account extends CI_Controller
         }
     }
 
+    public function change_email_from_settings()
+    {
+        $response["status"] = true;
+        $response["message"] = "Email updated successfully";
+
+        $old_email = $this->input->post('old_email');
+        $new_email = $this->input->post('new_email');
+
+        $old_email = isset($old_email) ? $old_email : '';
+        $new_email = isset($new_email) ? $new_email : '';
+
+        
+
+        if( empty($old_email) || empty($new_email) )
+        {
+            $response["status"] = false;
+            $response["message"] = "Email fields cannot be empty";
+        }
+        else if( $old_email == $new_email ) {
+            $response["status"] = false;
+            $response["message"] = "The new email given should differ from your current email";
+        }
+        else if( (!filter_var($old_email, FILTER_VALIDATE_EMAIL)) || (!filter_var($new_email, FILTER_VALIDATE_EMAIL)) ) {
+            $response["status"] = false;
+            $response["message"] = "Please provide a valid email";
+        }else{
+            $login_data = $this->account_model->get_loggedin_data_from_email($this->session->userdata('logged_email'));
+            if($login_data->email != $old_email)
+            {
+                $response["status"] = false;
+                $response["message"] = "The email you entered does not match with your current email";
+            }
+            $login_data["email"] = $new_email;
+            $this->account_model->change_login_email($login_data);
+        } 
+
+        echo json_encode($response);
+     //   print $response;
+        exit;
+    }
+
     public function newsletter_subscription()
     {
             $email = $this->input->post('email');

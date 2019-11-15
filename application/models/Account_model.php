@@ -2120,6 +2120,26 @@ class Account_model extends CI_Model
                     return array();
 	}
 	
+	public function get_loggedin_data_from_email($email)
+	{
+		$this->db->select('*');
+	    $this->db->from('login l');
+		$this->db->where('l.email', $email);
+		$query = $this->db->get();
+		if($query->num_rows() > 0)
+		{
+			$result = $query->result();
+			return $result[0];
+		}
+		else
+			return 0;
+	}
+
+	public function change_login_email($login_data)
+	{
+		$this->db->update('login',$login_data,array('login_id'=>$login_data['login_id']));
+		return true;
+	}
 }
 
 ?>

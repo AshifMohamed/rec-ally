@@ -2915,7 +2915,7 @@ class Portal extends CI_Controller
 		$data['page_title'] = 'Settings';
 		$user_profile_id = $this->account_model->get_user_profile_id_by_email($this->session->userdata('logged_email'));
 		// $candidate_profile_id = $this->account_model->get_candidate_profile_id_by_user_profile_id($user_profile_id);
-		$data['saved_jobs'] = $this->account_model->get_saved_jobs_by_candidate_profile_id($user_profile_id);
+		// $data['saved_jobs'] = $this->account_model->get_saved_jobs_by_candidate_profile_id($user_profile_id);
 		//$this->account_model->insert_all_countries();
 		//print_r($data['saved_jobs']);exit;
 		$this->load->view('portal/candidate_settings',$data);

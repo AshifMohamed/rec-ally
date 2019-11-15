@@ -120,6 +120,7 @@ $route['candidate/job_history'] 				= "Portal/candidate_job_history";
 $route['candidate/reply_to_message'] 				= "Portal/reply_to_message";
 $route['candidate/view_messages'] 				= "Portal/view_messages";
 $route['candidate/sent_messages'] 				= "Portal/sent_messages";
+$route['candidate/change_email'] 				= "Account/change_email_from_settings";
 
 /* Employer/Company Pages */
 $route['employer'] 						= "Portal/employer_dashboard";
