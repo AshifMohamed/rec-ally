@@ -95,6 +95,10 @@
                         <div class="icon-bg bg-pink"></div>
                         </i><span class="menu-title">Reports</span></a>
                     </li>
+                    <li><a href="<?=base_url().$user_type;?>/settings"><i class="fa fa-eye">
+                        <div class="icon-bg bg-pink"></div>
+                        </i><span class="menu-title">Settings</span></a>
+                    </li>
                     <li><a href="<?=base_url().$user_type;?>/received_message_list"><i class="fa fa-envelope">
                         <div class="icon-bg bg-pink"></div>
                         </i><span class="menu-title">Messages</span></a>

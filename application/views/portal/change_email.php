@@ -1,6 +1,5 @@
 <div class="col-md-6 col-sm-6 left-padding">
 <form id="form_change_email" action="javascript:0">
-<span class="error">Enter only numbers</span>
   <div class="form-group">
     <label for="old_email" class="control-label"> Current Email</label>
     <div class="input-icon right">

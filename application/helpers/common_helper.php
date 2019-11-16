@@ -171,6 +171,14 @@ function set_user_session($login_type,$session_data)
 	$ci->session->set_userdata($session_array);
 }
 
+function update_session_email($email)
+{
+	$ci=& get_instance();
+	$session_array = $ci->session->userdata();
+	$session_array['logged_email'] = $email;
+	$ci->session->set_userdata($session_array);
+}
+
 function is_admin()
 {
 	$ci =& get_instance();

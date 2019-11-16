@@ -1,4 +1,5 @@
 <div class="col-md-6 col-sm-6 left-padding">
+<form id="form_change_pwd" action="javascript:0">
   <div class="form-group">
     <label for="old_password" class="control-label"> Current Password</label>
     <div class="input-icon right">
@@ -49,8 +50,9 @@
 
   <div class="form-group pull-right">
     <label class="control-label col-md-2 col-sm-2 col-xs-12"></label>
-    <button class="btn btn-info" id="btn_change_email" name="btn_change_email">
+    <button type="submit" class="btn btn-info" id="btn_change_pwd" name="btn_change_pwd">
       Change Password
     </button>
   </div>
+  </form>
 </div>

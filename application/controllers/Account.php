@@ -1,18 +1,17 @@
-<?php 
-defined('BASEPATH') OR exit('No direct script access allowed');
+<?php
+defined( 'BASEPATH' ) OR exit( 'No direct script access allowed' );
 /**
 * Author: NIFAL MUNZIR
 */
-class Account extends CI_Controller
-{
-    public function __construct()
-    {
+
+class Account extends CI_Controller {
+    public function __construct() {
         parent::__construct();
-        $this->load->model('account_model');
-        $this->load->model('configuration_model');
+        $this->load->model( 'account_model' );
+        $this->load->model( 'configuration_model' );
     }
 
-    public function login($param = '',$return_url='')
+    public function login( $param = '', $return_url = '' ) 
     {
         $return_url = str_replace('_','/', $return_url);
         if($param == 'validate')
@@ -303,41 +302,121 @@ class Account extends CI_Controller
     public function change_email_from_settings()
     {
         $response["status"] = true;
-        $response["message"] = "Email updated successfully";
+        $response["message"] = "Email changed successfully";
 
         $old_email = $this->input->post('old_email');
         $new_email = $this->input->post('new_email');
 
-        $old_email = isset($old_email) ? $old_email : '';
-        $new_email = isset($new_email) ? $new_email : '';
+        $old_email = isset($old_email) ? strtolower($old_email) : '';
+        $new_email = isset($new_email) ? strtolower($new_email) : '';
 
         
-
         if( empty($old_email) || empty($new_email) )
         {
             $response["status"] = false;
             $response["message"] = "Email fields cannot be empty";
+            echo json_encode($response);
+            exit;
         }
-        else if( $old_email == $new_email ) {
+        if( $old_email == $new_email ) {
             $response["status"] = false;
             $response["message"] = "The new email given should differ from your current email";
+            echo json_encode($response);
+            exit;
         }
-        else if( (!filter_var($old_email, FILTER_VALIDATE_EMAIL)) || (!filter_var($new_email, FILTER_VALIDATE_EMAIL)) ) {
+        if( (!filter_var($old_email, FILTER_VALIDATE_EMAIL)) || (!filter_var($new_email, FILTER_VALIDATE_EMAIL)) ) {
             $response["status"] = false;
             $response["message"] = "Please provide a valid email";
-        }else{
-            $login_data = $this->account_model->get_loggedin_data_from_email($this->session->userdata('logged_email'));
-            if($login_data->email != $old_email)
+            echo json_encode($response);
+            exit;
+        }
+        if( $this->account_model->is_user_exist(array('email'=>$new_email)) != 0 ) {
+            $response["status"] = false;
+            $response["message"] = "New email you have provided is already taken.";
+            echo json_encode($response);
+            exit;
+        }
+
+            $login_data = $this->account_model->get_loggedin_id_email_from_email($this->session->userdata('logged_email'));
+            if( (!isset($login_data->email)) || ($login_data->email != $old_email) )
             {
                 $response["status"] = false;
                 $response["message"] = "The email you entered does not match with your current email";
+                echo json_encode($response);
+                exit;
             }
-            $login_data["email"] = $new_email;
-            $this->account_model->change_login_email($login_data);
-        } 
 
+            $login_array = array(
+                'login_id' => $login_data->login_id,
+                'email' => $new_email
+            );
+          // $login_data->email = $new_email;
+           $result = $this->account_model->change_login_email($login_array);
+           if($result)
+           {
+                update_session_email($new_email);
+           }
+           else
+           {
+                $response["status"] = false;
+                $response["message"] = "Could not process your request. There might be an issue with the server. Please try again later";
+           }
+
+           echo json_encode($response);
+           exit;
+    }
+
+    public function change_password_from_settings()
+    {
+        $response["status"] = true;
+        $response["message"] = "Password changed successfully";
+
+        $old_pwd = $this->input->post('old_pwd');
+        $new_pwd = $this->input->post('new_pwd');
+        $confirm_pwd = $this->input->post('confirm_pwd');
+        
+        if( empty($old_pwd) || empty($new_pwd) )
+        {
+            $response["status"] = false;
+            $response["message"] = "Password fields cannot be empty";
+            echo json_encode($response);
+            exit;
+        }
+        if( $old_pwd == $new_pwd ) {
+            $response["status"] = false;
+            $response["message"] = "The new password given should differ from your current password";
+            echo json_encode($response);
+            exit;
+        }
+        if( $new_pwd != $confirm_pwd ) {
+            $response["status"] = false;
+            $response["message"] = "Confirm password is different from the new password";
+            echo json_encode($response);
+            exit;
+        }
+
+            $login_data = $this->account_model->get_loggedin_id_password_from_email($this->session->userdata('logged_email'));
+            if( ( !isset($login_data->password)) || ($login_data->password != md5($old_pwd) ) )
+            {
+                $response["status"] = false;
+                $response["message"] = "The password you entered does not match with your current password";
+                echo json_encode($response);
+                exit;
+            }
+
+            $login_array = array(
+                'login_id' => $login_data->login_id,
+                'password' => md5($new_pwd)
+            );
+          // $login_data->password = $new_pwd;
+           $result = $this->account_model->change_login_password($login_array);
+           if(!$result)
+           {
+            $response["status"] = false;
+            $response["message"] = "Could not process your request. There might be an issue with the server. Please try again later";
+           }
+           
         echo json_encode($response);
-     //   print $response;
         exit;
     }
 
@@ -467,11 +546,11 @@ class Account extends CI_Controller
             // //$this->email->bcc('nifalm@gmail.com'); 
 
             // $this->email->subject($data['subject']);
-            // $this->email->message($this->load->view('/templates/'.$template_name,$data,true));	
+            // $this->email->message($this->load->view('/templates/'.$template_name, $data, true ) );
 
-            // $this->email->send();
-    }
+                        // $this->email->send();
+                    }
 
-}
+                }
 
-?>
+                ?>

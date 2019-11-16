@@ -121,6 +121,7 @@ $route['candidate/reply_to_message'] 				= "Portal/reply_to_message";
 $route['candidate/view_messages'] 				= "Portal/view_messages";
 $route['candidate/sent_messages'] 				= "Portal/sent_messages";
 $route['candidate/change_email'] 				= "Account/change_email_from_settings";
+$route['candidate/change_password'] 				= "Account/change_password_from_settings";
 
 /* Employer/Company Pages */
 $route['employer'] 						= "Portal/employer_dashboard";
@@ -159,6 +160,9 @@ $route['employer/save_basic_company_info'] 			= "Portal/save_basic_company_info"
 $route['employer/save_representative'] 				= "Portal/save_representative";
 $route['employer/save_company_registration_info'] 		= "Portal/save_company_registration_info";
 $route['employer/save_about_company_info'] 			= "Portal/save_about_company_info";
+$route['employer/change_email'] 				= "Account/change_email_from_settings";
+$route['employer/change_password'] 				= "Account/change_password_from_settings";
+$route['employer/settings']                                  = "Portal/employer_settings";
 
 /* Admin Pages */
 $route[ADMIN_PATH_NAME]                                         = "Admin/index";
