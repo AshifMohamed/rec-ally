@@ -119,13 +119,13 @@
                                                    <div class="panel-inner">
                                                       <div class="col-md-6 col-sm-6 update-cv left-padding">
                                                          <div class="pal panel">
-                                                            <h4>Your CV</h4>
+                                                            <h4>Your Profile</h4>
                                                             <span class="task-item">Weak<small class="pull-right text-muted"><?=$profile_score?>%</small><div class="progress progress-sm">
                                                              <div role="progressbar" aria-valuenow="<?=$profile_score?>" aria-valuemin="0" aria-valuemax="100" style="width: <?=$profile_score?>%;" class="progress-bar <?=get_class_by_score($profile_score)?>">
                                                                 <span class="sr-only"><?=$profile_score?>% Complete (success)</span></div>
                                                             </div>
                                                         </span>
-                                                        <a href="<?=base_url()?>candidate/profile"><button class="btn btn-blue">Update you CV</button></a>
+                                                        <a href="<?=base_url()?>candidate/profile"><button class="btn btn-blue">Update you Profile</button></a>
                                                     </div>
                                                 </div>
                                                 <div class="panel-body panel col-md-6 col-sm-6 update-cv">

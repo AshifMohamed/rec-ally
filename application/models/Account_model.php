@@ -2161,6 +2161,22 @@ class Account_model extends CI_Model
 		return $this->db->update('login',$login_data,array('login_id'=>$login_data['login_id']));
 		//return true;
 	}
+
+	public function get_user_profile_id_by_candidate_id($candidate_id)
+	{
+		$this->db->select('up.user_profile_id');
+	    $this->db->from('user_profile up');
+	    $this->db->join('candidate_profile cp', 'cp.user_profile_id = up.user_profile_id');
+		$this->db->where('cp.candidate_profile_id', $candidate_id);
+		$query = $this->db->get();
+		if($query->num_rows() > 0)
+		{
+			$result = $query->result();
+			return $result[0]->user_profile_id;
+		}
+		else
+			return 0;
+	}
 }
 
 ?>

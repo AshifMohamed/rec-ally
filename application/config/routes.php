@@ -92,6 +92,8 @@ $route['logout']                                                = "Account/logou
 $route['register/candidate']                                    = "Account/register/candidate";
 $route['register/employer']                                     = "Account/register/employer";
 
+$route['people/(:any)/(:any)']                                   = "Portal/public_candidate_profile_view/$1/$2";
+
 /* Candidate Pages */
 $route['candidate']                                             = "Portal";
 $route['candidate/dashboard']                                   = "Portal";

@@ -2414,8 +2414,13 @@ class Portal extends CI_Controller
             $data['address'] = $this->account_model->get_address_by_user_profile_id($user_profile_id);
             //print_r($data['profile']);exit;
             $data['contact'] = $this->account_model->get_contact_by_user_profile_id($user_profile_id);
-            if(isset($data['profile']->candidate_profile_id))
-                    $data['salary_notice_period'] = $this->account_model->get_salary_notice_period_by_candidate_id($data['profile']->candidate_profile_id);
+			if(isset($data['profile']->candidate_profile_id))
+			{
+					$data['salary_notice_period'] = $this->account_model->get_salary_notice_period_by_candidate_id($data['profile']->candidate_profile_id);
+
+					$full_name = $data['profile']->first_name.' '. $data['profile']->last_name ;
+					$data['public_profile_url'] = base_url().'people/'.$data['profile']->candidate_profile_id.'/'.strtolower($full_name) ;
+			}
             // print_r($data['salary_notice_period']);exit;
             //print(empty($data['profile']));exit;
             $data['educations'] = $this->account_model->get_education_by_user_profile_id($user_profile_id); //Degree Table
@@ -2441,8 +2446,8 @@ class Portal extends CI_Controller
             $data['job_history_collection'] = $this->account_model->get_data_by_id_collection($data['profile']->job_history_category_ids,'job_history_category','job_history_category_id','history_category');
             $data['competency_collection'] = $this->account_model->get_data_by_id_collection($data['profile']->competency_ids,'competency','competency_id');
             $data['soft_skill_collection'] = $this->account_model->get_data_by_id_collection($data['profile']->soft_skill_type_ids,'soft_skill_type','soft_skill_type_id');
-            $data['driving_license_collection'] = $this->account_model->get_data_by_id_collection($data['profile']->driving_license_country_ids,'country','country_id','country');
-
+			$data['driving_license_collection'] = $this->account_model->get_data_by_id_collection($data['profile']->driving_license_country_ids,'country','country_id','country');
+			
             $this->load->view('/portal/candidate_profile_view', $data);
 	}
 
@@ -3177,6 +3182,82 @@ class Portal extends CI_Controller
 		$data['received_messages'] = $this->account_model->get_received_message_list($this->session->userdata('logged_email'));
             
         $this->load->view('/portal/employer_message_list', $data);
+	}
+
+	public function public_candidate_profile_view($candidate_id,$candidate_name)
+	{
+			$candidate_name = urldecode($candidate_name);
+			$data['page_title'] = ucwords($candidate_name).' Public Profile View';
+			$loggedin_profile_id = $this->account_model->get_user_profile_id_by_email($this->session->userdata('logged_email'));
+			$full_name = "";
+            
+			if($loggedin_profile_id == 0)
+			{
+				$data['heading'] = '404 Page Not Found';
+				$data['message'] = 'The page you requested was not found.';
+				$this->load->view('/errors/html/error_404', $data);
+				return;
+			//	exit;
+			}
+			$user_profile_id = $this->account_model->get_user_profile_id_by_candidate_id($candidate_id);
+			if($user_profile_id == 0)
+			{
+				$data['heading'] = '404 Page Not Found';
+				$data['message'] = 'The page you requested was not found.';
+				$this->load->view('/errors/html/error_404', $data);
+				return;
+				//exit;
+			}
+			$data['profile'] = $this->account_model->get_candidate_by_user_profile_id($user_profile_id);
+			
+			if( (isset($data['profile']->first_name)) && (isset($data['profile']->last_name)) )
+			{
+				$full_name = $data['profile']->first_name.' '.$data['profile']->last_name;
+			}
+
+			if(strtolower($full_name) != $candidate_name)
+			{
+				$data['heading'] = '404 Page Not Found';
+				$data['message'] = 'The page you requested was not found.';
+				$this->load->view('/errors/html/error_404', $data);
+				return;
+				//exit;
+			}
+			$data['title_header'] =  $full_name. ' Public Profile';
+			//Candidate Profile, Salary and Notice Period
+            $data['address'] = $this->account_model->get_address_by_user_profile_id($user_profile_id);
+            //print_r($data['profile']);exit;
+            $data['contact'] = $this->account_model->get_contact_by_user_profile_id($user_profile_id);
+            if(isset($data['profile']->candidate_profile_id))
+                    $data['salary_notice_period'] = $this->account_model->get_salary_notice_period_by_candidate_id($data['profile']->candidate_profile_id);
+            // print_r($data['salary_notice_period']);exit;
+            //print(empty($data['profile']));exit;
+            $data['educations'] = $this->account_model->get_education_by_user_profile_id($user_profile_id); //Degree Table
+            //print_r($data['educations']);exit;
+            $data['experiences'] = $this->account_model->get_experience_by_user_profile_id($user_profile_id);
+
+            $data['certificates'] = $this->account_model->get_certificate_by_user_profile_id($user_profile_id);
+            $data['language_expertise'] = $this->account_model->get_language_expertise_by_user_profile_id($user_profile_id);
+            $data['memberships'] = $this->account_model->get_membership_by_user_profile_id($user_profile_id);
+
+            if(empty($data['profile']->industry_ids))
+                    $data['profile']->industry_ids = 0;
+            if(empty($data['profile']->competency_ids))
+                    $data['profile']->competency_ids = 0;
+            if(empty($data['profile']->driving_license_country_ids))
+                    $data['profile']->driving_license_country_ids = 0; 
+
+            $data['profile']->industry_ids = remove_trailing_commas($data['profile']->industry_ids);
+            $data['profile']->competency_ids = remove_trailing_commas($data['profile']->competency_ids);
+            $data['profile']->driving_license_country_ids = remove_trailing_commas($data['profile']->driving_license_country_ids);
+
+            $data['industry_collection'] = $this->account_model->get_data_by_id_collection($data['profile']->industry_ids,'industry','industry_id','industry');
+            $data['job_history_collection'] = $this->account_model->get_data_by_id_collection($data['profile']->job_history_category_ids,'job_history_category','job_history_category_id','history_category');
+            $data['competency_collection'] = $this->account_model->get_data_by_id_collection($data['profile']->competency_ids,'competency','competency_id');
+            $data['soft_skill_collection'] = $this->account_model->get_data_by_id_collection($data['profile']->soft_skill_type_ids,'soft_skill_type','soft_skill_type_id');
+            $data['driving_license_collection'] = $this->account_model->get_data_by_id_collection($data['profile']->driving_license_country_ids,'country','country_id','country');
+
+            $this->load->view('/portal/candidate_public_profile_view', $data);
 	}
 	
 }

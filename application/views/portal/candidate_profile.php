@@ -268,10 +268,15 @@
 														<div class="form-group">
 															<label for="mobile" class="control-label">
 																Phone Number</label>
-															<div class="input-size">
-																		<input id="country_code" name="country_code" placeholder="" class="form-control" type="text">
-																		<input id="network_code" name="network_code" placeholder="" class="form-control col-md-2 col-sm-2" type="text">
-																		<input id="mobile" name="mobile" placeholder="" class="form-control  col-md-5 col-sm-5" type="text">
+															<div class="row input-size">
+																	<div class="col-xs-4"> 
+																		<input id="country_code" name="country_code" placeholder="" class="form-control" type="text"></div>
+																		<div class="col-xs-4">
+																		<input id="network_code" name="network_code" placeholder="" class="form-control" type="text">
+																		</div>
+																		<div class="col-xs-4">
+																		<input id="mobile" name="mobile" placeholder="" class="form-control" type="text">
+																		</div>
 															</div>															
 														<div style="clear:both;"></div>
 														</div>
@@ -1171,7 +1176,7 @@
                             <div class="col-lg-3">
 										<div class="panel panel-green">
                                             <div class="panel-heading">
-                                                CV Strength</div>
+                                                Profile Strength</div>
 											<div class="panel-body pan cv-pre">
                                                 <div class="progress-wrap">
 													  <ul>
@@ -1187,17 +1192,17 @@
 												</div>
 												<div class="cv-compare">
 													<ul>
-														<li><i class="fa fa-file-image-o"></i>  <a data-toggle="modal" data-target="#improveCvModal" href="#">How to improve CV</a></li>
-														<li><i class="fa fa-list-alt"></i> <a data-toggle="modal" data-target="#myModal2" href="#"> View a sample CV</a></li>							
+														<li><i class="fa fa-file-image-o"></i>  <a data-toggle="modal" data-target="#improveCvModal" href="#">How to improve Profile</a></li>
+														<li><i class="fa fa-list-alt"></i> <a data-toggle="modal" data-target="#myModal2" href="#"> View a sample Profile</a></li>							
 														<li><a target="_blank" href="<?=base_url('candidate/view_candidate')?>"><button type="submit" class="btn btn-primary cv-btn">
-                                                        Preview my CV</button></a></li>							
+                                                        Preview my Profile</button></a></li>							
 													</ul>
 												</div>
                                             </div>
                                         </div>
 										<div class="panel panel-green">
                                             <div class="panel-heading">
-                                                CV Overview</div>
+                                                Profile Overview</div>
 											<div class="panel-body pan cv-pre">
 												<div class="cv-compare">
 													<ul>

@@ -1,28 +1,23 @@
-<?php $this->load->view('partial/portal_header.php'); ?>
-<?php $this->load->view('partial/portal_sidebar.php'); ?>
-<?php $this->load->view('partial/portal_breadcrumbs.php'); ?>
+<?php $this->load->view('login/header.php'); ?>
+
 <!--BEGIN CONTENT-->
                 <div class="page-content">
                     <div id="tab-general">
                         <div class="row mbl">
                             <div class="col-lg-9 block-space">
-                            	<input type="hidden" id="candidate_profile_id" value="<?=isset($profile->candidate_profile_id) ? $profile->candidate_profile_id : 0?>"/>
+                            	
                                 <div class="panel">
                                     <div class="panel-body">
                                         <div class="row">
                                            <div class="col-md-12 col-sm-12 left-padding right-padding">
 												<div class="col-md-3 col-sm-3 text-center ">
-													<img class="img-responsive pro-img" src="<?=(!empty($profile->profile_pic_name)) ? base_url().'uploads/candidate_profiles/'.$profile->profile_pic_name : base_url().'assets/portal/images/avatar.png'?>">
-													
+													<img class="img-responsive pro-img" src="<?=(!empty($profile->profile_pic_name)) ? base_url().'uploads/candidate_profiles/'.$profile->profile_pic_name : base_url().'assets/portal/images/avatar.png'?>">	
 												</div>
 												<div class="col-md-4 col-sm-4">
 													<img class="img-responsive pro-img" src="<?=(!empty($profile->portrait_pic_name)) ? base_url().'uploads/candidate_profiles/'.$profile->portrait_pic_name : base_url().'assets/portal/images/ava-big.png'?>">
 												</div>
 												<div class="col-md-4 col-sm-4 section-content">
 													<h4 ><span id="cn_first_name"><?=isset($profile->first_name) ? $profile->first_name.'</span> <span id="cn_last_name">'.$profile->last_name : ''?></span></h4>
-													<?php if(!empty($public_profile_url)): ?>
-													<p><span><a href="<?= $public_profile_url ?>"><?= $public_profile_url ?></a></span></p>	
-													<?php endif; ?>
 													<p><b>Experience : </b> <span id="cn_experience"><?=!empty($experiences) ? $experiences[count($experiences) - 1]->position : '-'?></span> </p>
 													<p><b>Address : </b><?=!empty($address) ? '<span id="cn_building_no">'.$address->building_no.'</span> <span id="cn_building_name">'.$address->building_name.'</span> <span id="cn_city">'.$address->city.'</span> <span id="cn_street">'.$address->street.'</span> <span id="cn_country">'.$address->country.'</span>' : '-'?></p>
 													<p><b>Mobile</b> <span id="cn_mobile"><?=isset($contact->mobile) ? $contact->mobile : '-'?></span></p>
@@ -49,16 +44,8 @@
                                            <div class="col-md-12 col-sm-12">
 												<div class="col-md-8 col-sm-8 left-padding section-content">
 													<h3>Contact Information</h3>
-													<p><b>Email : </b>
-													<?php $user_type = get_user_type(); if($user_type == 'employer'){ ?>
-													<?=isset($contact->email)? '<a href="mailto:'.$contact->email.'">'.'<span class="cn_email">'.$contact->email.'</span></a>' :'-'?></p>
-													<p><b>Secondary Email : </b>
-													<?=isset($contact->secondary_email)? '<a href="mailto:'.$contact->secondary_email.'">'.'<span class="cn_email">'.$contact->secondary_email.'</span></a>' :'-'?></p>
-													<?php }
-													else {?> 
-													<span class="cn_email"><?=isset($contact->email)? $contact->email :'-'?></span></p>
+													<p><b>Email : </b><span class="cn_email"><?=isset($contact->email)? $contact->email :'-'?></span></p>
 													<p><b>Secondary Email : </b><span class="cn_secondary_email"><?=isset($contact->secondary_email)? $contact->secondary_email :'-'?></span></p>
-													<?php } ?>
 													<p><b>Mobile : </b><span class="cn_mobile"><?=isset($contact->mobile)? $contact->mobile :'-'?></span></p>
 													<p><b>Skype ID : </b> <span class="cn_skype_id"><?=isset($contact->skype)? $contact->skype :'-'?></span></p>
 													<p><b>LinkedIn : </b><a target="_blank" href="<?=isset($contact->linkedin)?prep_url($contact->linkedin):'#';?>"><span class="cn_linkedin"><?=isset($contact->linkedin)? $contact->linkedin :'-'?></span></a></p>									
@@ -76,8 +63,7 @@
                                         <div class="row">
                                            <div class="col-md-12 col-sm-12">
 												<div class="col-md-8 col-sm-8 left-padding section-content">
-													<h3>About You</h3>
-													<h5>What you want to tell us about your self</h5>
+													<h3>About</h3>
 													<p class="cn-about-you"><?=!empty($profile->about_you)? $profile->about_you :'-' ?></p>
 												</div>
 											</div>														
@@ -92,9 +78,15 @@
                                            <div class="col-md-12 col-sm-12">
 												<div class="col-md-8 col-sm-8 left-padding section-content">
 													<h3>Salary and Notice Period</h3>
-													<p><b>Current : </b> <span class="cn-current-salary"><?=isset($salary_notice_period->current_salary) ? $salary_notice_period->current_salary : '-'?></span></p>
-													<p><b>Target : </b> <span class="cn-expected-salary"><?=isset($salary_notice_period->expected_salary) ? $salary_notice_period->expected_salary : '-'?></span></p>
-													<p><b>Notice Period : </b><span class="cn-notice-period"><?=isset($salary_notice_period->period) ? $salary_notice_period->period : '-'?></span></p>
+                                                    <?php if(isset($salary_notice_period->current_salary)): ?>
+													<p><b>Current : </b> <span class="cn-current-salary"><?= $salary_notice_period->current_salary ?></span></p>
+                                                    <?php endif; ?>
+                                                    <?php if(isset($salary_notice_period->expected_salary)): ?>
+													<p><b>Target : </b> <span class="cn-expected-salary"><?= $salary_notice_period->expected_salary ?></span></p>
+                                                    <?php endif; ?>
+                                                    <?php if(isset($salary_notice_period->period)): ?>
+													<p><b>Notice Period : </b><span class="cn-notice-period"><?= $salary_notice_period->period ?></span></p>
+                                                    <?php endif; ?>
 												</div>
 											</div>														
                                         </div>
@@ -108,15 +100,26 @@
                                            <div class="col-md-12 col-sm-12">
 												<div class="col-md-8 col-sm-8 left-padding section-content">
 													<h3>Job Target</h3>
-													<p><b>Position Level : </b><span class="cn-career-level"><?=isset($profile->career_level) ? $profile->career_level : ''?></span></p>
-													<p><b>Department : </b> <span><?=isset($profile->department) ? $profile->department : ''?></span></p>
+                                                    <?php if(isset($profile->career_level)): ?>
+													<p><b>Position Level : </b><span class="cn-career-level"><?=$profile->career_level ?></span></p>
+                                                    <?php endif; ?>
+                                                    <?php if(isset($profile->department)): ?>
+													<p><b>Department : </b> <span><?=$profile->department?></span></p>
+                                                    <?php endif; ?>
+                                                    <?php if(count($industry_collection) > 0): ?>
 													<p><b>Industry type : </b> <span><?php $value=''; foreach ($industry_collection as $key => $industry){ $value.=$industry->industry.', '?>
 																					<?php } print remove_trailing_commas($value); ?></span></p>
+                                                    <?php endif; ?>
+                                                    <?php if(count($job_history_collection) > 0): ?>
 													<p><b>Job History Families : </b> <span><?php $value=''; foreach ($job_history_collection as $key => $history_category){ $value.=$history_category->history_category.', '?>
 																					<?php } print remove_trailing_commas($value); ?></span></p>
+                                                    <?php endif; ?>
+                                                    <?php if(count($soft_skill_collection) > 0): ?>
 													<p><b>Soft Skill Types : </b> <span><?php $value=''; foreach ($soft_skill_collection as $key => $soft_skill_type){ $value.=$soft_skill_type->skill_type.', '?>
 																					<?php } print remove_trailing_commas($value); ?></span></p>
+                                                    <?php endif; ?>
 													<p>
+                                                    <?php if(count($competency_collection) > 0): ?>
 														<b>Competencies : </b> 
 														<br/>
 														<ul class="job_target_competencies">
@@ -146,6 +149,7 @@
 																<?php } !empty($value) ? print remove_trailing_commas($value) : '-'; ?>
 														  </li>
 														</ul>
+                                                        <?php endif; ?>
 													</p>
 												</div>
 											</div>														
@@ -279,18 +283,13 @@
                                     </div>
                                 </div>
                             </div>
-                            <?php if(get_user_type() == 'candidate'): ?>
-                            	<?php $this->load->view('partial/portal_job_search.php'); ?>
-                            <?php else: ?>
-                            	<?php $this->load->view('/partial/portal_candidate_search'); ?>
-                            <?php endif; ?>
+                           
                         </div>
                         </div>
                       </div>
                     </div>
                 <!--END CONTENT-->
-         
-<?php $this->load->view('partial/portal_footer.php'); ?>
+<link type="text/css" rel="stylesheet" href="<?=base_url();?>assets/portal/styles/main.css">
 <style type="text/css">
 .driving_license_country {
     height: 250px;

@@ -65,7 +65,7 @@
             </ul>
             <div class="cv-compare">
                 <ul>
-                    <li><a data-toggle="modal" data-target="#improveCvModal" href="#"><button class="btn btn-primary cv-btn">How to improve CV</button></a>
+                    <li><a data-toggle="modal" data-target="#improveCvModal" href="#"><button class="btn btn-primary cv-btn">How to improve Profile</button></a>
                     </li>   
                 </ul>									
 			</div>
