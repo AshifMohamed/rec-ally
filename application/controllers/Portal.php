@@ -235,10 +235,34 @@ class Portal extends CI_Controller
 	{
 		//print($this->input->post('contact_profile_map_id'));exit;
 		$contact_id = $this->input->post('contact_id');
+		$country_code = $this->input->post('country_code');
+		$network_code = $this->input->post('network_code');
+		$mobile = $this->input->post('mobile');
+
+		$isMobileValid = true;
+
+		if(!empty($country_code))
+		{
+			if( (!ctype_digit($country_code)) || (strlen($country_code) > 3) || (!ctype_digit($network_code)) || (!ctype_digit($mobile)))
+			{
+				$isMobileValid = false;
+			}
+		}
+		else if(!empty($network_code) || !empty($mobile))
+		{
+			$isMobileValid = false;
+		}
+		
+		if(!$isMobileValid)
+		{
+			set_message('Invalid Mobile Number ','alert-danger');
+			print('failed');exit;
+		}
+		$contact_no = $country_code.'-'.$network_code.'-'.$mobile;
 		$contact_data = array(
 			'email' => $this->input->post('email'),
 			'secondary_email' => $this->input->post('secondary_email'),
-			'mobile' => $this->input->post('country_code').'-'.$this->input->post('mobile'),
+			'mobile' => $contact_no,
 			'skype' => $this->input->post('skype'),
 			'linkedin' => $this->input->post('linkedin'),
 			'website' => $this->input->post('website'),

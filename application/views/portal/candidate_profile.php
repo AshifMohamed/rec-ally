@@ -246,7 +246,7 @@
 											</div>														
                                         </div>
 											<div style="clear:both;"></div>	
-											<form method="POST" id="profile_contact_info_form" name="profile_contact_info_form" action="/candidate/save_candidate_contact_info">
+											<form method="POST" id="profile_contact_info_form" name="profile_contact_info_form" action="/recruitment-ally/candidate/save_candidate_contact_info">
 												<input type="hidden" value="<?=isset($contact->contact_profile_map_id)? $contact->contact_profile_map_id :'0'?>" id="contact_profile_map_id" name="contact_profile_map_id"  />
 												<input type="hidden" value="<?=isset($contact->contact_id)? $contact->contact_id :'0'?>" id="contact_id" name="contact_id"  />
 												<div class="bottom-slider">
@@ -277,6 +277,9 @@
 																		<div class="col-xs-4">
 																		<input id="mobile" name="mobile" placeholder="" class="form-control" type="text">
 																		</div>
+																		<span id="err_country_code" class="error col-xs-4" hidden>Error</span>
+																		<span id="err_network_code" class="error col-xs-4" hidden>Error</span>
+																		<span id="err_mobile" class="error col-xs-4" hidden>Error</span>
 															</div>															
 														<div style="clear:both;"></div>
 														</div>
@@ -322,7 +325,7 @@
 													<div style="clear:both;"></div>
 													<div class="form-group pull-right">
 															<label class="control-label col-md-2 col-sm-2 col-xs-12"></label>
-															<button class="info-save  btn btn-info save-candidate-info" id="btn_save_profile_contact_info">Save</button>&nbsp
+															<button type="button" class="info-save  btn btn-info" id="btn_save_profile_contact_info">Save</button>&nbsp
 															<button class="btn btn-danger cancel-btn" type="button">Cancel</button>
 													</div>
 												</div>
@@ -1282,6 +1285,7 @@
 <script type="text/javascript" src="<?=base_url()?>assets/front/js/jquery.ezmark.js"></script>
 <script type="text/javascript">
   $(function() {
+
     $("#completion_date,#certification_completion_date,#expiration_date,#start_date,#end_date,#member_since,#visa_expiration_date").datepicker({
       changeMonth: true,
       changeYear: true,
@@ -1301,47 +1305,58 @@
     	//alert('ad');
     	SetCurrentlyWorking($(this));
     });
-
+	
     $('[data-validate-max="3"] input[type="checkbox"]').change(function(){
     	if($(this).parents('.form-group:first').find('input[type="checkbox"]:checked').length > 3)
     	{
     		alert('You can only select upto 3 options from each section in job target')
     		$(this).removeAttr('checked');
     	}
-    });
+	});
+
+	$('#btn_save_profile_contact_info').click(function(){
+		
+
+		// if(validateCountryCode() && validateNetworkCode() && validateMobile())
+		// {
+			var thisForm = $(this).parents('form:first');
+			var action = thisForm.attr('action');
+		
+			$.ajax({
+				type:'POST', 
+				url:action,
+				data:thisForm.serialize()+'&candidate_profile_id='+candidate_profile_id,
+				success:function(result){
+				// thisForm[0].reset();
+					location.reload();
+				},
+				error:function(err){
+
+				}, 
+			});
+			return false;
+	//	}
+	});
     $('input[type="checkbox"]').ezMark(); 
 	$('.panel .row').each(function(index, el) {
         $(this).find('.seperator').last().css({borderBottom:'0px solid #000'});       
 	});
 	
-
-	 $('#btn_save_profile_contact_info').click(function(){
-       console.log("dfasfasca fwafad");
-    });
-
-	$('#profile_contact_info_form').click(function(e) {
-    e.preventDefault();
-    var country_code = $('#country_code').val();
-    var network_code = $('#network_code').val();
-	var mobile = $('#mobile').val();
-	alert("fdasffas");
-	console.log("Came................")
-    $(".error").remove();
+	 
 	
-	var regEx = /^\d+$/;
-	  var validCountryCode = regEx.test(country_code);
-	  var validNetworkCode = regEx.test(network_code);
-      var validMobile = regEx.test(mobile);
-      if (!validEmail || !validNetworkCode || !validMobile) {
-        $('#mobile').after('<span class="error">Enter only numbers</span>');
-      }
+	// $('#country_code').on('input', function() {
+	// // do your stuff
+		
+	// });
+
+	
 	
 	  
-    if (country_code.length > 3) {
-        $('#mobile').after('<span class="error">Enter only three numbers for country code</span>');
-    }
+//     if (country_code.length > 3) {
+//         $('#mobile').after('<span class="error">Enter only three numbers for country code</span>');
+//     }
     
-  });
+//   });
 
   });
 
@@ -1360,4 +1375,97 @@
     }
     $('#experience_form').find('#end_date').toggle();
  }
+
+ function validateIfInteger(val)
+	{
+		var regEx = /^\d*$/;
+	  	return regEx.test(val);
+	}
+
+	function validateCountryCode(checkLength = false)
+	{
+		// $('#btn_save_profile_contact_info').prop('disabled', false);
+		$('#err_country_code').hide();
+
+		var country_code = $('#country_code').val();
+		country_code = country_code ? country_code.trim() : "";
+
+		// if(checkLength && country_code.length == 0)
+		// {
+		// 	$('#err_country_code').show();
+		// 	$('#err_country_code').text("Please enter a value for country code");
+		// 	// $('#btn_save_profile_contact_info').prop('disabled', true);
+		// 	return false;
+		// }
+		if(!validateIfInteger(country_code))
+		{
+			$('#err_country_code').show();
+			$('#err_country_code').text("Enter only numbers");
+			// $('#btn_save_profile_contact_info').prop('disabled', true);
+			return false;
+		}
+		if(country_code.length > 3)
+		{
+			$('#err_country_code').show();
+			$('#err_country_code').text("Maximum of only three numbers are allowed for country code");
+			// $('#btn_save_profile_contact_info').prop('disabled', true);
+			return false;
+		}
+
+		return true;
+	}
+
+	function validateNetworkCode(checkLength = false)
+	{
+		// $('#btn_save_profile_contact_info').prop('disabled', false);
+		$('#err_network_code').hide();
+
+		var network_code = $('#network_code').val();
+		network_code = network_code ? network_code.trim() : "";
+
+		// if(checkLength && network_code.length == 0)
+		// {
+		// 	$('#err_network_code').show();
+		// 	$('#err_network_code').val("Enter only numbers");
+		// //	$('#btn_save_profile_contact_info').prop('disabled', true);
+		// 	return false;
+		// }
+		// if(network_code.length > 0)
+		// {
+		// 	validateCountryCode(true);
+		// }
+		if(!validateIfInteger(network_code))
+		{
+			$('#err_network_code').show();
+			$('#err_network_code').text("Enter only numbers");
+		//	$('#btn_save_profile_contact_info').prop('disabled', true);
+			return false;
+		}
+
+		return true;
+	}
+
+	function validateMobile()
+	{
+		// $('#btn_save_profile_contact_info').prop('disabled', false);
+		$('#err_mobile').hide();
+
+		var mobile = $('#mobile').val();
+		mobile = mobile ? mobile.trim() : "";
+
+		// if(mobile.length > 0)
+		// {
+		// 	validateNetworkCode(true);
+		// }
+		if(!validateIfInteger(mobile))
+		{
+			$('#err_mobile').show();
+			$('#err_mobile').text("Enter only numbers");
+		//	$('#btn_save_profile_contact_info').prop('disabled', true);
+			return false;
+		}
+
+		return true;
+	}
+
 </script>

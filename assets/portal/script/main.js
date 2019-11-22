@@ -465,7 +465,19 @@ $(function () {
         //console.log(section_content.html());
         form.find('#email').val(section_content.find('.cn_email').text().trim());
         form.find('#secondary_email').val(section_content.find('.cn_secondary_email').text().trim());
-        form.find('#mobile').val(section_content.find('.cn_mobile').text().trim());
+
+        let mobile = section_content.find('.cn_mobile').text().trim();
+        let mobile_arr = mobile.split("-");
+        if(mobile_arr.length == 3)
+        {
+            form.find('#country_code').val(mobile_arr[0]);
+            form.find('#network_code').val(mobile_arr[1]);
+            form.find('#mobile').val(mobile_arr[2]);
+        }
+        else
+        {
+            form.find('#mobile').val(mobile);
+        }
         form.find('#skype').val(section_content.find('.cn_skype_id').text().trim());
         form.find('#linkedin').val(section_content.find('.cn_linkedin').text().trim());
         form.find('#website').val(section_content.find('.cn_website').text().trim());
