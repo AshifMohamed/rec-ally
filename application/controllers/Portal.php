@@ -154,7 +154,7 @@ class Portal extends CI_Controller
 		
 		$address_data = array(
 			'building_no' => $this->input->post('building_no'),
-			'building_name' => $this->input->post('building_no'),
+			'building_name' => $this->input->post('building_name'),
 			'street' => $this->input->post('street'),
 			'city_id' => $this->input->post('city'),
 			'country_id' => $this->input->post('country'),

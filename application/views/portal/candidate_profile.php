@@ -32,14 +32,19 @@
 													<p class="hidden"><b>Visa Status : </b> <span id="cn_visa_status"><?=isset($profile->type)? $profile->type :'-'?></span></p>
 													<p class="hidden"><b>Expiration Date : </b>  <span id="cn_visa_expiration_date"><?=isset($profile->visa_expiration_date)? $profile->visa_expiration_date :'-'?></span></p>
 													<p class=""><b>Driving License Countries : </b>  <span id="cn_driving_license_countries"><?php $value=''; foreach ($driving_license_collection as $key => $country){ $value.=$country->country.', ';}  print remove_trailing_commas($value); ?></span></p>
-												</div>													
+												</div>	
+												<div class="col-md-3 col-sm-3 text-center ">
+													<?php if(!empty($profile->passport_copy_name)) { ?>
+													<img class="img-responsive pro-img" src="<?=base_url().'uploads/candidate_profiles/'.$profile->passport_copy_name ?>">	
+													<?php } ?>
+												</div>												
 												<div class="edit-delete">
 													<ul><li><button class="edit-btn edit-basic-profile-info" type="submit"><i class="fa fa-pencil-square-o"></i> Edit</button></li></ul>
 												</div>
 											</div>														
                                         </div>
 											<div style="clear:both;"></div>
-											  <form method="POST" id="basic_profile_info_form" name="basic_profile_info_form" action="/candidate/save_candidate_basic_profile_info" enctype="multipart/form-data">
+											  <form method="POST" id="basic_profile_info_form" name="basic_profile_info_form" action="/recruitment-ally/candidate/save_candidate_basic_profile_info" enctype="multipart/form-data">
 											  	<input name="candidate_profile_id" id="candidate_profile_id" type="hidden" value="<?=isset($profile->candidate_profile_id) ? $profile->candidate_profile_id : 0?>"/>
 											  	<input name="address_profile_map_id" id="address_profile_map_id" type="hidden" value="<?=!empty($address) ? $address->address_profile_map_id : 0 ?>"/>
 												<div class="bottom-slider">
@@ -202,6 +207,7 @@
 														<div class="form-group">
 															<label for="driving_license" class="control-label">
 																Driving License Valid Countries</label>
+																<span>(Multiple options can be selected)</span>
 															<div class="driving_license_country">
 																<?php foreach ($countries as $key => $country) { ?>
 		                                                                <input name="driving_license_country[]" id="driving_license_country" type="checkbox" value="<?=$country->country_id?>" <?=in_array($country->country_id, $selected_driving_license_countries) ? 'checked ' :''?> /> <span><?=$country->country?></span><br>      
@@ -246,7 +252,7 @@
 											</div>														
                                         </div>
 											<div style="clear:both;"></div>	
-											<form method="POST" id="profile_contact_info_form" name="profile_contact_info_form" action="/recruitment-ally/candidate/save_candidate_contact_info">
+											<form method="POST" id="profile_contact_info_form" name="profile_contact_info_form" action="/candidate/save_candidate_contact_info">
 												<input type="hidden" value="<?=isset($contact->contact_profile_map_id)? $contact->contact_profile_map_id :'0'?>" id="contact_profile_map_id" name="contact_profile_map_id"  />
 												<input type="hidden" value="<?=isset($contact->contact_id)? $contact->contact_id :'0'?>" id="contact_id" name="contact_id"  />
 												<div class="bottom-slider">
