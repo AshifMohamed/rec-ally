@@ -26,7 +26,7 @@
                                             </div>                                                      
                                         </div>
                                             <div style="clear:both;"></div>
-                                            <form method="POST" id="save_basic_company_info" action="/recruitment-ally/employer/save_basic_company_info" enctype="multipart/form-data">
+                                            <form method="POST" id="save_basic_company_info" action="/employer/save_basic_company_info" enctype="multipart/form-data">
                                                 <input id="company_profile_id" name="company_profile_id" value="<?=isset($profile->company_profile_id) ? $profile->company_profile_id : '0' ?>" type="hidden">
                                                 <input name="address_profile_map_id" id="address_profile_map_id" type="hidden" value="<?=!empty($address) ? $address->address_profile_map_id : 0 ?>"/>
                                                 <input name="contact_profile_map_id" id="contact_profile_map_id" type="hidden" value="<?=!empty($contact) ? $contact->contact_profile_map_id : 0 ?>"/>

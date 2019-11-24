@@ -290,13 +290,20 @@ class Portal extends CI_Controller
 
 	public function save_about_you_info()
 	{
+		$about_you = $this->input->post('about_you');
+
+		if(strlen($about_you) > 60 )
+		{
+			set_message('Maximum characters allowed is only 60','alert-success');
+			print('success');exit;
+		}
 		$about_you_data = array(
-			'about_you' => $this->input->post('about_you'),
+			'about_you' => $about_you,
 			'candidate_profile_id' => $this->input->post('candidate_profile_id')
 			);
 		
 		$candidate_profile_id = $this->account_model->insert_data($about_you_data,'candidate_profile_id','candidate_profile');
-		set_message($this->input->post('about_you'),'alert-success');
+		set_message('About you information is saved successfully','alert-success');
 		print('success');exit;
 	}
 	public function save_salary_notice_period_info()

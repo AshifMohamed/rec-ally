@@ -14,6 +14,13 @@ class Cms extends CI_Controller {
     {
         $user_profile_id = $this->account_model->get_user_profile_id_by_email($this->session->userdata('logged_email'));
 
+        $header_data['profile_image_url']='';
+        if( strcasecmp(get_user_type(),'candidate') == 0)
+        {
+          $image_name = $this->account_model->get_candidate_profile_url_by_user_profile_id($user_profile_id);  
+          $header_data['profile_image_url'] = base_url().'uploads/candidate_profiles/'.$image_name;
+        }
+
         $data['jobs'] = $this->account_model->get_job_profiles(1,'DESC',3,0);   
         $data['companies'] = $this->account_model->get_companies(1,'DESC',3,0);
         $data['industries'] = $this->configuration_model->get_all_records('industry');
@@ -21,7 +28,7 @@ class Cms extends CI_Controller {
         $data['current_poll'] = $this->account_model->getCurrentPoll($user_profile_id);
         $data['polls'] = $this->account_model->get_polls();
         
-        $this->load->view('header');
+        $this->load->view('header',$header_data);
         $this->load->view('index', $data);
         $this->load->view('footer');
     }

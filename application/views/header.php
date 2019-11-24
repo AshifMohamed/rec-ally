@@ -62,8 +62,12 @@
                     </li>
                     <li role="presentation" class="dropdown">
                         <a class="dropdown-toggle btn btn-primary" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
-                            <i class="fa fa-user text-muted"></i>
-                            <i class="fa fa-angle-down text-muted"></i>
+                            <?php if(!empty($profile_image_url)){ ?>
+                                <img src="<?=$profile_image_url?>" alt="" height="30" class="img-circle"/>
+                            <?php }else {?>
+                                <i class="fa fa-user text-muted"></i>
+                                <?php } ?>
+                                <i class="fa fa-angle-down text-muted"></i>
                         </a>
                         <ul class="dropdown-menu">
                             <?php if(!is_admin()): ?>

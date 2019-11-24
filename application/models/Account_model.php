@@ -2177,6 +2177,22 @@ class Account_model extends CI_Model
 		else
 			return 0;
 	}
+
+	public function get_candidate_profile_url_by_user_profile_id($user_profile_id)
+	{
+		$this->db->select('cp.profile_pic_name');
+	    $this->db->from('candidate_profile cp');
+	    $this->db->join('user_profile up', 'up.user_profile_id = cp.user_profile_id');
+		$this->db->where('cp.user_profile_id', $user_profile_id);
+		$query = $this->db->get();
+		if($query->num_rows() > 0)
+		{
+			$result = $query->result();
+			return $result[0]->profile_pic_name;
+		}
+		else
+			return '';
+	}
 }
 
 ?>

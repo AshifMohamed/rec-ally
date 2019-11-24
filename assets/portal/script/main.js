@@ -577,6 +577,15 @@ $(function () {
         form.find('#membership_description').val(section_content.find('.cn-membership-description').text().trim());
     });
 
+    $('.edit-training').click(function(){
+        var section_content = $(this).parents('.seperator:first').find('.section-content');
+        var form = $('#training_form');
+        //console.log(section_content.html());
+        form.find('#course_name').val(section_content.find('.cn-course-name').text().trim());
+        form.find('#center_name').val(section_content.find('.cn-center-name').text().trim());
+        form.find('#training_completion_date').val(section_content.find('.cn-training-completion-date').text().trim());
+    });
+
      $(".edit-btn").click(function(){
          $(".panel-body").find(".bottom-slider").hide();
          $(this).parents(".panel-body").find(".bottom-slider").show();

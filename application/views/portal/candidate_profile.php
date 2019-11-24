@@ -44,7 +44,7 @@
 											</div>														
                                         </div>
 											<div style="clear:both;"></div>
-											  <form method="POST" id="basic_profile_info_form" name="basic_profile_info_form" action="/recruitment-ally/candidate/save_candidate_basic_profile_info" enctype="multipart/form-data">
+											  <form method="POST" id="basic_profile_info_form" name="basic_profile_info_form" action="/candidate/save_candidate_basic_profile_info" enctype="multipart/form-data">
 											  	<input name="candidate_profile_id" id="candidate_profile_id" type="hidden" value="<?=isset($profile->candidate_profile_id) ? $profile->candidate_profile_id : 0?>"/>
 											  	<input name="address_profile_map_id" id="address_profile_map_id" type="hidden" value="<?=!empty($address) ? $address->address_profile_map_id : 0 ?>"/>
 												<div class="bottom-slider">
@@ -358,22 +358,23 @@
 											</div>														
                                         </div>
 											<div style="clear:both;"></div>
-											<form method="POST" id="about_you_form" name="about_you_form" action="/candidate/save_about_you_info">
+											<form method="POST" id="about_you_form" name="about_you_form" action="/recruitment-ally/candidate/save_about_you_info">
 												<div class="bottom-slider">
 													<div class="col-md-8 col-sm-8 left-padding">
 														<div class="form-group">
 															<label for="about_you" class="control-label">
 																What you want to tell about you</label>
 															<div class="input-icon right">
-																<textarea id="about_you" name="about_you" class="form-control"></textarea>
+																<textarea id="about_you" name="about_you" class="form-control" required></textarea>
 															</div>
+															<span id="err_about_you" class="error" hidden>Error</span>
 														</div>
 														<div style="clear:both;"></div>
 													</div>
 													<div style="clear:both;"></div>
 													<div class="form-group pull-right">
 															<label class="control-label col-md-2 col-sm-2 col-xs-12"></label>
-															<button class="info-save btn btn-info save-candidate-info" id="btn_save_about_you">Save</button>&nbsp
+															<button class="info-save btn btn-info" id="btn_save_about_you">Save</button>&nbsp
 															<button class="btn btn-danger cancel-btn" type="button">Cancel</button>
 													</div>
 												</div>
@@ -1181,6 +1182,78 @@
 											</form>
                                     </div>
                                 </div>
+																				<!-- divider -->
+								<div class="panel">
+                                    <div class="panel-body">
+                                        <div class="row">
+                                        	<button class="add-btn edit-btn pull-right" type="submit"><i class="fa fa-plus"></i> Add</button>
+                                        	<h3 style="padding-left:15px;">Trainings</h3>
+                                        	<?php foreach($trainings as $key => $training) { ?>
+                                           <div class="col-md-12 col-sm-12 seperator">
+												<div class="col-md-8 col-sm-8 left-padding section-content">
+														<input id="cn-training-id" class="cn-training-id" type="hidden" value="<?=$training->candidate_training_id?>"/>
+														<p><b>Course Name : </b> <span class="cn-course-name"><?=$training->course_name?></span></p>
+														<p><b>Center Name : </b> <span class="cn-center-name"><?=$training->center_name?></span></p>
+														<p><b>Course Date : </b> <span class="cn-training-completion-date"><?=$training->course_date?></span></p>			
+												</div>													
+												<div class="edit-delete text-right pull-right">
+													<ul>
+														<li>
+															<button class="edit-btn edit-training" type="submit"><i class="fa fa-pencil-square-o"></i> Edit</button>
+														</li>
+														<li>
+															<a href="<?=base_url()?>candidate/delete_cv_item?section=training&id=<?=$training->candidate_training_id?>" class="delete_cv_item"><button class=" dlt-btn delete-education" type="submit"><i class="fa fa-trash-o"></i> Delete</button></a>
+														</li>
+													</ul>
+												</div>
+											</div>
+											<?php } ?>
+											<div class="col-md-12 col-sm-12">
+												<?=empty($training)? '' : ''?>
+											</div>												
+                                      </div>
+											<div style="clear:both;"></div>
+											 <form method="POST" id="training_form" name="certification_form" action="/candidate/save_training_info">
+											 	<input id="training_id" name="training_id" type="hidden" value="0"/>
+												<div class="bottom-slider">
+													<div class="col-md-8 col-sm-8 left-padding">
+														<div class="form-group">
+															<label for="number" class="control-label">
+																Course Name</label>
+															<div class="input-icon right">
+																<input id="course_name" name="course_name" type="text" placeholder="" class="form-control">
+															</div>
+														</div>
+														<div style="clear:both;"></div>
+														<div class="form-group">
+															<label for="name" class="control-label">
+																Center Name</label>
+															<div class="input-icon right">
+																<input id="center_name" name="center_name" type="text" placeholder="" class="form-control">
+															</div>
+														</div>
+														<div class="form-group input-size">
+															<div class="pull-left"><label for="completion_date" class="control-label">
+																Completion Date</label>
+															<div class="input-icon right">
+																<input id="training_completion_date" name="training_completion_date" placeholder="" class="form-control" type="text">
+															</div>
+															</div>
+														<div style="clear:both;"></div>
+														<br>
+													</div>
+													<div style="clear:both;"></div>
+												</div>
+												<div style="clear:both;"></div>
+													<div class="form-group pull-right">
+															<label class="control-label col-md-2 col-sm-2 col-xs-12"></label>
+															<button class="info-save  btn btn-info save-candidate-info" id="save_certification">Save</button>&nbsp
+															<button class="btn btn-danger cancel-btn" type="button">Cancel</button>
+													</div>
+                                    	</div>
+                                     </form>
+                               		 </div>
+                             	</div>
                             </div>
                             <div class="col-lg-3">
 										<div class="panel panel-green">
@@ -1322,11 +1395,11 @@
 
 	$('#btn_save_profile_contact_info').click(function(){
 		
-
-		// if(validateCountryCode() && validateNetworkCode() && validateMobile())
-		// {
+		if(validateCountryCode() && validateNetworkCode() && validateMobile())
+		{
 			var thisForm = $(this).parents('form:first');
 			var action = thisForm.attr('action');
+			var candidate_profile_id = $('#candidate_profile_id').val();
 		
 			$.ajax({
 				type:'POST', 
@@ -1341,14 +1414,45 @@
 				}, 
 			});
 			return false;
-	//	}
+		}
 	});
+
+	$('#btn_save_about_you').click(function(){
+
+		var thisForm = $(this).parents('form:first');
+		var action = thisForm.attr('action');
+		var about_you = $('#about_you').val();
+		var candidate_profile_id = $('#candidate_profile_id').val();
+
+		if(about_you.length > 60)
+		{
+			$('#err_about_you').show().delay(3000).fadeOut();
+			$('#err_about_you').text("Maximum characters allowed is only 60");
+			return false;
+		}
+		else if(about_you.length > 0)
+		{
+			$.ajax({
+				type:'POST', 
+				url:action,
+				data:thisForm.serialize()+'&candidate_profile_id='+candidate_profile_id,
+				success:function(result){
+				// thisForm[0].reset();
+					location.reload();
+					return true;
+				},
+				error:function(err){
+
+				}, 
+			});
+		}
+		return false;		
+	});
+
     $('input[type="checkbox"]').ezMark(); 
 	$('.panel .row').each(function(index, el) {
         $(this).find('.seperator').last().css({borderBottom:'0px solid #000'});       
 	});
-	
-	 
 	
 	// $('#country_code').on('input', function() {
 	// // do your stuff
@@ -1405,14 +1509,14 @@
 		// }
 		if(!validateIfInteger(country_code))
 		{
-			$('#err_country_code').show();
+			$('#err_country_code').show().delay(3000).fadeOut();
 			$('#err_country_code').text("Enter only numbers");
 			// $('#btn_save_profile_contact_info').prop('disabled', true);
 			return false;
 		}
 		if(country_code.length > 3)
 		{
-			$('#err_country_code').show();
+			$('#err_country_code').show().delay(3000).fadeOut();
 			$('#err_country_code').text("Maximum of only three numbers are allowed for country code");
 			// $('#btn_save_profile_contact_info').prop('disabled', true);
 			return false;
@@ -1442,7 +1546,7 @@
 		// }
 		if(!validateIfInteger(network_code))
 		{
-			$('#err_network_code').show();
+			$('#err_network_code').show().delay(3000).fadeOut();
 			$('#err_network_code').text("Enter only numbers");
 		//	$('#btn_save_profile_contact_info').prop('disabled', true);
 			return false;
@@ -1465,7 +1569,7 @@
 		// }
 		if(!validateIfInteger(mobile))
 		{
-			$('#err_mobile').show();
+			$('#err_mobile').show().delay(3000).fadeOut();
 			$('#err_mobile').text("Enter only numbers");
 		//	$('#btn_save_profile_contact_info').prop('disabled', true);
 			return false;
