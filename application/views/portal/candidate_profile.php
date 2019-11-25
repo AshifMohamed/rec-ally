@@ -1213,7 +1213,7 @@
 											</div>												
                                       </div>
 											<div style="clear:both;"></div>
-											 <form method="POST" id="training_form" name="certification_form" action="/candidate/save_training_info">
+											 <form method="POST" id="training_form" name="training_form" action="/recruitment-ally/candidate/save_training_info">
 											 	<input id="training_id" name="training_id" type="hidden" value="0"/>
 												<div class="bottom-slider">
 													<div class="col-md-8 col-sm-8 left-padding">
@@ -1221,7 +1221,7 @@
 															<label for="number" class="control-label">
 																Course Name</label>
 															<div class="input-icon right">
-																<input id="course_name" name="course_name" type="text" placeholder="" class="form-control">
+																<input id="course_name" name="course_name" type="text" placeholder="" class="form-control" required>
 															</div>
 														</div>
 														<div style="clear:both;"></div>
@@ -1229,14 +1229,14 @@
 															<label for="name" class="control-label">
 																Center Name</label>
 															<div class="input-icon right">
-																<input id="center_name" name="center_name" type="text" placeholder="" class="form-control">
+																<input id="center_name" name="center_name" type="text" placeholder="" class="form-control" required>
 															</div>
 														</div>
 														<div class="form-group input-size">
-															<div class="pull-left"><label for="completion_date" class="control-label">
+															<div class="pull-left"><label for="training_completion_date" class="control-label">
 																Completion Date</label>
 															<div class="input-icon right">
-																<input id="training_completion_date" name="training_completion_date" placeholder="" class="form-control" type="text">
+																<input id="training_completion_date" name="training_completion_date" placeholder="" class="form-control" type="text" required>
 															</div>
 															</div>
 														<div style="clear:both;"></div>
@@ -1247,7 +1247,7 @@
 												<div style="clear:both;"></div>
 													<div class="form-group pull-right">
 															<label class="control-label col-md-2 col-sm-2 col-xs-12"></label>
-															<button class="info-save  btn btn-info save-candidate-info" id="save_certification">Save</button>&nbsp
+															<button class="info-save  btn btn-info save-candidate-info" id="save_training">Save</button>&nbsp
 															<button class="btn btn-danger cancel-btn" type="button">Cancel</button>
 													</div>
                                     	</div>
@@ -1365,7 +1365,7 @@
 <script type="text/javascript">
   $(function() {
 
-    $("#completion_date,#certification_completion_date,#expiration_date,#start_date,#end_date,#member_since,#visa_expiration_date").datepicker({
+    $("#completion_date,#certification_completion_date,#expiration_date,#start_date,#end_date,#member_since,#visa_expiration_date,#training_completion_date").datepicker({
       changeMonth: true,
       changeYear: true,
       dateFormat: 'yy-mm-dd'
@@ -1378,7 +1378,7 @@
     });
 
     $("#date_of_birth").datepicker( "option", "yearRange","1950:2014");
-    $("#completion_date,#certification_completion_date,#visa_expiration_date").datepicker( "option", "yearRange","-10:+15");
+    $("#completion_date,#certification_completion_date,#visa_expiration_date,#training_completion_date").datepicker( "option", "yearRange","-10:+15");
 
     $('#is_current_working_here').change(function(){
     	//alert('ad');

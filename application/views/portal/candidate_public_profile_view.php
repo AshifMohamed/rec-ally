@@ -282,6 +282,31 @@
 											<div style="clear:both;"></div>
                                     </div>
                                 </div>
+								<!-- divider -->
+                                <div class="panel">
+                                    <div class="panel-body">
+                                        <div class="row">
+                                        	<h3 style="padding-left:15px;">Trainings</h3>
+                                        	<?php foreach($trainings as $key => $training) { ?>
+                                           <div class="col-md-12 col-sm-12 seperator">
+												<div class="col-md-8 col-sm-8 left-padding section-content">
+													
+														<input id="cn-training-id" class="cn-training-id" type="hidden" value="<?=$training->candidate_training_id?>"/>
+														<p><b>Course Name : </b> <span class="cn-course-name"><?=$training->course_name?></span></p>
+														<p><b>Center Number : </b> <span class="cn-center-number"><?=$training->center_name?></span></p>
+														<p><b>Completion Date : </b> <span class="cn-training-completion-date"><?=$training->course_date?></span></p>
+																										
+												</div>
+											</div>
+											<?php } ?>
+											<div class="col-md-12 col-sm-12">
+												<?=empty($training)? '-' : ''?>
+											</div>										
+                                      </div>
+									  <div style="clear:both;"></div>
+											 
+                               		 </div>
+                             	</div>
                             </div>
                            
                         </div>

@@ -2193,6 +2193,16 @@ class Account_model extends CI_Model
 		else
 			return '';
 	}
+
+	public function get_trainings_by_candidate_profile_id($candidate_profile_id)
+	{
+		$this->db->select('tr.*');
+		$this->db->from('candidate_training tr');
+		$this->db->where('tr.candidate_profile_id',$candidate_profile_id);
+
+		$query = $this->db->get();
+		return $this->db_results_fn($query);
+	}
 }
 
 ?>

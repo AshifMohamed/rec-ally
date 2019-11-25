@@ -581,6 +581,7 @@ $(function () {
         var section_content = $(this).parents('.seperator:first').find('.section-content');
         var form = $('#training_form');
         //console.log(section_content.html());
+        form.find('#training_id').val(section_content.find('.cn-training-id').text().trim());
         form.find('#course_name').val(section_content.find('.cn-course-name').text().trim());
         form.find('#center_name').val(section_content.find('.cn-center-name').text().trim());
         form.find('#training_completion_date').val(section_content.find('.cn-training-completion-date').text().trim());

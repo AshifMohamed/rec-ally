@@ -52,8 +52,12 @@ class Portal extends CI_Controller
 		$data['address'] = $this->account_model->get_address_by_user_profile_id($user_profile_id);
 		// print_r($data['profile']);exit;
 		$data['contact'] = $this->account_model->get_contact_by_user_profile_id($user_profile_id);
-		if(isset($data['profile']->candidate_profile_id))
+		$data['trainings'] = array();
+
+		if(isset($data['profile']->candidate_profile_id)){
 			$data['salary_notice_period'] = $this->account_model->get_salary_notice_period_by_candidate_id($data['profile']->candidate_profile_id);
+			$data['trainings'] = $this->account_model->get_trainings_by_candidate_profile_id($data['profile']->candidate_profile_id);
+		}
 		// print_r($data['salary_notice_period']);exit;
 		//print(empty($data['profile']));exit;
 		$data['educations'] = $this->account_model->get_education_by_user_profile_id($user_profile_id); //Degree Table
@@ -618,6 +622,11 @@ class Portal extends CI_Controller
 		{
 			$table_name = 'cv_membership';
 			$conditions['membership_id'] = $id;
+		}
+		elseif($section == 'training')
+		{
+			$table_name = 'candidate_training';
+			$conditions['candidate_training_id'] = $id;
 		}
 		if(!empty($table_name))
 		{
@@ -2444,10 +2453,13 @@ class Portal extends CI_Controller
             $data['profile'] = $this->account_model->get_candidate_by_user_profile_id($user_profile_id);  //Candidate Profile, Salary and Notice Period
             $data['address'] = $this->account_model->get_address_by_user_profile_id($user_profile_id);
             //print_r($data['profile']);exit;
-            $data['contact'] = $this->account_model->get_contact_by_user_profile_id($user_profile_id);
+			$data['contact'] = $this->account_model->get_contact_by_user_profile_id($user_profile_id);
+			$data['trainings'] = array();
+
 			if(isset($data['profile']->candidate_profile_id))
 			{
 					$data['salary_notice_period'] = $this->account_model->get_salary_notice_period_by_candidate_id($data['profile']->candidate_profile_id);
+					$data['trainings'] = $this->account_model->get_trainings_by_candidate_profile_id($data['profile']->candidate_profile_id);
 
 					$full_name = $data['profile']->first_name.' '. $data['profile']->last_name ;
 					$data['public_profile_url'] = base_url().'people/'.$data['profile']->candidate_profile_id.'/'.strtolower($full_name) ;
@@ -3258,9 +3270,13 @@ class Portal extends CI_Controller
 			//Candidate Profile, Salary and Notice Period
             $data['address'] = $this->account_model->get_address_by_user_profile_id($user_profile_id);
             //print_r($data['profile']);exit;
-            $data['contact'] = $this->account_model->get_contact_by_user_profile_id($user_profile_id);
-            if(isset($data['profile']->candidate_profile_id))
-                    $data['salary_notice_period'] = $this->account_model->get_salary_notice_period_by_candidate_id($data['profile']->candidate_profile_id);
+			$data['contact'] = $this->account_model->get_contact_by_user_profile_id($user_profile_id);
+			$data['trainings'] = array();
+			if(isset($data['profile']->candidate_profile_id))
+			{
+					$data['salary_notice_period'] = $this->account_model->get_salary_notice_period_by_candidate_id($data['profile']->candidate_profile_id);
+					$data['trainings'] = $this->account_model->get_trainings_by_candidate_profile_id($data['profile']->candidate_profile_id);
+			}
             // print_r($data['salary_notice_period']);exit;
             //print(empty($data['profile']));exit;
             $data['educations'] = $this->account_model->get_education_by_user_profile_id($user_profile_id); //Degree Table
@@ -3289,6 +3305,30 @@ class Portal extends CI_Controller
             $data['driving_license_collection'] = $this->account_model->get_data_by_id_collection($data['profile']->driving_license_country_ids,'country','country_id','country');
 
             $this->load->view('/portal/candidate_public_profile_view', $data);
+	}
+
+	public function save_training_info()
+	{
+		$course_name = $this->input->post('course_name');
+		$center_name = $this->input->post('center_name');
+		$course_date = $this->input->post('training_completion_date');
+
+		if(empty($course_name) || empty($center_name))
+		{
+			set_message('One or more fields are empty','alert-danger');
+			print('failed');exit;
+		}
+
+		$training_data = array(
+			'course_name' => $course_name,
+			'center_name' => $center_name,
+			'course_date' => $course_date,
+			'candidate_profile_id' => $this->input->post('candidate_profile_id'),
+			'candidate_training_id' => $this->input->post('training_id'),
+			);
+		$candidate_training_id = $this->account_model->insert_data($training_data,'candidate_training_id','candidate_training');
+		set_message('Training has been updated successfully','alert-success');
+		print('success');exit;
 	}
 	
 }

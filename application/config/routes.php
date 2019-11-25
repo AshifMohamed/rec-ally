@@ -109,6 +109,7 @@ $route['candidate/save_experience_info']                        = "Portal/save_e
 $route['candidate/save_certificate_info']                       = "Portal/save_certificate_info";
 $route['candidate/save_language_info']                          = "Portal/save_language_info";
 $route['candidate/save_membership_info']                        = "Portal/save_membership_info";
+$route['candidate/save_training_info']                        = "Portal/save_training_info";
 $route['candidate/saved_jobs']                                  = "Portal/saved_jobs";
 $route['candidate/settings']                                  = "Portal/candidate_settings";
 $route['candidate/application_status'] 				= "Portal/application_status";
