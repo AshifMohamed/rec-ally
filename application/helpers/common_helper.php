@@ -329,6 +329,17 @@ function get_candidates_applied_count_by_job_profile_id($job_profile_id)
 	return $CI->db->get('candidate_job_application_status')->num_rows();
 }
 
+function get_candidates_liked_count_by_job_profile_id($job_profile_id)
+{
+	$CI =& get_instance();
+	$CI->db->select('up.user_profile_id');
+	$CI->db->from('liked_job lj');
+	$CI->db->join('user_profile up', 'up.user_profile_id = lj.user_profile_id');
+	$CI->db->where('lj.job_profile_id',$job_profile_id);
+
+	return $CI->db->get()->num_rows();
+}
+
 function is_candidate_interview_set($candidate_profile_id)
 {
 	$CI =& get_instance();

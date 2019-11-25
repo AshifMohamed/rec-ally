@@ -15,6 +15,7 @@
         											<tr>
                                                         <th>Job Ref</th>
         												<th>Candidates Applied</th>
+                                                        <th>Candidates Liked</th>
         												<th>Position</th>
                                                         <th>Career Level</th>
         												<th>Category</th>
@@ -31,6 +32,7 @@
                                                         <td class="hidden"><input type="hidden" class="job_profile_id" value="<?=$profile->job_profile_id?>"/></td>
                                                         <td><?=$profile->job_ref_no?></td>
         												<td><b><?=get_candidates_applied_count_by_job_profile_id($profile->job_profile_id)?></b> &nbsp;(<a href="<?=base_url()?>employer/job_profile/view_candidates/<?=$profile->job_profile_id?>/applied_candidates" target="_blank">View</a>)</td>
+                                                        <td><b><?=get_candidates_liked_count_by_job_profile_id($profile->job_profile_id)?></b> &nbsp;(<a href="<?=base_url()?>employer/job_profile/view_candidates/<?=$profile->job_profile_id?>/liked_candidates" target="_blank">View</a>)</td>
                                                         <td><?=$profile->position?></td>
         												<td><?=$profile->career_level?></td>
         												<td><?=$profile->department?></td>

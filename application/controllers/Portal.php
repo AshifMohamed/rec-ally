@@ -2666,7 +2666,10 @@ class Portal extends CI_Controller
 		{
 			$data['candidate_profiles'] = $this->account_model->get_candidates_by_job_profile_id($job_profile_id);
 		}
-		//
+		elseif($candidate_type == 'liked_candidates')
+		{
+			$data['candidate_profiles'] = $this->account_model->get_liked_candidates_by_job_profile_id($job_profile_id);
+		}
 		elseif($candidate_type == 'passed_screening')
 		{
 			$data['candidate_profiles'] = $this->account_model->get_candidates_by_job_profile_id_and_filter_status($job_profile_id,'Screening');

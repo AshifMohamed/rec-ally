@@ -2203,6 +2203,28 @@ class Account_model extends CI_Model
 		$query = $this->db->get();
 		return $this->db_results_fn($query);
 	}
+
+	public function get_liked_candidates_by_job_profile_id($job_profile_id)
+	{
+		$this->db->query("set sql_big_selects=1");
+		$this->db->distinct('cp.*,cp.candidate_profile_id as cppp,up.*,cl.*,a.*,csnp.*');//n.*,ms.status as maritial_status,vs.*,d.*
+		$this->db->from('candidate_profile cp');
+		$this->db->join('liked_job lj', 'lj.user_profile_id = cp.user_profile_id');
+		$this->db->join('user_profile up', 'up.user_profile_id = cp.user_profile_id','left');
+		//$this->db->join('nationality n', 'n.nationality_id = cp.nationality_id','left');
+		//$this->db->join('maritial_status ms', 'ms.maritial_status_id = cp.maritial_status_id','left');
+		//$this->db->join('visa_status vs', 'vs.visa_status_id = cp.visa_status_id','left');
+		$this->db->join('career_level cl', 'cl.career_level_id = cp.career_level_id','left');
+		$this->db->join('address_profile_map amp', 'amp.user_profile_id = cp.user_profile_id','left');
+		$this->db->join('address a', 'a.address_id = amp.address_id','left');
+		$this->db->join('country cy', 'cy.country_id = a.country_id','left');
+		//$this->db->join('department d', 'd.department_id = cp.department_id','left');
+		$this->db->group_by('lj.liked_job_id');
+		$this->db->where('lj.job_profile_id',$job_profile_id);
+
+		$query = $this->db->get();
+		return $this->db_results_fn($query);
+	}
 }
 
 ?>
