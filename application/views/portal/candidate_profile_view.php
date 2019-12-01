@@ -37,6 +37,11 @@
 													<p class=""><b>Expiration Date : </b>  <span id="cn_visa_expiration_date"><?=isset($profile->visa_expiration_date)? $profile->visa_expiration_date :'-'?></span></p>
 													<p class=""><b>Driving License Countries : </b>  <span id="cn_driving_license_countries"><?php $value=''; foreach ($driving_license_collection as $key => $country){ $value.=$country->country.', ';}  print remove_trailing_commas($value); ?></span></p>
 												</div>
+												<div class="col-md-3 col-sm-3 text-center ">
+													<?php if(!empty($profile->passport_copy_name)) { ?>
+													<img class="img-responsive pro-img" src="<?=base_url().'uploads/candidate_profiles/'.$profile->passport_copy_name ?>">	
+													<?php } ?>
+												</div>
 											</div>														
                                         </div>
 											<div style="clear:both;"></div>

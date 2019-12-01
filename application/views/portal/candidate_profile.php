@@ -358,7 +358,7 @@
 											</div>														
                                         </div>
 											<div style="clear:both;"></div>
-											<form method="POST" id="about_you_form" name="about_you_form" action="/recruitment-ally/candidate/save_about_you_info">
+											<form method="POST" id="about_you_form" name="about_you_form" action="/candidate/save_about_you_info">
 												<div class="bottom-slider">
 													<div class="col-md-8 col-sm-8 left-padding">
 														<div class="form-group">
@@ -1213,7 +1213,7 @@
 											</div>												
                                       </div>
 											<div style="clear:both;"></div>
-											 <form method="POST" id="training_form" name="training_form" action="/recruitment-ally/candidate/save_training_info">
+											 <form method="POST" id="training_form" name="training_form" action="/candidate/save_training_info">
 											 	<input id="training_id" name="training_id" type="hidden" value="0"/>
 												<div class="bottom-slider">
 													<div class="col-md-8 col-sm-8 left-padding">

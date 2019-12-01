@@ -93,30 +93,33 @@ define('CANDIDATE','Candidate');
 
 
 define('BASE_URL', "http://recruitment-ally.com/");
-define('GOOGLE_CLIENT_ID', '1073460565140-ph1b5ngf18ubr035fmp16bc556mkvm5i.apps.googleusercontent.com');
-define('GOOGLE_CLIENT_SECRET', 'RtHNe_RbEqnjknyJv-SrDCyX');
+define('GOOGLE_CLIENT_ID', 'fsdf');
+define('GOOGLE_CLIENT_SECRET', 'fas');
 define('GOOGLE_REDIRECT_URL', BASE_URL.'login/google');
 define('GOOGLE_HOME_URL', BASE_URL.'login/google');
  
-define('FB_APP_ID', '1731622377057576');
-define('FB_APP_SECRET', 'aa614cb20384f1eaffdce374d8ab8b92');
+define('FB_APP_ID', 'erw');
+define('FB_APP_SECRET', 'dsfa');
 define('FB_HOME_URL', BASE_URL.'login/facebook');
 define('FB_PERMISSION', 'email');
 
 
 define('LINKEDIN_BASE_URL', BASE_URL);
 define('LINKEDIN_CALLBACK_URL', BASE_URL.'login/linkedin');
-define('LINKEDIN_API_KEY', '759keh59ruzt3w');
-define('LINKEDIN_API_SECRET', 'AVVa4a3DT7owU22b');
+define('LINKEDIN_API_KEY', 'dfa');
+define('LINKEDIN_API_SECRET', 'fas');
 define('LINKEDIN_SCOPE', 'r_basicprofile r_emailaddress');
 
-define('CONSUMER_KEY', 'jqEg2zip9yIFry6NrCTdLegA8');
-define('CONSUMER_SECRET', '2JKL64eavROQYASbfVtCV4BESufU5s49aDisKdBEGy9uuqlCQc');
+define('CONSUMER_KEY', 'awf');
+define('CONSUMER_SECRET', 'ga');
 define('OAUTH_CALLBACK', BASE_URL.'login/twitter');
 
 
 define('JOBS_LISTED_PER_PAGE', 10);
 define('ADMIN_PATH_NAME','admin2cP6SsrbpTE');
+
+define('CURRENCY','USD');
+define('CURRENCY_SYMBOL','$');
 
 
 

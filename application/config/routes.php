@@ -125,7 +125,7 @@ $route['candidate/view_messages'] 				= "Portal/view_messages";
 $route['candidate/sent_messages'] 				= "Portal/sent_messages";
 $route['candidate/change_email'] 				= "Account/change_email_from_settings";
 $route['candidate/change_password'] 				= "Account/change_password_from_settings";
-
+$route['candidate/save_candidate_cv_video'] 		= "Portal/upload_cv_video";
 /* Employer/Company Pages */
 $route['employer'] 						= "Portal/employer_dashboard";
 $route['employer/dashboard'] 					= "Portal/employer_dashboard";

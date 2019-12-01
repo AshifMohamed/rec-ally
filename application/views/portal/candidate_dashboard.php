@@ -110,7 +110,8 @@
                                                                        <p><a href="#">Conenct to facebook</a></p>
                                                                        <p><a href="#">Invite Friends</a></p>										
                                                                        <p>Status <span class="label <?=isset($profile->is_active) ? $profile->is_active ? 'label-success' : 'label-danger' : ''?>"><?=isset($profile->is_active) ? $profile->is_active ? 'Active' : 'Deactive' : ''?></span></p>
-                                                                   </div>	
+                                                                   </div>
+                                                                   <a data-toggle="modal" data-target="#cvVideoModal" href="#"><button class="btn btn-blue">Upload your Video CV</button></a>	
                                                                </div>
                                                            </div>
                                                        </div>
@@ -137,9 +138,10 @@
                                           </div>
                                       </div>
                                       <?php $this->load->view('partial/portal_job_search.php'); ?>
+                                      
                                 </div>
                             </div>
                          </div>
                 <!--END CONTENT-->
-<?php $this->load->view('partial/how_to_improve_cv.php'); ?>
+<?php $cv['cv_video_url']=$cv_video_url;$cv['candidate_profile_id']=$candidate_profile_id; $this->load->view('partial/candidate_cv_video.php',$cv); ?>
 <?php $this->load->view('partial/portal_footer.php'); ?>

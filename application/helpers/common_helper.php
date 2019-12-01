@@ -666,6 +666,23 @@ function get_point_by_test_type($types,$points,$type)
 	return '-';
 }
 
+function getFileMimeType($file_path)
+{
+	// $finfo = finfo_open(FILEINFO_MIME_TYPE); // return mime type ala mimetype extension
+	// $mime_type = finfo_file($finfo, $file_path);
+	// finfo_close($finfo);
+	// return $mime_type;
+	# the request
+    $ch = curl_init($file_path);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    curl_exec($ch);
+
+    # get the content type
+    return curl_getinfo($ch, CURLINFO_CONTENT_TYPE);
+
+    # output
+    // text/html; charset=ISO-8859-1
+}
 // function get_test_selection_point($types,$points,$type)
 // {
 // 	if($status == 'Not Viewed')

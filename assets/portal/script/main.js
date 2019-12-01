@@ -365,6 +365,7 @@ $(function () {
         var action = thisForm.attr('action');
         //console.log($('#representative_info').serialize());
         console.log("Action :",action);
+        console.log(thisForm);
         console.log("data :",thisForm.serialize());
         $.ajax({
             type:'POST', 
@@ -372,7 +373,7 @@ $(function () {
             data:thisForm.serialize()+'&candidate_profile_id='+candidate_profile_id,
             success:function(result){
               // thisForm[0].reset();
-                location.reload();
+              location.reload();
             },
             error:function(err){
 

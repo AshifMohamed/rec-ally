@@ -112,4 +112,5 @@
             <?php } ?>
         </div>
     </nav>
+    <?php $this->load->view('partial/how_to_improve_cv.php'); ?>
     <!--END SIDEBAR MENU-->

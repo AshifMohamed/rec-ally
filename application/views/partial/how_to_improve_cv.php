@@ -43,13 +43,13 @@
               </h5>
 
               <video width="400" height="240" controls>
-                <source src="<?=base_url()?>assets/portal/videos/how-to-improve-cv.ogg" type="video/ogg" />
-                <source src="<?=base_url()?>assets/portal/videos/hows-to-improve-cv.mp4" type="video/mp4" />
+                <source src="<?=base_url()?>uploads/videos/how-to-improve-cv.ogg" type="video/ogg" />
+                <source src="<?=base_url()?>uploads/videos/hows-to-improve-cv.mp4" type="video/mp4" />
                 
                 <!-- fallback to Flash: -->
                 <object width="400" height="240" type="application/x-shockwave-flash" data="__FLASH__.SWF">
                     <!-- Firefox uses the `data` attribute above, IE/Safari uses the param below -->
-                    <param name="movie" value="<?=base_url()?>assets/portal/videos/how-to-improve-cv.swf" />
+                    <param name="movie" value="<?=base_url()?>uploads/videos/how-to-improve-cv.swf" />
                     <!-- <param name="flashvars" value="controlbar=over&amp;image=__POSTER__.JPG&amp;file=__VIDEO__.MP4" /> -->
                     <!-- fallback image. note the title field below, put the title of the video there -->
                     <img src="<?=base_url()?>assets/portal/images/novideo.png" width="400" height="240" alt="How to improve your CV"

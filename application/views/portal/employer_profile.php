@@ -14,11 +14,11 @@
                                                     <img class="img-responsive" src="<?=!empty($profile->company_logo)? base_url().'uploads/company_logos/'.$profile->company_logo: base_url().'assets/portal/images/clogo.jpg'?>">
                                                 </div>
                                                 <div class="col-md-6 col-sm-6 section-content">
-                                                    <h4><span id="cn_company_name"><?=isset($profile->name)?$profile->name:'-'?></h4>
-                                                    <p><b>Address : </b> <?=!empty($address) ? '<span id="cn_building_no">'.$address->building_no.'</span>, <span id="cn_building_name">'.$address->building_name.'</span>, <span id="cn_street">'.$address->street.'</span>,  <span id="cn_city">'.$address->city.'</span>, <span id="cn_country">'.$address->country.'</span>' : '-'?></p>
-                                                    <p><b>Mobile : </b> <span id="cn_mobile"><?=isset($contact->mobile) ? $contact->mobile :'-' ?></span></p>
-                                                    <p><b>Website :</b> <a target="_blank" href="<?=isset($contact->website)?prep_url($contact->website):'#';?>"><span id="cn_website"><?=isset($contact->website) ? $contact->website :'-' ?></span></a></p>
-                                                    <p><b>Email : </b> <span id="cn_email"><?=isset($contact->email) ? $contact->email : '-' ?></p>
+                                                    <h4><span id="cn_company_name"><?=isset($profile->name)?$profile->name:''?></h4>
+                                                    <p><b>Address : </b> <?=!empty($address) ? '<span id="cn_building_no">'.$address->building_no.'</span>, <span id="cn_building_name">'.$address->building_name.'</span>, <span id="cn_street">'.$address->street.'</span>,  <span id="cn_city">'.$address->city.'</span>, <span id="cn_country">'.$address->country.'</span>' : ''?></p>
+                                                    <p><b>Mobile : </b> <span id="cn_mobile"><?=isset($contact->mobile) ? $contact->mobile :'' ?></span></p>
+                                                    <p><b>Website :</b> <a target="_blank" href="<?=isset($contact->website)?prep_url($contact->website):'#';?>"><span id="cn_website"><?=isset($contact->website) ? $contact->website :'' ?></span></a></p>
+                                                    <p><b>Email : </b> <span id="cn_email"><?=isset($contact->email) ? $contact->email : '' ?></p>
                                                 </div>                                                  
                                                 <div class="edit-delete pull-right">
                                                     <ul><li><button class="edit-btn edit-basic-company-info" type="submit"><i class="fa fa-pencil-square-o"></i> Edit</button></li></ul>
@@ -136,11 +136,11 @@
                                            <div class="col-md-12 col-sm-12">
                                                 <div class="col-md-8 col-sm-8 left-padding section-content">
                                                     <h3>Representative</h3>
-                                                    <p><b>Name : </b><span id="cn_name"><?=isset($representative->name)?$representative->name:'-'?></span></p>
-                                                    <p><b>Position : </b> <span id="cn_position"> <?=isset($representative->position)?$representative->position:'-'?></span></p>
-                                                    <p><b>Email : </b> <span id="cn_email"> <?=isset($representative->email)?$representative->email:'-'?></span></p>
-                                                    <p><b>Mobile : </b> <span id="cn_mobile"><?=isset($representative->mobile)?$representative->mobile:'-'?></span></p>
-                                                    <p><b>Skype : </b> <span id="cn_skype"><?=isset($representative->skype)?$representative->skype:'-'?></span></p>
+                                                    <p><b>Name : </b><span id="cn_name"><?=isset($representative->name)?$representative->name:''?></span></p>
+                                                    <p><b>Position : </b> <span id="cn_position"> <?=isset($representative->position)?$representative->position:''?></span></p>
+                                                    <p><b>Email : </b> <span id="cn_email"> <?=isset($representative->email)?$representative->email:''?></span></p>
+                                                    <p><b>Mobile : </b> <span id="cn_mobile"><?=isset($representative->mobile)?$representative->mobile:''?></span></p>
+                                                    <p><b>Skype : </b> <span id="cn_skype"><?=isset($representative->skype)?$representative->skype:''?></span></p>
                                                 </div>                                                  
                                                 <div class="edit-delete text-right pull-right">
                                                     <ul>
@@ -216,10 +216,10 @@
                                            <div class="col-md-12 col-sm-12">
                                                 <div class="col-md-8 col-sm-8 left-padding section-content">
                                                     <h3>Company Info</h3>
-                                                    <p><b>Owner : </b> <span id="cn_owner"><?=isset($profile->owner)?$profile->owner:'-'?></span></p>
-                                                    <p><b>Company Type : </b> <span id="cn_type"><?=isset($profile->type)?$profile->type:'-'?></span></p>
-                                                    <p><b>Company License : </b> <span id="cn_license_no"><?=!empty($profile->license_no)?$profile->license_no:'-'?></span></p>
-                                                    <p><b>Total Number of employees : </b> <span id="cn_employee_range"> <?=isset($profile->employee_range)?$profile->employee_range:'-'?></span></p>
+                                                    <p><b>Owner : </b> <span id="cn_owner"><?=isset($profile->owner)?$profile->owner:''?></span></p>
+                                                    <p><b>Company Type : </b> <span id="cn_type"><?=isset($profile->type)?$profile->type:''?></span></p>
+                                                    <p><b>Company License : </b> <span id="cn_license_no"><?=!empty($profile->license_no)?$profile->license_no:''?></span></p>
+                                                    <p><b>Total Number of employees : </b> <span id="cn_employee_range"> <?=isset($profile->employee_range)?$profile->employee_range:''?></span></p>
                                                     <p><b>Industry type : </b> <span><?php $value=''; foreach ($industry_collection as $key => $industry){ $value.=$industry->industry.', '?>
                                                                                     <?php } print remove_trailing_commas($value); ?></span></p>
                                                     
@@ -310,7 +310,7 @@
 												<div class="col-md-8 col-sm-8 left-padding section-content">
 													<h3>About Company</h3>
 													<h5>What you want to tell us about the company</h5>
-													<p class="cn_about_company"><?=!empty($profile->about_company)? $profile->about_company :'-' ?></p>
+													<p class="cn_about_company"><?=!empty($profile->about_company)? $profile->about_company :'' ?></p>
 												</div>													
 												<div class="edit-delete text-right pull-right">
 													<ul>

@@ -2225,6 +2225,36 @@ class Account_model extends CI_Model
 		$query = $this->db->get();
 		return $this->db_results_fn($query);
 	}
+
+	public function get_candidate_cv_video_url($candidate_profile_id)
+	{
+		$this->db->select('ccv.cv_video_url');
+		$this->db->from('candidate_cv_video ccv');
+		$this->db->where('ccv.candidate_profile_id', $candidate_profile_id);
+		$query = $this->db->get();
+		if($query->num_rows() > 0)
+		{
+			$result = $query->result();
+			return $result[0]->cv_video_url;
+		}
+		else
+			return null;
+	}
+
+	public function get_candidate_cv_video_data($candidate_profile_id)
+	{
+		$this->db->select('ccv.*');
+		$this->db->from('candidate_cv_video ccv');
+		$this->db->where('ccv.candidate_profile_id', $candidate_profile_id);
+		$query = $this->db->get();
+		if($query->num_rows() > 0)
+		{
+			$result = $query->result();
+			return $result[0];
+		}
+		else
+			return null;
+	}
 }
 
 ?>

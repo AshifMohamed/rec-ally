@@ -22,7 +22,15 @@ class Portal extends CI_Controller
 		$data['page_title'] = 'Dashboard';
 		$user_profile_id = $this->account_model->get_user_profile_id_by_email($this->session->userdata('logged_email'));
 		//print $user_profile_id;exit;
-		$data['profile'] = $this->account_model->get_candidate_by_user_profile_id($user_profile_id);  //Candidate Profile, Salary and Notice Period
+		$data['profile'] = $this->account_model->get_candidate_by_user_profile_id($user_profile_id); 
+		$data['cv_video_url'] = null;
+		$data['candidate_profile_id'] = 0;
+		if(isset($data['profile']->candidate_profile_id))
+		{
+			$data['cv_video_url'] = $this->account_model->get_candidate_cv_video_url($data['profile']->candidate_profile_id);
+			$data['candidate_profile_id'] = $data['profile']->candidate_profile_id;
+		}	
+		//Candidate Profile, Salary and Notice Period
 		$data['address'] = $this->account_model->get_address_by_user_profile_id($user_profile_id);
 		$data['contact'] = $this->account_model->get_contact_by_user_profile_id($user_profile_id);
 
@@ -244,6 +252,7 @@ class Portal extends CI_Controller
 		$mobile = $this->input->post('mobile');
 
 		$isMobileValid = true;
+		$contact_no = '';
 
 		if(!empty($country_code))
 		{
@@ -262,7 +271,10 @@ class Portal extends CI_Controller
 			set_message('Invalid Mobile Number ','alert-danger');
 			print('failed');exit;
 		}
-		$contact_no = $country_code.'-'.$network_code.'-'.$mobile;
+		if(!empty($country_code) && !empty($network_code) && !empty($mobile))
+		{
+			$contact_no = $country_code.'-'.$network_code.'-'.$mobile;
+		}
 		$contact_data = array(
 			'email' => $this->input->post('email'),
 			'secondary_email' => $this->input->post('secondary_email'),
@@ -3333,7 +3345,131 @@ class Portal extends CI_Controller
 		set_message('Training has been updated successfully','alert-success');
 		print('success');exit;
 	}
-	
+
+	public function upload_cv_video()
+	{
+		$upload_path = 	'./uploads/candidate_profiles/cv_videos/';
+		$input_name = 'cv_video';
+		$file_name = uniqid().$input_name;
+		$candidate_profile_id = $this->input->post('candidate_profile_id');
+		$is_file_error = false;
+		$error = '';
+
+		if(!empty($_FILES['cv_video']['tmp_name']))
+		{
+			if($_FILES['cv_video']['size'] > 200000000)
+			{
+				$is_file_error = true;
+				$error = 'File size is large. Max file size allowed is 200 MB';		
+			}
+			else
+			{
+				$upload_status = $this->do_upload_video($input_name,$upload_path,$file_name);
+				if(isset($upload_status['errors']))
+				{
+					$is_file_error = true;
+					$error = $upload_status['errors'];
+				}
+			}
+			
+		}
+		else
+		{
+			$is_file_error = true;
+			$error = 'Please upload a video file';
+		}
+
+		if(!$is_file_error)
+		{
+			$this->save_candidate_cv_video($candidate_profile_id,$upload_status['upload_data']['file_name']);
+		}
+		else
+		{
+			if (isset($upload_status->upload_data)) 
+			{
+				$file = $upload_path . $upload_status['upload_data']['file_name'];
+				$this->delete_existing_video($file);
+				// if (file_exists($file)) 
+				// {
+                //     unlink($file);
+                // }
+            }   
+		}
+		
+		if($is_file_error)
+		{
+			set_message($error,'alert-danger');
+			redirect('/candidate/dashboard','refresh');
+			print('failed');exit;
+		}
+
+		set_message('CV has been uploaded successfully','alert-success');
+		redirect('/candidate/dashboard','refresh');
+		print('success');exit;
+		
+	}
+
+	public function save_candidate_cv_video($candidate_profile_id,$cv_video_url)
+	{
+		$candidate_profile_id = $candidate_profile_id;
+		$previous_cv_video_data = $this->account_model->get_candidate_cv_video_data($candidate_profile_id);
+		$should_delete = false;
+
+		if(isset($previous_cv_video_data))
+		{
+			$cv_video_data = array(
+				'candidate_cv_video_id' => $previous_cv_video_data->candidate_cv_video_id,
+				'candidate_profile_id' => $candidate_profile_id,
+				'cv_video_url' => $cv_video_url,
+				);
+			$should_delete = true;
+		}
+		else
+		{
+			$cv_video_data = array(
+				'candidate_cv_video_id' => 0,
+				'candidate_profile_id' => $candidate_profile_id,
+				'cv_video_url' => $cv_video_url,
+				);
+		}
+		
+		$candidate_cv_video_id = $this->account_model->insert_data($cv_video_data,'candidate_cv_video_id','candidate_cv_video');
+		if($should_delete)
+		{
+			$upload_path = 	'./uploads/candidate_profiles/cv_videos/';
+			$this->delete_existing_video($upload_path.$previous_cv_video_data->cv_video_url);
+		}
+		
+	}
+
+	function do_upload_video($input_name,$path,$file_name)
+	{
+		$config['upload_path'] =  $path;
+		$config['allowed_types'] = 'wmv|mp4|avi|mov';
+		$config['max_size']	= '200000';
+		$config['file_name'] = $file_name;
+
+		$this->load->library('upload', $config);
+		$this->upload->initialize($config); // load new config setting
+		if (!$this->upload->do_upload($input_name))
+		{
+			$data['errors'] = $this->upload->display_errors();
+		}
+		else
+		{
+			$data['upload_data'] = $this->upload->data();
+			// $data = array('upload_data' => $this->upload->data());
+		}
+		return $data;
+	}
+
+	public function delete_existing_video($file)
+	{
+		if (file_exists($file)) 
+			{
+            	unlink($file);
+            }
+	}
 }
 
 ?>
