@@ -2247,6 +2247,33 @@
             });
         }
 
+        function delete_company(id,row)
+        {
+                $.ajax({
+                url: '<?=base_url() . ADMIN_PATH_NAME?>/delete_info_request' + '?' + $.param({"id": id}),
+                dataType: 'json',
+                type: 'DELETE',
+                success: function (res) {
+                    
+                    if(res == "Success")
+                    {
+                        var myTable = $('#information_requests').DataTable();
+                        if (typeof(row) == "object") {
+                           let tr = $(row).closest("tr").get(0);
+                           myTable.row( tr ).remove().draw( false );
+                           alert("Company Deleted Successfully");
+                        }
+                    }
+                    else{
+                        alert("Could not delete the company. Please make sure a request has been selected")
+                    }
+                },
+                error: function (err) {
+                    alert("Could not delete the company. Please try again later");
+                },
+            });
+        }
+
 </script>
 
 <script type="text/javascript" src="//cdn.tinymce.com/4/tinymce.min.js"></script>
