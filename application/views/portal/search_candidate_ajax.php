@@ -87,6 +87,7 @@ $(document).ready(function() {
             "data":data_obj,
             "dataSrc" : function (json) {
                 // return the data that DataTables is to use to draw the table
+                console.log(json)
                 return json.data;
             }
         }

@@ -449,7 +449,8 @@ class Account_model extends CI_Model
 			$query .=" OR cp.about_you LIKE '%{$search_options['keyword']}%'";
 			$query .=" OR cp.passport_number LIKE '%{$search_options['keyword']}%'";
 			$query .=" OR cl.career_level LIKE '%{$search_options['keyword']}%'";
-			$query .=" OR d.department LIKE '%{$search_options['keyword']}%')";
+			$query .=" OR d.department LIKE '%{$search_options['keyword']}%'";
+			$query .=" OR (ce.job_description IS NOT NULL AND ce.job_description LIKE '%{$search_options['keyword']}%'))";
 		}
 		if (!empty($search_options['search_value'])){
 			$query .=" AND (cp.first_name LIKE '%{$search_options['search_value']}%'";
@@ -458,7 +459,8 @@ class Account_model extends CI_Model
 			$query .=" OR cp.about_you LIKE '%{$search_options['search_value']}%'";
 			$query .=" OR cp.passport_number LIKE '%{$search_options['search_value']}%'";
 			$query .=" OR cl.career_level LIKE '%{$search_options['search_value']}%'";
-			$query .=" OR d.department LIKE '%{$search_options['search_value']}%')";
+			$query .=" OR d.department LIKE '%{$search_options['search_value']}%'";
+			$query .=" OR (ce.job_description IS NOT NULL AND ce.job_description LIKE '%{$search_options['search_value']}%'))";
 		}
 		if (!empty($search_options['country'])){
 			$query .=" AND a.country_id IN ({$search_options['country']})";

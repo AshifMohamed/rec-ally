@@ -790,9 +790,9 @@
                                                                onclick="if(confirm('Are you sure to sign into the selected account?')) return true; else return false;"><span
                                                                         class="label label-yellow">Login</span></a>
                                                             <!-- <span class="label label-info">View Profile</span> -->
-                                                            <a href="<?= base_url() . ADMIN_PATH_NAME ?>/delete_company?id=<?= $company->user_profile_id ?>"
-                                                               onclick="if(confirm(\'Are you sure to delete the account?\')) return true; else return false;"><span
-                                                                        class="label label-red">Delete</span></a>
+                                                            <button class="label label-red" onClick="delete_company(<?= $company->user_profile_id ?>,this)">Delete</button>
+                                                            
+                                                            
                                                             <div class="pull-right">
                                                                 <div class="toggle-company account_status toggle-blue"
                                                                      data-toggle="tooltip"
@@ -2249,8 +2249,13 @@
 
         function delete_company(id,row)
         {
+            // <a href="<?= base_url() . ADMIN_PATH_NAME ?>/delete_company?id=<?= $company->user_profile_id ?>"onclick="if(confirm(\'Are you sure to delete the account?\')) return true; else return false;"><span class="label label-red">Delete</span></a>
+
+
+            if(confirm('Are you sure to delete the account?'))
+            {
                 $.ajax({
-                url: '<?=base_url() . ADMIN_PATH_NAME?>/delete_info_request' + '?' + $.param({"id": id}),
+                url: '<?=base_url() . ADMIN_PATH_NAME?>/delete_company' + '?' + $.param({"id": id}),
                 dataType: 'json',
                 type: 'DELETE',
                 success: function (res) {
@@ -2271,7 +2276,8 @@
                 error: function (err) {
                     alert("Could not delete the company. Please try again later");
                 },
-            });
+                });
+            }
         }
 
 </script>
