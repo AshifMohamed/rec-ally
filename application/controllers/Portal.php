@@ -158,7 +158,7 @@ class Portal extends CI_Controller
 		if(!empty($_FILES['passport_copy']['tmp_name']))
 		{
 			$passport_copy_name = $this->do_upload('1024','768','passport_copy','candidate_profiles');
-			$is_portrait_pic_set = true;
+			$is_passport_copy_set = true;
 		}
 		
 
@@ -204,6 +204,8 @@ class Portal extends CI_Controller
 			unset($candidate_profile_data['profile_pic_name']);
 		if(!$is_portrait_pic_set)
 			unset($candidate_profile_data['portrait_pic_name']);
+		if(!$is_passport_copy_set)
+			unset($candidate_profile_data['passport_copy_name']);
 
 		$candidate_profile_id = $this->account_model->insert_data($candidate_profile_data,'candidate_profile_id','candidate_profile');
 
