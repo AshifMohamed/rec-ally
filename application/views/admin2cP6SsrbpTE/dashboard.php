@@ -26,7 +26,7 @@
         padding-right: 0 !important;
     }
 </style>
-<div id="dialog" title="Confirmation">
+<div id="dialog" title="Confirmation">  
     Are you sure to activate this company?
 </div>
 <!--BEGIN CONTENT-->
