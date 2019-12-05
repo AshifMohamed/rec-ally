@@ -1,7 +1,8 @@
 <?php $this->load->view('partial/portal_header.php'); ?>
 <?php //$this->load->view('partial/portal_sidebar.php'); ?>
 <?php $this->load->view('partial/portal_breadcrumbs.php'); ?>
-<link type="text/css" rel="stylesheet" href="https://cdn.datatables.net/1.10.10/css/jquery.dataTables.min.css">
+<link type="text/css" rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap.min.css">
+<link type="text/css" rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 <style>
     #canvas .circle {
@@ -25,12 +26,15 @@
         padding-right: 0 !important;
     }
 </style>
+<div id="dialog" title="Confirmation">
+    Are you sure to activate this company?
+</div>
 <!--BEGIN CONTENT-->
 <div class="page-content admin">
     <div id="tab-general">
         <div id="sum_box" class="row mbl">
             <div class="col-sm-6 col-md-3 block-space">
-                <div class="panel profit db mbm">
+                <div class="small-box profit db mbm">
                     <div class="panel-body">
                         <p class="icon">
                             <i class="icon fa fa-building-o"></i>
@@ -43,14 +47,14 @@
                             Companies Registered</p>
                         <div class="progress progress-sm mbn">
                             <div role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"
-                                 style="width: 80%;" class="progress-bar progress-bar-success">
+                                 style="width: 0%;" class="progress-bar progress-bar-success">
                                 <span class="sr-only">80% Complete (success)</span></div>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="col-sm-6 col-md-3 block-space">
-                <div class="panel income db mbm">
+                <div class="small-box income db mbm">
                     <div class="panel-body">
                         <p class="icon">
                             <i class="icon fa fa-user "></i>
@@ -61,14 +65,14 @@
                             Candidates Registered</p>
                         <div class="progress progress-sm mbn">
                             <div role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"
-                                 style="width: 60%;" class="progress-bar progress-bar-info">
+                                 style="width: 0%;" class="progress-bar progress-bar-info">
                                 <span class="sr-only">60% Complete (success)</span></div>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="col-sm-6 col-md-3 block-space">
-                <div class="panel task db mbm">
+                <div class="small-box task db mbm">
                     <div class="panel-body">
                         <p class="icon">
                             <i class="icon fa fa-suitcase"></i>
@@ -79,14 +83,14 @@
                             Jobs Posted</p>
                         <div class="progress progress-sm mbn">
                             <div role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"
-                                 style="width: 50%;" class="progress-bar progress-bar-danger">
+                                 style="width: 0%;" class="progress-bar progress-bar-danger">
                                 <span class="sr-only">50% Complete (success)</span></div>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="col-sm-6 col-md-3 block-space">
-                <div class="panel visit db mbm">
+                <div class="small-box visit db mbm">
                     <div class="panel-body">
                         <p class="icon">
                             <i class="icon fa fa-eye"></i>
@@ -97,7 +101,7 @@
                             Average Logins Per Day</p>
                         <div class="progress progress-sm mbn">
                             <div role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100"
-                                 style="width: 70%;" class="progress-bar progress-bar-warning">
+                                 style="width: 0%;" class="progress-bar progress-bar-warning">
                                 <span class="sr-only">70% Complete (success)</span></div>
                         </div>
                     </div>
@@ -111,58 +115,15 @@
                     <div class="panel panel-default">
                         <div class="panel-heading blue-panel-heading">
                             <h4 class="panel-title">
-                                <a data-toggle="collapse" data-parent="#accordion" href="#collapse1">
-                                    <h3 class="panel-h3">Companies Pending Approval</h3></a>
+                                <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapse1">
+                                    Companies Pending Approval
+                                </a>
                             </h4>
                         </div>
-                        
-
-                        <div class="modal fade" id="view_service">
-                                                    <div class="modal-dialog">
-                                                        <div class="modal-content">
-                                                            <div class="modal-header">
-                                                                <button type="button" class="close" data-dismiss="modal"
-                                                                        aria-hidden="true">&times;
-                                                                </button>
-                                                                <h4 class="modal-title">Recruitment Ally Service</h4>
-                                                            </div>
-
-                                                            <?php if(count($service) > 0): ?>
-                                           <table id="tbl_service" class="table table-hover table-bordered">
-													<thead>
-													<tr>
-														<th>Id</th>
-														<th>Service</th>
-														<th>No Of Months</th>
-														<th>No Of Access Accounts</th>
-                                                        <th>No Of Job Posts</th>
-														<th>Amount</th>            
-													</tr>
-													</thead>
-													<tbody>
-			                                            <?php foreach ($service as $key => $service) : ?>  
-																	<tr style="<?=18 == $service->id ? 'background : green' : '' ?>">
-																		<td><?=$service->id?></td>
-																		<td><?=$service->title?></td>
-																		<td><?=$service->no_of_months?></td>
-                                                                        <td><?=$service->no_of_access_account?></td>
-																		<td><?=$service->no_of_job_post?></td>
-																		<td><?=$service->amount == 0 ? 'Free' : $service->amount?></td>
-																	</tr>		
-															<?php endforeach; ?>
-													</tbody>
-												</table>
-                                                <?php endif; ?>
-
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-
-                        <div id="collapse1" class="panel-collapse collapse">
+                        <div id="collapse1" class="panel-collapse collapse in">
                             <div class="panel-body">
                                 <?php if (count($companies_pending_approval) > 0): ?>
-                                    <table id="companies_pending_approval" class="display" cellspacing="0" width="100%">
+                                    <table id="companies_pending_approval" class="display table table-striped table-hover table-bordered" cellspacing="0" width="100%">
                                         <thead>
                                         <tr>
                                             <th>Company Name</th>
@@ -173,16 +134,7 @@
                                             <th>Actions</th>
                                         </tr>
                                         </thead>
-                                        <tfoot>
-                                        <tr>
-                                            <th>Company Name</th>
-                                            <th>Owner</th>
-                                            <th>Email</th>
-                                            <th>Registered Date</th>
-                                            <th>Service</th>
-                                            <th>Actions</th>
-                                        </tr>
-                                        </tfoot>
+                                        
                                         <tbody>
                                         
                                         <?php foreach ($companies_pending_approval as $key => $company): ?>
@@ -196,9 +148,7 @@
                                                     data-service_id="<?= $company->service_id ?>"
                                                     data-toggle="modal">View</a></td>
 
-                                                <td><label class="label label-success"><a
-                                                                href="<?= base_url() . ADMIN_PATH_NAME ?>/approve_company?id=<?= $company->user_profile_id ?>"
-                                                                onclick="if(confirm('Are you sure to activate this company?')) return true; else return false;">Approve</a></label>
+                                                <td><button class="btn-green-new" onclick="approveCompany('<?= base_url() . ADMIN_PATH_NAME ?>/approve_company?id=<?= $company->user_profile_id ?>');">Approve</button>
                                                     <!-- &nbsp;<label class="label label-danger">Decline</label> -->
                                                 </td>
                                             </tr>
@@ -211,18 +161,62 @@
                                 <?php endif; ?>
                             </div>
                         </div>
+                        <div class="modal fade" id="view_service">
+                                                    <div class="modal-dialog modal-lg">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <button type="button" class="close" data-dismiss="modal"
+                                                                        aria-hidden="true">&times;
+                                                                </button>
+                                                                <h4 class="modal-title">Recruitment Ally Service</h4>
+                                                            </div>
+                                                            <div class="modal-body">
+                                                            <?php if(count($service) > 0): ?>
+                                           <table id="tbl_service" class="table table-bordered">
+													<thead>
+													<tr>
+														<th>Id</th>
+														<th>Service</th>
+														<th>No Of Months</th>
+														<th>No Of Access Accounts</th>
+                                                        <th>No Of Job Posts</th>
+														<th>Amount</th>            
+													</tr>
+													</thead>
+													<tbody>
+			                                            <?php foreach ($service as $key => $service) : ?>  
+																	<tr class="<?=18 == $service->id ? 'label-free' : '' ?>">
+																		<td><?=$service->id?></td>
+																		<td><?=$service->title?></td>
+																		<td><?=$service->no_of_months?></td>
+                                                                        <td><?=$service->no_of_access_account?></td>
+																		<td><?=$service->no_of_job_post?></td>
+																		<td><?=$service->amount == 0 ? 'Free' : $service->amount?></td>
+																	</tr>		
+															<?php endforeach; ?>
+													</tbody>
+												</table>
+                                                <?php endif; ?>
+                                                </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+
+                       
                     </div>
                     <div class="panel panel-default hidden">
                         <div class="panel-heading blue-panel-heading">
                             <h4 class="panel-title">
-                                <a data-toggle="collapse" data-parent="#accordion" href="#collapse7">
-                                    <h3 class="panel-h3">Candidates Pending Activation</h3></a>
+                                <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapse7">
+                                    Candidates Pending Activation
+                                </a>
                             </h4>
                         </div>
                         <div id="collapse7" class="panel-collapse collapse">
                             <div class="panel-body">
                                 <?php if (count($unverified_candidates) > 0): ?>
-                                    <table id="candidates_pending_activation" class="display" cellspacing="0"
+                                    <table id="candidates_pending_activation" class="display table table-striped table-hover table-bordered" cellspacing="0"
                                            width="100%">
                                         <thead>
                                         <tr>
@@ -234,18 +228,7 @@
                                             <th>Last Reminded On</th>
                                             <th>Actions</th>
                                         </tr>
-                                        </thead><!--
-                                                        <tfoot>
-                                                            <tr>
-                                                                <th>#</th>
-                                                                <th>Candidate Name</th>
-                                                                <th>Registered Date</th>
-                                                                <th>Email</th>
-                                                                <th>Method</th>
-                                                                <th>Last Reminded On</th>
-                                                                <th>Actions</th>
-                                                            </tr>
-                                                        </tfoot> -->
+                                        </thead>
                                         <tbody>
                                         <?php foreach ($unverified_candidates as $key => $candidate): ?>
                                             <?php
@@ -279,14 +262,15 @@
                     <div class="panel panel-default">
                         <div class="panel-heading blue-panel-heading">
                             <h4 class="panel-title">
-                                <a data-toggle="collapse" data-parent="#accordion" href="#collapse2">
-                                    <h3 class="panel-h3">Information Request</h3></a>
+                                <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapse2">
+                                    Information Request
+                                </a>
                             </h4>
                         </div>
                         <div id="collapse2" class="panel-collapse collapse">
                             <div class="panel-body">
                                 <?php if (count($contact_us_requests) > 0): ?>
-                                    <table id="information_requests" class="display" cellspacing="0" width="100%">
+                                    <table id="information_requests" class="display table table-striped table-hover table-bordered" cellspacing="0" width="100%">
                                         <thead>
                                         <tr>
                                             <th>Name</th>
@@ -298,18 +282,7 @@
                                             <th>Date</th>
                                             <th>Action</th> 
                                         </tr>
-                                        </thead><!--
-                                                        <tfoot>
-                                                            <tr>
-                                                                <th>Name</th>
-                                                                <th>Email</th>
-                                                                <th>Mobile</th>
-                                                                <th>Country</th>
-                                                                <th>Request Type</th>
-                                                                <th>Message</th>
-                                                                <th>Date</th>
-                                                            </tr>
-                                                        </tfoot> -->
+                                        </thead>
                                         <tbody>
                                         <?php foreach ($contact_us_requests as $key => $request): ?>
                                             <tr>
@@ -320,12 +293,12 @@
                                                 <td><?= $request->request_type ?></td>
                                                 <td>
                                                     <a tabindex="0" style="width:250px!important;"
-                                                       class="label label-success" rel="popover" title="Message"
+                                                       class="label btn btn-info" rel="popover" title="Message"
                                                        data-placement="left" data-trigger="focus"
                                                        data-content="<?= $request->message ?>">View Message</a>
                                                 </td>
                                                 <td><?= $request->date ?></td>
-                                                <td> <button class="label label-red" onClick="delete_contact_request(<?= $request->contact_email_id ?>,this)">Delete</button>
+                                                <td> <button class="label btn btn-danger label-red" onClick="delete_contact_request(<?= $request->contact_email_id ?>,this)">Delete</button>
                                                 </td>
                                             </tr>
                                         <?php endforeach; ?>
@@ -341,8 +314,8 @@
                     <div class="panel panel-default">
                         <div class="panel-heading blue-panel-heading">
                             <h4 class="panel-title">
-                                <a data-toggle="collapse" data-parent="#accordion" href="#collapse3">
-                                    <h3 class="panel-h3">Vote Result</h3>
+                                <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapse3">
+                                    Vote Result
                                 </a>
                             </h4>
 
@@ -350,10 +323,10 @@
                         <div id="collapse3" class="panel-collapse collapse">
                             <div class="panel-body">
                                 <button type="button" id="view_edit_polls" data-toggle="modal"
-                                        href="#modal_view_edit_polls" class="btn btn-primary pull-right">View/Edit Polls
+                                        href="#modal_view_edit_polls" class="btn btn-blue pull-right">View/Edit Polls
                                 </button>
                                 <button type="button" data-toggle="modal" href="#modal_create_new_poll"
-                                        id="create_new_poll" class="btn btn-primary pull-right">Create New Poll
+                                        id="create_new_poll" class="btn btn-blue pull-right">Create New Poll
                                 </button>
                                 <div class="clearfix"></div>
                                 <br/>
@@ -367,7 +340,7 @@
                                                 <h4 class="modal-title">View/Edit Polls</h4>
                                             </div>
                                             <div class="modal-body">
-                                                <table id="table_edit_view_polls" class="display" cellspacing="0"
+                                                <table id="table_edit_view_polls" class="display table table-striped table-hover table-bordered" cellspacing="0"
                                                        width="100%">
                                                     <thead>
                                                     <tr>
@@ -378,17 +351,7 @@
                                                         <th>Published</th>
                                                         <th>Actions</th>
                                                     </tr>
-                                                    </thead><!--
-                                                                    <tfoot>
-                                                                        <tr>
-                                                                            <th>#</th>
-                                                                            <th>Name</th>
-                                                                            <th>Options</th>
-                                                                            <th>End Date</th>
-                                                                            <th>Published</th>
-                                                                            <th>Actions</th>
-                                                                        </tr>
-                                                                    </tfoot> -->
+                                                    </thead>
                                                     <tbody>
                                                     <?php foreach ($polls as $key => $poll): ?>
                                                         <tr>
@@ -421,7 +384,7 @@
                                                 </table>
                                             </div>
                                             <div class="modal-footer">
-                                                <button type="button" class="btn btn-default" data-dismiss="modal">
+                                                <button type="button" class="btn btn-danger" data-dismiss="modal">
                                                     Close
                                                 </button>
                                             </div>
@@ -466,10 +429,10 @@
                                                     </div>
                                                 </div>
                                                 <div class="modal-footer">
-                                                    <button type="button" class="btn btn-default" data-dismiss="modal">
+                                                    <button type="button" class="btn btn-danger" data-dismiss="modal">
                                                         Close
                                                     </button>
-                                                    <button type="submit" class="btn btn-primary">Save Poll</button>
+                                                    <button type="submit" class="btn btn-blue">Save Poll</button>
                                                 </div>
                                             </form>
                                         </div>
@@ -532,14 +495,15 @@
                     <div class="panel panel-default">
                         <div class="panel-heading blue-panel-heading">
                             <h4 class="panel-title">
-                                <a data-toggle="collapse" data-parent="#accordion" href="#collapse4">
-                                    <h3 class="panel-h3">Newsletter</h3></a>
+                                <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapse4">
+                                    Newsletter
+                                </a>
                             </h4>
                         </div>
                         <div id="collapse4" class="panel-collapse collapse">
                             <div class="panel-body">
                                 <?php if (count($newsletter_subscribers) > 0): ?>
-                                    <table id="newsletter_subscribers" class="display" cellspacing="0" width="100%">
+                                    <table id="newsletter_subscribers" class="display table table-striped table-hover table-bordered" cellspacing="0" width="100%">
                                         <thead>
                                         <tr>
                                             <th>#</th>
@@ -548,14 +512,7 @@
                                             <th>Date</th>
                                         </tr>
                                         </thead>
-                                        <tfoot>
-                                        <tr>
-                                            <th>#</th>
-                                            <th>Name</th>
-                                            <th>Email</th>
-                                            <th>Date</th>
-                                        </tr>
-                                        </tfoot>
+                                        
                                         <tbody>
                                         <?php foreach ($newsletter_subscribers as $key => $subscriber): ?>
                                             <tr>
@@ -586,12 +543,12 @@
                                                 <!-- Nav tabs -->
                                                 <ul class="nav nav-tabs" role="tablist">
                                                     <li role="presentation" class="active">
-                                                        <a href="#tb_create_edit_newsletter"
+                                                        <a class="btn btn-blue" href="#tb_create_edit_newsletter"
                                                            aria-controls="create_edit_newsletter" role="tab"
                                                            data-toggle="tab">Create/Edit</a>
                                                     </li>
                                                     <li role="presentation">
-                                                        <a href="#tb_send_newsletter" aria-controls="tb_send_newsletter"
+                                                        <a class="btn btn-success" href="#tb_send_newsletter" aria-controls="tb_send_newsletter"
                                                            role="tab" data-toggle="tab">Send Newsletter</a>
                                                     </li>
                                                 </ul>
@@ -646,10 +603,10 @@
                                                                         href="<?= isset($newsletter_loaded->attachment) ? $newsletter_loaded->attachment : '' ?>"><?= isset($newsletter_loaded->attachment) ? $newsletter_loaded->attachment : '' ?></a>
                                                             </div>
                                                             <div class="modal-footer">
-                                                                <button type="button" class="btn btn-default"
+                                                                <button type="button" class="btn btn-danger"
                                                                         data-dismiss="modal">Close
                                                                 </button>
-                                                                <button type="submit" class="btn btn-primary"
+                                                                <button type="submit" class="btn btn-blue"
                                                                         id="save_newsletter">Save Newsletter
                                                                 </button>
                                                             </div>
@@ -677,10 +634,10 @@
                                                                 </div>
                                                             </div>
                                                             <div class="modal-footer">
-                                                                <button type="button" class="btn btn-default"
+                                                                <button type="button" class="btn btn-danger"
                                                                         data-dismiss="modal">Close
                                                                 </button>
-                                                                <button type="submit" class="btn btn-primary"
+                                                                <button type="submit" class="btn btn-info"
                                                                         id="send_newsletter">Send All
                                                                 </button>
                                                             </div>
@@ -697,7 +654,7 @@
                                     <ul class=" pull-right" style="margin-top:30px;">
                                         <li class="pull-left">
                                             <button type="submit" data-toggle="modal" href="#newsletter_modal"
-                                                    class="btn btn-primary btn-blue pull-right">Create / Edit / Send
+                                                    class="btn btn-blue pull-right">Create / Edit / Send
                                                 Newsletter
                                             </button>
                                         </li>
@@ -710,8 +667,9 @@
                     <div class="panel panel-default">
                         <div class="panel-heading blue-panel-heading">
                             <h4 class="panel-title">
-                                <a data-toggle="collapse" data-parent="#accordion" href="#collapse5"><h3
-                                            class="panel-h3">Users</h3></a>
+                                <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapse5">
+                                    Users
+                                </a>
                             </h4>
                         </div>
                         <div id="collapse5" class="panel-collapse collapse username_password_table">
@@ -724,7 +682,7 @@
                                                 <img src="<?= base_url() ?>assets/portal/images/pre_loader.gif"> Please
                                                 Wait...
                                             </div>
-                                            <table id="candidates_table" class="display hidden" cellspacing="0"
+                                            <table id="candidates_table" class="display hidden table table-striped table-hover table-bordered" cellspacing="0"
                                                    width="100%">
                                                 <thead>
                                                 <tr>
@@ -736,16 +694,7 @@
                                                     <th>Action</th>
                                                 </tr>
                                                 </thead>
-                                                <tfoot>
-                                                <tr>
-                                                    <th>Name</th>
-                                                    <th>Email</th>
-                                                    <th>Country</th>
-                                                    <th class="hidden">UserProfile ID</th>
-                                                    <th>Registered Date</th>
-                                                    <th>Action</th>
-                                                </tr>
-                                                </tfoot>
+                                                
                                                 <tbody>
                                                 </tbody>
                                             </table>
@@ -756,7 +705,7 @@
                                     <li>
                                         <div class="">
                                             <div class="tab-header-line"><h5>Companies</h5></div>
-                                            <table id="employer_table" class="display" cellspacing="0" width="100%">
+                                            <table id="employer_table" class="display table table-striped table-hover table-bordered" cellspacing="0" width="100%">
                                                 <thead>
                                                 <tr>
                                                     <th>Company Name</th>
@@ -767,16 +716,7 @@
                                                     <th>Action</th>
                                                 </tr>
                                                 </thead>
-                                                <tfoot>
-                                                <tr>
-                                                    <th>Company Name</th>
-                                                    <th>Owner</th>
-                                                    <th>Email</th>
-                                                    <th class="hidden">UserProfile ID</th>
-                                                    <th>Registered Date</th>
-                                                    <th>Action</th>
-                                                </tr>
-                                                </tfoot>
+                                                
                                                 <tbody>
                                                 <?php foreach ($companies_registered as $key => $company): ?>
                                                     <tr>
@@ -825,7 +765,7 @@
                                             <div class="tab-header-line">
                                                 <h5 class="pull-left" style="margin-top: 12px!important;">
                                                     Administrators</h5>
-                                                <button type="submit" class="btn btn-blue btn-primary pull-right"
+                                                <button type="submit" class="btn btn-blue pull-right"
                                                         data-toggle="modal" href='#add_new_administrator'>Add New
                                                 </button>
                                                 <div class="modal fade" id="add_new_administrator">
@@ -888,10 +828,10 @@
                                                                     </div>
                                                                 </div>
                                                                 <div class="modal-footer">
-                                                                    <button type="button" class="btn btn-default"
+                                                                    <button type="button" class="btn btn-danger"
                                                                             data-dismiss="modal">Close
                                                                     </button>
-                                                                    <button type="submit" class="btn btn-primary"
+                                                                    <button type="submit" class="btn btn-blue"
                                                                             id="btn_save_administrator">Save
                                                                     </button>
                                                                 </div>
@@ -902,7 +842,7 @@
                                                 <div class="clearfix"></div>
                                                 <br>
                                             </div>
-                                            <table id="admin_table" class="display" cellspacing="0" width="100%">
+                                            <table id="admin_table" class="display table table-striped table-hover table-bordered" cellspacing="0" width="100%">
                                                 <thead>
                                                 <tr>
                                                     <th>Name</th>
@@ -938,8 +878,8 @@
                     <div class="panel panel-default">
                         <div class="panel-heading blue-panel-heading">
                             <h4 class="panel-title">
-                                <a data-toggle="collapse" data-parent="#accordion" href="#collapse6">
-                                    <h3 class="panel-h3">Reports</h3></a>
+                                <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapse6">
+                                    Reports</a>
                             </h4>
                         </div>
                         <div id="collapse6" class="panel-collapse collapse">
@@ -1018,9 +958,10 @@
 
                                                 <?php endforeach; ?>   
                                         </select> 
-                                        <button class="info-save btn btn-info" id="get_candidate_industry">Load</button>
+                                        
                                         <div id="candidates_industry_wise"
                                              style="width: 100%; height:300px;position:relative"></div>
+                                             <button class="info-save btn btn-info" id="get_candidate_industry">Load</button>
                                     </div>
                                 </div>
                                 <div class="portlet box mbl col-md-6 pull-left">
@@ -1079,8 +1020,9 @@
                     <div class="panel panel-default">
                         <div class="panel-heading blue-panel-heading">
                             <h4 class="panel-title">
-                                <a data-toggle="collapse" data-parent="#accordion" href="#collapse9">
-                                    <h3 class="panel-h3">Job Listings</h3></a>
+                                <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapse9">
+                                    Job Listings
+                                </a>
                             </h4>
                         </div>
                         <div id="collapse9" class="panel-collapse collapse">
@@ -1089,7 +1031,7 @@
                                 <div class="clearfix"></div>
                                 <br>
                                 <?php if(count($job_profiles)){ ?>
-        							<table id="job_listings_table" class="display" cellspacing="0" width="100%">
+        							<table id="job_listings_table" class="display table table-striped table-hover table-bordered" cellspacing="0" width="100%">
         											<thead>
         											<tr>
                                                         <th>Job Ref</th>
@@ -1120,14 +1062,15 @@
                     <div class="panel panel-default">
                         <div class="panel-heading blue-panel-heading">
                             <h4 class="panel-title">
-                                <a data-toggle="collapse" data-parent="#accordion" href="#collapse8">
-                                    <h3 class="panel-h3">Advertisements</h3></a>
+                                <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapse8">
+                                    Advertisements
+                                </a>
                             </h4>
                         </div>
                         <div id="collapse8" class="panel-collapse collapse">
                             <div class="panel-body">
                                 <h2>Advertisement Space</h2>
-                                <button type="submit" class="btn btn-blue btn-primary pull-right"
+                                <button type="submit" class="btn btn-blue pull-right"
                                         data-toggle="modal" href='#add_new_advertisement'>Add New
                                 </button>
                                 <div class="modal fade" id="add_new_advertisement">
@@ -1190,10 +1133,10 @@
                                                     </div>
                                                 </div>
                                                 <div class="modal-footer">
-                                                    <button type="button" class="btn btn-default"
+                                                    <button type="button" class="btn btn-danger"
                                                             data-dismiss="modal">Close
                                                     </button>
-                                                    <button type="submit" class="btn btn-primary"
+                                                    <button type="submit" class="btn btn-blue"
                                                             id="btn_save_administrator">Save
                                                     </button>
                                                 </div>
@@ -1203,7 +1146,7 @@
                                 </div>
                                 <div class="clearfix"></div>
                                 <br>
-                                <table id="advertisement_table" class="display" cellspacing="0" width="100%">
+                                <table id="advertisement_table" class="display table table-striped table-hover table-bordered" cellspacing="0" width="100%">
                                     <thead>
                                     <tr>
                                         <th class="hidden">Advertisement ID</th>
@@ -1341,7 +1284,9 @@
     /*.carousel .item .portlet{margin-right:15px;}*/
 </style>
 <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
-<script src="https://cdn.datatables.net/1.10.10/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
 <script src="<?= base_url() ?>assets/portal/script/circles.min.js"></script>
 <link rel="stylesheet" href="<?= base_url() ?>assets/portal/styles/toggles.css">
 <link rel="stylesheet" href="<?= base_url() ?>assets/portal/styles/toggles-light.css">
@@ -1359,6 +1304,10 @@
 <script type="text/javascript">
 
     $(document).ready(function () {
+        $("#dialog").dialog({
+            autoOpen: false,
+            modal: true
+            });
 
 //         $('#view_service').on('show.bs.modal', function(e) {
 // //("dfasfdasf");
@@ -1399,7 +1348,7 @@
                     var id = $(this).find('td:first').text();
                     if(id == service_id)
                         {
-                            $( this).children().css( "background-color", "green" );
+                            $( this).children().addClass("label-free");
                         }
                 }
                 
@@ -1420,7 +1369,7 @@
         });
 
         $(window).load(function () {
-            $('#candidates_pending_activation,#table_edit_view_polls,#companies_pending_approval, #newsletter_subscribers,#employer_table,#team_table, #admin_table, #job_listings_table').DataTable();
+            $('#candidates_pending_activation, #table_edit_view_polls,#companies_pending_approval, #newsletter_subscribers,#employer_table,#team_table, #admin_table, #job_listings_table').DataTable();
             $('#information_requests').DataTable({
                 "order": [[6, "desc"]]
             });
@@ -2234,15 +2183,15 @@
                         if (typeof(row) == "object") {
                            let tr = $(row).closest("tr").get(0);
                            myTable.row( tr ).remove().draw( false );
-                           alert("Request Deleted Successfully");
+                           toastr.success("Request Deleted Successfully");
                         }
                     }
                     else{
-                        alert("Could not delete the request. Please make sure a request has been selected")
+                        toastr.warning("Could not delete the request. Please make sure a request has been selected")
                     }
                 },
                 error: function (err) {
-                    alert("Could not delete the request. Please try again later");
+                    toastr.error("Could not delete the request. Please try again later");
                 },
             });
         }
@@ -2261,15 +2210,15 @@
                         if (typeof(row) == "object") {
                            let tr = $(row).closest("tr").get(0);
                            myTable.row( tr ).remove().draw( false );
-                           alert("Company Deleted Successfully");
+                           toastr.success("Company Deleted Successfully");
                         }
                     }
                     else{
-                        alert("Could not delete the company. Please make sure a request has been selected")
+                        toastr.warning("Could not delete the company. Please make sure a request has been selected")
                     }
                 },
                 error: function (err) {
-                    alert("Could not delete the company. Please try again later");
+                    toastr.error("Could not delete the company. Please try again later");
                 },
             });
         }
@@ -2317,4 +2266,19 @@
         image_advtab: true,
         statusbar: false,
     });
+
+    function approveCompany(url){
+        $("#dialog").dialog({
+            buttons : {
+                "Yes" : function() {
+                window.location.href = url;
+                },
+                "No" : function() {
+                $(this).dialog("close");
+                }
+            }
+            });
+
+            $("#dialog").dialog("open");
+    }
 </script>
