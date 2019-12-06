@@ -985,7 +985,7 @@
     <div style="clear:both;"></div>
 </div>
 </li>
-<div class="fixed-btn"> <button type="button" class="btn btn-primary btn-save-job-profile hidden"><?=isset($profile->job_profile_id) ? 'Update Profile' : 'Create Profile'?></button></div>
+<div class="fixed-btn"> <button type="button" class="btn btn-blue btn-save-job-profile hidden"><?=isset($profile->job_profile_id) ? 'Update Profile' : 'Create Profile'?></button></div>
 </ol>
 </form>
 </div>
@@ -1054,7 +1054,7 @@
                         <button class="edit-question edit-btn" type="submit"><i class="fa fa-pencil-square-o"></i> Edit</button>
                     </li>
                     <li>
-                        <a href="<?=base_url()?>employer/delete_job_profile_question/<?=$question->job_profile_id?>/<?=$question->job_profile_question_id?>"><button class="dlt-btn delete-question" type="submit"><i class="fa fa-trash-o"></i> Delete</button></a>
+                        <button class="dlt-btn" onclick="confirmation('<?=base_url()?>employer/delete_job_profile_question/<?=$question->job_profile_id?>/<?=$question->job_profile_question_id?>','Do you want to delete the question?')"><i class="fa fa-trash-o"></i> Delete</button>
                     </li>
                 </ul>
             </div>
@@ -1106,7 +1106,7 @@
                         <button class="edit-question edit-btn" type="submit"><i class="fa fa-pencil-square-o"></i> Edit</button>
                     </li>
                     <li>
-                        <a href="<?=base_url()?>employer/delete_job_profile_question/<?=$question->job_profile_id?>/<?=$question->job_profile_question_id?>"><button class="dlt-btn delete-question" type="submit"><i class="fa fa-trash-o"></i> Delete</button></a>
+                    <button class="dlt-btn" onclick="confirmation('<?=base_url()?>employer/delete_job_profile_question/<?=$question->job_profile_id?>/<?=$question->job_profile_question_id?>','Do you want to delete the question?')"><i class="fa fa-trash-o"></i> Delete</button>
                     </li>
                 </ul>
             </div>
@@ -1158,7 +1158,7 @@
                         <button class="edit-question edit-btn" type="submit"><i class="fa fa-pencil-square-o"></i> Edit</button>
                     </li>
                     <li>
-                        <a href="<?=base_url()?>employer/delete_job_profile_question/<?=$question->job_profile_id?>/<?=$question->job_profile_question_id?>"><button class="dlt-btn delete-question" type="submit"><i class="fa fa-trash-o"></i> Delete</button></a>
+                    <button class="dlt-btn" onclick="confirmation('<?=base_url()?>employer/delete_job_profile_question/<?=$question->job_profile_id?>/<?=$question->job_profile_question_id?>','Do you want to delete the question?')"><i class="fa fa-trash-o"></i> Delete</button>
                     </li>
                 </ul>
             </div>

@@ -144,13 +144,14 @@ input[type='text'].selectivity-multiple-input {
   float: left;
   line-height: 2em;
   margin: 2px;
-  padding-right: 5px;
+  padding-right: 10px;
   position: relative;
   -moz-user-select: none;
   -ms-user-select: none;
   -webkit-user-select: none;
   user-select: none;
-  white-space: nowrap; }
+  white-space: nowrap; 
+}
   .selectivity-multiple-selected-item.highlighted {
     background-color: #ccc; }
 

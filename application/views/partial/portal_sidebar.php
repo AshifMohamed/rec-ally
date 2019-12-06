@@ -87,15 +87,17 @@
                     </i><span class="menu-title">View Profile</span></a>
                        
                     </li> -->
-                     <li><a href="<?=base_url().$user_type;?>/job_profile"><i class="fa fa-eye">
-                        <div class="icon-bg bg-pink"></div>
-                        </i><span class="menu-title">Job Profile</span></a>
+                     <li><a href="<?=base_url().$user_type;?>/job_profile">
+                     <i class="fa fa-suitcase" aria-hidden="true">
+                            <div class="icon-bg bg-pink"></div>
+                        </i>
+                        <span class="menu-title">Job Profile</span></a>
                     </li> 
-                    <li><a href="<?=base_url().$user_type;?>/reports"><i class="fa fa-eye">
+                    <li><a href="<?=base_url().$user_type;?>/reports"><i class="fa fa-bar-chart" aria-hidden="true">
                         <div class="icon-bg bg-pink"></div>
                         </i><span class="menu-title">Reports</span></a>
                     </li>
-                    <li><a href="<?=base_url().$user_type;?>/settings"><i class="fa fa-eye">
+                    <li><a href="<?=base_url().$user_type;?>/settings"><i class="fa fa-cog" aria-hidden="true">
                         <div class="icon-bg bg-pink"></div>
                         </i><span class="menu-title">Settings</span></a>
                     </li>
@@ -107,7 +109,6 @@
                         <div class="icon-bg bg-pink"></div>
                         </i><span class="menu-title">Sent Messages</span></a>
                     </li>
-
                 </ul>
             <?php } ?>
         </div>

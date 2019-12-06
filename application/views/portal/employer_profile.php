@@ -9,7 +9,7 @@
                                 <div class="panel">
                                     <div class="panel-body">
                                         <div class="row">
-                                           <div class="col-md-12 col-sm-12 left-padding right-padding">
+                                           <div class="col-md-12 col-sm-12 left-padding">
                                                 <div class="col-md-3 col-sm-3 text-center">
                                                     <img class="img-responsive" src="<?=!empty($profile->company_logo)? base_url().'uploads/company_logos/'.$profile->company_logo: base_url().'assets/portal/images/clogo.jpg'?>">
                                                 </div>
@@ -21,7 +21,7 @@
                                                     <p><b>Email : </b> <span id="cn_email"><?=isset($contact->email) ? $contact->email : '' ?></p>
                                                 </div>                                                  
                                                 <div class="edit-delete pull-right">
-                                                    <ul><li><button class="edit-btn edit-basic-company-info" type="submit"><i class="fa fa-pencil-square-o"></i> Edit</button></li></ul>
+                                                    <ul><li><button class="edit-btn btn btn-blue edit-basic-company-info" type="submit"><i class="fa fa-pencil-square-o"></i> Edit</button></li></ul>
                                                 </div>
                                             </div>                                                      
                                         </div>
@@ -120,9 +120,9 @@
                                                         <div style="clear:both;"></div>
                                                     </div>
                                                      <div style="clear:both;"></div>
-                                                    <div class="form-group pull-right">
+                                                    <div class="form-group col-md-12 text-right">
                                                             <label class="control-label col-md-2 col-sm-2 col-xs-12"></label>
-                                                            <button class="info-save btn btn-info ">Save</button>&nbsp
+                                                            <button class="info-save btn btn-blue ">Save</button>&nbsp
                                                             <button class="btn btn-danger cancel-btn" type="button">Cancel</button>
                                                     </div>
                                                 </div>
@@ -201,7 +201,7 @@
                                                         <div style="clear:both;"></div>
                                                          <div class="form-group pull-right">
                                                                     <label class="control-label col-md-2 col-sm-2 col-xs-12"></label>
-                                                                    <button class="info-save  btn btn-info save-company-info" id="btn_save_representative" name="btn_save_representative">Save</button>&nbsp
+                                                                    <button class="info-save  btn btn-blue save-company-info" id="btn_save_representative" name="btn_save_representative">Save</button>&nbsp
                                                                     <button class="btn btn-danger cancel-btn" type="button">Cancel</button>
                                                          </div>
                                                     </div>
@@ -294,7 +294,7 @@
                                                      <div style="clear:both;"></div>
                                                         <div class="form-group pull-right">
                                                                 <label class="control-label col-md-2 col-sm-2 col-xs-12"></label>
-                                                                <button class="info-save  btn btn-info save-company-info" id="btn_save_company_registration_info" name="btn_save_company_registration_info">Save</button>&nbsp
+                                                                <button class="info-save  btn btn-blue save-company-info" id="btn_save_company_registration_info" name="btn_save_company_registration_info">Save</button>&nbsp
                                                                     <button class="btn btn-danger cancel-btn" type="button">Cancel</button>
 
                                                         </div>
@@ -337,7 +337,7 @@
 													<div style="clear:both;"></div>
 													<div class="form-group pull-right">
 															<label class="control-label col-md-2 col-sm-2 col-xs-12"></label>
-															<button class="info-save btn btn-info save-company-info" id="btn_save_about_company">Save</button>&nbsp
+															<button class="info-save btn btn-blue save-company-info" id="btn_save_about_company">Save</button>&nbsp
                                                             <button class="btn btn-danger cancel-btn" type="button">Cancel</button>
 													</div>
 												</div>

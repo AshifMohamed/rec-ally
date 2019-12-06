@@ -50,7 +50,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="form-actions text-right pal">
-                                                    <button class="btn btn-primary" type="submit">
+                                                    <button class="btn btn-blue" type="submit">
                                                         Search</button>
                                                 </div>
                                                 </form>

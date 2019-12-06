@@ -27,7 +27,7 @@
 													</thead>
 													<tbody>
 			                                            <?php foreach ($service as $key => $service) : ?>  
-																	<tr style="<?=$service_id->service_id == $service->id ? 'background : green' : '' ?>">
+																	<tr class="<?=$service_id->service_id == $service->id ? 'green-label' : '' ?>">
 																		<td><?=$service->id?></td>
 																		<td><?=$service->title?></td>
 																		<td><?=$service->no_of_months?></td>

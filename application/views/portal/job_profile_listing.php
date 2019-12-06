@@ -44,7 +44,7 @@
                                                             <a href="<?=has_job_expired($profile->close_date) ? base_url().'employer/job_profile/process_settings/'.$profile->job_profile_id : '#'?>" class="label <?=has_job_expired($profile->close_date) ? 'label-info' : 'label-default'?>">Process Feedback</a>
                                                             <a href="<?=has_job_expired($profile->close_date) ? base_url().'employer/job_profile/process/'.$profile->job_profile_id : '#'?>" class="label <?=has_job_expired($profile->close_date) ? 'label-info' : 'label-default'?>">Start Process</a>
                                                             <a href="<?=base_url()?>posting/<?=$profile->job_ref_no?>"  class="label label-info" target="_blank">View Posting</a>
-        												    <a href="<?=base_url()?>employer/delete_job_profile/<?=$profile->job_profile_id?>"  class="label label-info" onclick="if(confirm('Are you sure to delete it?')) return true; else return false;">Delete</a>
+        												    <button  class="label btn-danger-new" onclick="confirmation('<?=base_url()?>employer/delete_job_profile/<?=$profile->job_profile_id?>','Are you sure to delete it?')">Delete</button>
                                                         </td>
         											</tr>
                                                     <?php } ?>

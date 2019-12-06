@@ -60,6 +60,21 @@
   ga('create', 'UA-73721047-1', 'auto');
   ga('send', 'pageview');
 
+  // confirmation modal
+  function confirmation(url, message){
+        $("#dialog").dialog({
+            buttons : {
+                "Yes" : function() {
+                window.location.href = url;
+                },
+                "No" : function() {
+                $(this).dialog("close");
+                }
+            }
+            });
+            $("#dialog").html(message);
+            $("#dialog").dialog("open");
+    }
 </script>
 </body>
 </html>
