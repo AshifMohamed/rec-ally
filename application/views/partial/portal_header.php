@@ -26,6 +26,9 @@
     <link type="text/css" rel="stylesheet" href="<?=base_url();?>assets/portal/styles/pace.css">
     <link type="text/css" rel="stylesheet" href="<?=base_url();?>assets/portal/styles/jquery.news-ticker.css">
     <link type="text/css" rel="stylesheet" href="<?=base_url();?>assets/portal/styles/nestable.css">
+    <!-- Farshad added -->
+    <link type="text/css" rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap.min.css">
+    <link type="text/css" rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
     <script type="text/javascript">
         var base_url = '<?=base_url()?>';
     </script>

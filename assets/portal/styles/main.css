@@ -345,10 +345,12 @@ hr {
   color: #ffffff;
   height: 100%;
   width: 100%;
-  background-color: #343a40;
+  background-color: #667a8f;
   padding: 5px 18px;
 }
-
+#view_edit_polls {
+  margin-left: 15px;
+}
 .logo-span-txt{
   position: relative;
   top: -32px;
@@ -4876,15 +4878,28 @@ a.list-group-item.active > .badge,
   border: 1px solid #44c789;
   color: #44c789;
 }
-.btn-green-new {
-  background-color: #65d065;
+.btn-yellow-new, .btn-green-new, .btn-danger-new {
   background-image: none !important;
   border: 0;
   padding: 2px 7px 3px 7px;
-  color: #fff;
+  color: #fff!important;
   border-radius: 2px;
   font-size: 11px;
   outline: 0!important;
+  margin-left: 5px;;
+}
+.btn-yellow-new {
+ background-color: #f2994b;
+}
+.btn-green-new {
+  background-color: #65d065;
+}
+.btn-danger-new {
+  background-color: #bf4346;
+}
+.btn-danger-new:hover, .btn-green-new:hover, .btn-yellow-new:hover {
+  opacity: 0.9;
+  color:#fff;
 }
 .ui-widget-content {
   border: 0px solid #aaaaaa;

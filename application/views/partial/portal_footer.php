@@ -44,6 +44,11 @@
 <script src="<?=base_url();?>assets/portal/script/drilldown.js"></script>
 <script src="<?=base_url();?>assets/portal/script/exporting.js"></script>
 
+<!-- Farshad added this -->
+<script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+
 <!--CORE JAVASCRIPT-->
 <script src="<?=base_url();?>assets/portal/script/main.js"></script>
 <script>

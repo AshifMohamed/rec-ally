@@ -1,8 +1,6 @@
 <?php $this->load->view('partial/portal_header.php'); ?>
 <?php //$this->load->view('partial/portal_sidebar.php'); ?>
 <?php $this->load->view('partial/portal_breadcrumbs.php'); ?>
-<link type="text/css" rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap.min.css">
-<link type="text/css" rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 <style>
     #canvas .circle {
@@ -27,7 +25,7 @@
     }
 </style>
 <div id="dialog" title="Confirmation">  
-    Are you sure to activate this company?
+    
 </div>
 <!--BEGIN CONTENT-->
 <div class="page-content admin">
@@ -148,7 +146,7 @@
                                                     data-service_id="<?= $company->service_id ?>"
                                                     data-toggle="modal">View</a></td>
 
-                                                <td><button class="btn-green-new" onclick="approveCompany('<?= base_url() . ADMIN_PATH_NAME ?>/approve_company?id=<?= $company->user_profile_id ?>');">Approve</button>
+                                                <td><button class="btn-green-new" onclick="confirmation('<?= base_url() . ADMIN_PATH_NAME ?>/approve_company?id=<?= $company->user_profile_id ?>','Are you sure to activate this company?');">Approve</button>
                                                     <!-- &nbsp;<label class="label label-danger">Decline</label> -->
                                                 </td>
                                             </tr>
@@ -242,10 +240,8 @@
                                                 <td><?= $candidate->email ?></td>
                                                 <td><?= ucwords($candidate->method) ?></td>
                                                 <td><?= $last_reminded[0] ?></td>
-                                                <td><label class="label label-success"><a
-                                                                href="<?= base_url() . ADMIN_PATH_NAME ?>/remind_candidate?email=<?= $candidate->email ?>&name=<?= ucwords($candidate->first_name . ' ' . $candidate->last_name) ?>"
-                                                                onclick="if(confirm('Are you sure to send an activation link?')) return true; else return false;">Send
-                                                            Email</a></label>
+                                                <td><button class="btn-new-green" onclick="confirmation('<?= base_url() . ADMIN_PATH_NAME ?>/remind_candidate?email=<?= $candidate->email ?>&name=<?= ucwords($candidate->first_name . ' ' . $candidate->last_name) ?>' , 'Are you sure to send an activation link?')">Send
+                                                            Email</button>
                                                     <!-- &nbsp;<label class="label label-danger">Decline</label> -->
                                                 </td>
                                             </tr>
@@ -298,7 +294,7 @@
                                                        data-content="<?= $request->message ?>">View Message</a>
                                                 </td>
                                                 <td><?= $request->date ?></td>
-                                                <td> <button class="label btn btn-danger label-red" onClick="delete_contact_request(<?= $request->contact_email_id ?>,this)">Delete</button>
+                                                <td> <button class="btn-danger-new" onClick="delete_contact_request(<?= $request->contact_email_id ?>,this)">Delete</button>
                                                 </td>
                                             </tr>
                                         <?php endforeach; ?>
@@ -374,9 +370,8 @@
                                                             <td width="15%">
                                                                 <span class="label label-primary edit_poll"
                                                                       data-id="<?= $poll->poll_id ?>">Edit</span>&nbsp;
-                                                                <span class="label label-danger"> <a
-                                                                            onclick="if(confirm('Are you sure to delete it?')) return true; else return false;"
-                                                                            href="<?= base_url() . ADMIN_PATH_NAME ?>/delete_poll/<?= $poll->poll_id ?>">Delete</a></span>
+                                                                <button class="btn-danger-new" onclick="confirmation('<?= base_url() . ADMIN_PATH_NAME ?>/delete_poll/<?= $poll->poll_id ?>' , 'Are you sure to delete it?')"
+                                                                            href="">Delete</button>
                                                             </td>
                                                         </tr>
                                                     <?php endforeach; ?>
@@ -726,11 +721,9 @@
                                                         <td class="hidden"><?= $company->user_profile_id ?></td>
                                                         <td><?= $company->registered_date ?></td>
                                                         <td width="20%">
-                                                            <a href="<?= base_url() . ADMIN_PATH_NAME ?>/login_to_account/<?= $company->user_profile_id ?>?type=employer"
-                                                               onclick="if(confirm('Are you sure to sign into the selected account?')) return true; else return false;"><span
-                                                                        class="label label-yellow">Login</span></a>
+                                                            <button class="btn-yellow-new" onclick="confirmation('<?= base_url() . ADMIN_PATH_NAME ?>/login_to_account/<?= $company->user_profile_id ?>?type=employer','Are you sure to sign into the selected account?')">Login</button>
                                                             <!-- <span class="label label-info">View Profile</span> -->
-                                                            <button class="label label-red" onClick="delete_company(<?= $company->user_profile_id ?>,this)">Delete</button>
+                                                            <button class="btn btn-danger-new" onClick="delete_company(<?= $company->user_profile_id ?>,this)">Delete</button>
                                                             
                                                             
                                                             <div class="pull-right">
@@ -1284,9 +1277,6 @@
     /*.carousel .item .portlet{margin-right:15px;}*/
 </style>
 <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
-<script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
-<script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
 <script src="<?= base_url() ?>assets/portal/script/circles.min.js"></script>
 <link rel="stylesheet" href="<?= base_url() ?>assets/portal/styles/toggles.css">
 <link rel="stylesheet" href="<?= base_url() ?>assets/portal/styles/toggles-light.css">
@@ -2152,7 +2142,7 @@
                     //console.log(row.country );
                     if (row.country == null)
                         row.country = '';
-                    $('<tr><td>' + row.first_name + ' ' + row.last_name + '</td><td>' + row.login_email + '</td><td class="hidden">' + row.user_profile_id + '</td><td>' + row.country + '</td><td>' + row.registered_date + '</td><td width="14%"><a style="margin-right:10px;" href="' + admin_path + '/login_to_account/' + row.user_profile_id + '?type=candidate" onclick="if(confirm(\'Are you sure to sign into the selected account?\')) return true; else return false;"><span class="label label-yellow">Login</span></a><a href="' + admin_path + '/delete_profile?id=' + row.user_profile_id + '" onclick="if(confirm(\'Are you sure to delete the account?\')) return true; else return false;"><span class="label label-red">Delete</span></a><div class="toggle-candidate account_status toggle-blue pull-right" data-toggle="tooltip" data-original-title="Active/Deactive" data-href="' + admin_path + '/update_profile_status?id=' + row.user_profile_id + '>&status=' + is_active + '"></div><input id="is_candidate_active" name="is_candidate_active" class="hidden" type="checkbox" value="' + is_active + '" ' + is_checked + '/></td></tr>').appendTo('#candidates_table tbody');
+                        $('<tr><td>' + row.first_name + ' ' + row.last_name + '</td><td>' + row.login_email + '</td><td class="hidden">' + row.user_profile_id + '</td><td>' + row.country + '</td><td>' + row.registered_date + '</td><td width="14%"><a style="margin-right:10px;" href="' + admin_path + '/login_to_account/' + row.user_profile_id + '?type=candidate" onclick="if(confirm(\'Are you sure to sign into the selected account?\')) return true; else return false;"><span class="label label-yellow">Login</span></a><a href="' + admin_path + '/delete_profile?id=' + row.user_profile_id + '" onclick="if(confirm(\'Are you sure to delete the account?\')) return true; else return false;"><span class="label label-red">Delete</span></a><div class="toggle-candidate account_status toggle-blue pull-right" data-toggle="tooltip" data-original-title="Active/Deactive" data-href="' + admin_path + '/update_profile_status?id=' + row.user_profile_id + '>&status=' + is_active + '"></div><input id="is_candidate_active" name="is_candidate_active" class="hidden" type="checkbox" value="' + is_active + '" ' + is_checked + '/></td></tr>').appendTo('#candidates_table tbody');
                 });
                 $('#candidates_table').DataTable();
                 set_toggles('.toggle-candidate');
@@ -2201,32 +2191,40 @@
             // <a href="<?= base_url() . ADMIN_PATH_NAME ?>/delete_company?id=<?= $company->user_profile_id ?>"onclick="if(confirm(\'Are you sure to delete the account?\')) return true; else return false;"><span class="label label-red">Delete</span></a>
 
 
-            if(confirm('Are you sure to delete the account?'))
-            {
-                $.ajax({
-                url: '<?=base_url() . ADMIN_PATH_NAME?>/delete_company' + '?' + $.param({"id": id}),
-                dataType: 'json',
-                type: 'DELETE',
-                success: function (res) {
-                    
-                    if(res == "Success")
-                    {
-                        var myTable = $('#information_requests').DataTable();
-                        if (typeof(row) == "object") {
-                           let tr = $(row).closest("tr").get(0);
-                           myTable.row( tr ).remove().draw( false );
-                           toastr.success("Company Deleted Successfully");
-                        }
-                    }
-                    else{
-                        toastr.warning("Could not delete the company. Please make sure a request has been selected")
-                    }
+            $("#dialog").dialog({
+            buttons : {
+                "Yes" : function() {
+                    $.ajax({
+                        url: '<?=base_url() . ADMIN_PATH_NAME?>/delete_company' + '?' + $.param({"id": id}),
+                        dataType: 'json',
+                        type: 'DELETE',
+                        success: function (res) {
+                            
+                            if(res == "Success")
+                            {
+                                var myTable = $('#information_requests').DataTable();
+                                if (typeof(row) == "object") {
+                                let tr = $(row).closest("tr").get(0);
+                                myTable.row( tr ).remove().draw( false );
+                                toastr.success("Company Deleted Successfully");
+                                }
+                            }
+                            else{
+                                toastr.warning("Could not delete the company. Please make sure a request has been selected")
+                            }
+                        },
+                        error: function (err) {
+                            toastr.error("Could not delete the company. Please try again later");
+                        },
+                        });
                 },
-                error: function (err) {
-                    toastr.error("Could not delete the company. Please try again later");
-                },
-                });
+                "No" : function() {
+                $(this).dialog("close");
+                }
             }
+            });
+            $("#dialog").html("Are you sure to delete the account");
+            $("#dialog").dialog("open");
         }
 
 </script>
@@ -2273,7 +2271,7 @@
         statusbar: false,
     });
 
-    function approveCompany(url){
+    function confirmation(url, message){
         $("#dialog").dialog({
             buttons : {
                 "Yes" : function() {
@@ -2284,7 +2282,7 @@
                 }
             }
             });
-
+            $("#dialog").html(message);
             $("#dialog").dialog("open");
     }
 </script>
