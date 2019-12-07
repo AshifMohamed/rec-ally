@@ -741,11 +741,12 @@ class Admin extends CI_Controller
 		if(isset($user_profile_id))
 		{
 			$this->account_model->updata_record('user_profile','user_profile_id',array('user_profile_id'=>$user_profile_id,'is_active'=>0,'is_deleted'=>1));
-			set_message('The campany has been delete successfully','alert-success');
+			$data['message'] = "Success";
 		}
 		else
-			set_message('Please make sure the account has been selected','alert-danger');
-		redirect(base_url().ADMIN_PATH_NAME,'refresh');
+		$data['message'] = "Failed";
+		print json_encode($data['message']);
+		exit;
 	}
 
 	public function delete_info_request()

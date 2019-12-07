@@ -76,6 +76,83 @@
             $("#dialog").dialog("open");
     }
 </script>
+<script>
+    $(document).ready(function () {
 
+        let base_path = '<?=base_url()?>';
+        let ad_image_path = '/uploads/advertisements/';
+        let default_image = base_path+ad_image_path+'default_ad.jpg';
+        let count = 0;
+        let ad_obj = [];
+        if ( $( "#ad_banner" ).length ) {
+            // console.log("Haveeeeeeeeeeeeeee");
+            get_advertisements();
+        }
+
+        function rotateImage()
+        {
+            let img_url = default_image;
+
+            if(ad_obj)
+            {
+                if(count >= ad_obj.length ) 
+                    count = 0;
+                console.log("Called ",count)
+               console.log(ad_obj[count].image_name)
+                img_url = base_path+ad_image_path+ad_obj[count].image_name;
+                swapImages(img_url,ad_obj[count].time * 3600000);
+            }
+            else
+            {
+                setDefaultImage();
+            } 
+            count++;  
+        }
+
+        function swapImages(img_url,timeout){
+            $('#ad_banner').attr('src',img_url);  
+            setTimeout(function() {
+                rotateImage();
+            }, timeout);
+        }
+
+        function setDefaultImage(){
+            $('#ad_banner').attr('src',default_image);         
+        }
+
+        function get_advertisements()
+        {
+            let post_path = base_path +'/get_advertisements';
+            $.ajax({
+				type:'GET', 
+				url:post_path,
+                dataType: 'json',
+				success:function(result){
+                    if(result.length == 0)
+                    {
+                        setDefaultImage();
+                    }
+                    else
+                    {
+                        ad_obj = result;
+                        console.log(ad_obj)
+                        count =  getRandomArbitrary(0,ad_obj.length);
+                        rotateImage();
+                    }
+				},
+				error:function(err){
+
+				}, 
+			});
+        }
+
+        function getRandomArbitrary(min, max) 
+        {
+            return Math.floor(Math.random() * (max - min) + min);
+        }
+
+    });
+
+</script>
 </body>
 </html>
