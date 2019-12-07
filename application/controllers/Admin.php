@@ -242,6 +242,7 @@ class Admin extends CI_Controller
 			$data['advertisements'] = $this->account_model->get_all_advertisements();
 			$data['job_profiles'] = $this->account_model->get_job_profiles_for_admin();
 
+			echo $data['active_companies_registered'] ;
             // $data['polls_results'] = $this->account_model->get_contact_us_requests();
             // print_r($data['companies_pending_approval']);exit;
             $this->load->view('/'.ADMIN_PATH_NAME.'/dashboard',$data);
