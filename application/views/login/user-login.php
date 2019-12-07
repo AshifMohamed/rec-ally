@@ -111,10 +111,9 @@
         </div>
         
         <div class="login-links">
-            <a class="pull-left" href="<?php echo base_url().'forgot_password'; ?>">Forget Password?</a>
+            <a class="pull-left" href="<?php echo base_url().'forgot_password'; ?>">Forgot Password?</a>
             <a class="pull-right" href="<?php echo base_url().'register'; ?>">Register an account</a>
         </div>
-        
     </main>
     
     <!-- Modal -->
