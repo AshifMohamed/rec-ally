@@ -38,9 +38,9 @@
 															<input id="cv_video" name="cv_video" type="file" >
                               </div>
 												</div>
-                        <div class="form-group pull-right">
+                        <div class="form-group text-right mb-0">
 															<label class="control-label col-md-2 col-sm-2 col-xs-12"></label>
-															<button class="info-save  btn btn-info" id="save_cv_video">Upload</button>&nbsp
+                              <button class="info-save btn btn-blue" id="save_cv_video">Upload</button>
 													</div>
                         </form>
                         </div>

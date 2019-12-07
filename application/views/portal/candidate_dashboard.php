@@ -7,7 +7,7 @@
                 <div id="sum_box" class="row mbl">
                     <div class="col-sm-6 col-md-3 block-space">
                         <a href="<?=base_url()?>candidate/application_status">
-                        <div class="panel profit db mbm">
+                        <div class="small-box profit db mbm">
                             <div class="panel-body">
                                 <p class="icon">
                                     <i class="icon fa fa-file-o"></i>
@@ -28,7 +28,7 @@
                             </div>
                             <div class="col-sm-6 col-md-3 block-space">
                                 <a href="<?=base_url()?>candidate/recommended_jobs">
-                                <div class="panel income db mbm">
+                                <div class="small-box income db mbm">
                                     <div class="panel-body">
                                         <p class="icon">
                                             <i class="icon fa fa-suitcase"></i>
@@ -48,7 +48,7 @@
                                     </div>
                                     <div class="col-sm-6 col-md-3 block-space">
                                     <a href="<?=base_url()?>candidate/visibility">
-                                        <div class="panel task db mbm">
+                                        <div class="small-box task db mbm">
                                             <div class="panel-body">
                                                 <p class="icon">
                                                     <i class="icon fa fa-eye"></i>
@@ -68,7 +68,7 @@
                                             </div>
                                             <div class="col-sm-6 col-md-3">
                                             <a href="<?=base_url()?>candidate/application_history">
-                                                <div class="panel visit db mbm">
+                                                <div class="small-box visit db mbm">
                                                     <div class="panel-body">
                                                         <p class="icon">
                                                             <i class="icon fa fa-history"></i>
@@ -91,13 +91,13 @@
                                                     <div class="col-lg-9 block-space">
                                                         <div class="panel">
                                                             <div class="panel-body">
-                                                                <div class="row">
-                                                                 <div class="col-md-9 col-sm-9 left-padding right-padding">
-                                                                    <div class="col-md-3 col-sm-3">
+                                                                <div class="">
+                                                                 <div class="col-md-8 col-sm-9 left-padding right-padding">
+                                                                    <div class="col-md-3 col-sm-3 left-padding">
                                                                        <img class="img-responsive" src="<?=(!empty($profile->profile_pic_name)) ? base_url().'uploads/candidate_profiles/'.$profile->profile_pic_name : base_url().'assets/portal/images/avatar.png'?>">
                                                                    </div>
-                                                                   <div class="col-md-5 col-sm-5">
-                                                                        <h4><span id="cn_first_name"><?=isset($profile->first_name) ? $profile->first_name.'</span> <span id="cn_last_name">'.$profile->last_name : ''?></span></h4>
+                                                                   <div class="col-md-5 col-sm-5 left-padding">
+                                                                        <h4 class="mt-0"><span id="cn_first_name"><?=isset($profile->first_name) ? $profile->first_name.'</span> <span id="cn_last_name">'.$profile->last_name : ''?></span></h4>
                                                                         <p><b>Position</b> <span id="cn_experience"><?=!empty($experiences) ? $experiences[count($experiences) - 1]->position : '-'?></span></p>
                                                                         <p><b>Nationality</b> <span id="cn_nationality"><?=isset($profile->nationality) ? $profile->nationality : '-'?></span></p>
                                                                         <p><b>Address</b> <?=!empty($address) ? '<span id="cn_building_no">'.$address->building_no.',</span> <span id="cn_building_name">'.$address->building_name.',</span> <span id="cn_street">'.$address->street.',</span>  <span id="cn_city">'.$address->city.',</span> <span id="cn_country">'.$address->country.'</span>' : '-'?></p>
@@ -105,7 +105,7 @@
                                                                         <p id="cn_email"><?=isset($contact->email)? $contact->email :'-'?></p> -->
                                                                     </div>
                                                                 </div>	
-                                                                <div class="col-md-3 col-sm-3 pull-right">
+                                                                <div class="col-md-4 col-sm-3 text-right right-padding">
                                                                     <div class="invite-links">
                                                                        <p><a href="#">Conenct to facebook</a></p>
                                                                        <p><a href="#">Invite Friends</a></p>										
