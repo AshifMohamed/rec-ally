@@ -31,7 +31,7 @@
                                 <div class="small-box income db mbm">
                                     <div class="panel-body">
                                         <p class="icon">
-                                            <i class="icon fa fa-suitcase"></i>
+                                            <i class="icon fa fa-file"></i>
                                         </p>
                                         <h4 class="value">
                                             <span>5</span></h4>
