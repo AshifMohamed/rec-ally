@@ -184,6 +184,7 @@ $route[ADMIN_PATH_NAME.'/login_to_account/(:num)']              = "Admin/login_t
 $route[ADMIN_PATH_NAME.'/delete_profile']                       = "Admin/delete_profile";
 $route[ADMIN_PATH_NAME.'/get_employers']                        = "Admin/get_employers";
 $route[ADMIN_PATH_NAME.'/get_candidates']                       = "Admin/get_candidates";
+$route[ADMIN_PATH_NAME.'/get_candidates_dt']                    = "Admin/get_candidates_dt";
 $route[ADMIN_PATH_NAME.'/delete_company']                       = "Admin/delete_company";
 $route[ADMIN_PATH_NAME.'/delete_info_request']                  = "Admin/delete_info_request";
 $route[ADMIN_PATH_NAME.'/save_advertisement']                   = "Admin/save_advertisement";

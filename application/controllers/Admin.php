@@ -13,6 +13,7 @@ class Admin extends CI_Controller
 		$this->verify_access();
 		$this->load->model('account_model');
 		$this->load->model('configuration_model');
+		// print 1;exit;
 		// print_r($this->session->userdata())	;exit; 
 	}
 
@@ -25,6 +26,29 @@ class Admin extends CI_Controller
 		}
 	}
 
+	public function get_candidates_dt()
+	{
+		// print '<pre>';print_r($this->input->get());exit;
+		// exit;
+		$current_page = $this->input->get('page'); 
+		$length =  $this->input->get('length'); 
+		$offset = $this->input->get('start'); 
+		$draw = $this->input->get('draw'); 
+		$candidates_registered = $this->account_model->get_candidates_dt(null,$length,$offset);
+		$total_candidates = $this->account_model->get_candidates_count(true);
+		$candidates_dt = array(
+			'draw'=> $draw,
+			'recordsTotal'=> $total_candidates,
+			'recordsFiltered' => $total_candidates,
+		);
+		$data = [];
+		foreach ($candidates_registered as $key => $candidate) {
+			$data[] = [$candidate->user_profile_id,$candidate->first_name.' '.$candidate->last_name,$candidate->login_email,$candidate->country,$candidate->registered_date,''];
+		}
+		$candidates_dt['data'] = $data;
+		print json_encode($candidates_dt);exit; 
+	}
+
 	public function index()
 	{
             $newsletter_id = $this->input->get('newsletter_selected_id');
@@ -33,7 +57,7 @@ class Admin extends CI_Controller
             $data['active_candidates_registered'] = $this->account_model->get_candidates_count(true);
             $data['active_companies_registered'] = $this->account_model->get_employers_count(true);
             $data['companies_registered'] = $this->account_model->get_employers();
-            $data['candidates_registered'] = $this->account_model->get_candidates();
+            // $data['candidates_registered'] = $this->account_model->get_candidates(); // COMMENTED AS NOT USED
             $data['administrators'] = $this->account_model->get_administrators();
             // print_r($data['candidates_registered']);exit;
             $data['average_logins'] = $this->account_model->get_average_logins_per_today();

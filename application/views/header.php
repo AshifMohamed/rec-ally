@@ -110,4 +110,6 @@
             </div>
         </nav>
         <!-- END Navigation bar -->
-    <div id="global_notification" class="alert <?php if($this->session->status) echo $this->session->status; else echo 'hidden';?>" role="alert"><?php if($this->session->message) echo $this->session->message?></div>
+        <div class="messageBox">
+            <div id="global_notification" style="display:block;" class="alert <?php if($this->session->status) echo $this->session->status; else echo 'hidden';?>" role="alert"><?php if($this->session->message) echo $this->session->message?></div>
+        </div>
