@@ -17,7 +17,7 @@
 												<div class="col-md-4 col-sm-4">
 													<img class="img-responsive pro-img" src="<?=(!empty($profile->portrait_pic_name)) ? base_url().'uploads/candidate_profiles/'.$profile->portrait_pic_name : base_url().'assets/portal/images/ava-big.png'?>">
 												</div>
-												<div class="col-md-4 col-sm-4 section-content"> 
+												<div class="col-md-5 col-sm-4 section-content"> 
 													<h4 ><span id="cn_first_name"><?=isset($profile->first_name) ? $profile->first_name.'</span> <span id="cn_last_name">'.$profile->last_name : ''?></span></h4>
 													<p><b>Experience : </b> <span id="cn_experience"><?=!empty($experiences) ? $experiences[count($experiences) - 1]->position : '-'?></span> </p>
 													<p><b>Address : </b><?=!empty($address) ? '<span id="cn_building_no">'.$address->building_no.'</span> <span id="cn_building_name">'.$address->building_name.'</span> <span id="cn_city">'.$address->city.'</span> <span id="cn_street">'.$address->street.'</span> <span id="cn_country">'.$address->country.'</span>' : '-'?></p>
@@ -38,7 +38,7 @@
 													<img class="img-responsive pro-img" src="<?=base_url().'uploads/candidate_profiles/'.$profile->passport_copy_name ?>">	
 													<?php } ?>
 												</div>												
-												<div class="edit-delete">
+												<div class="edit-delete col-md-12 text-right">
 													<ul><li><button class="edit-btn edit-basic-profile-info" type="submit"><i class="fa fa-pencil-square-o"></i> Edit</button></li></ul>
 												</div>
 											</div>														
@@ -219,7 +219,7 @@
 													</div>
 													<div class="form-group pull-right">
 															<label class="control-label col-md-2 col-sm-2 col-xs-12"></label>
-															<button class="info-save btn btn-info" id="save_basic_profile_info" name="save_basic_profile_info">Save</button>&nbsp
+															<button class="info-save btn btn-blue" id="save_basic_profile_info" name="save_basic_profile_info">Save</button>&nbsp
 															<button class="btn btn-danger cancel-btn" type="button">Cancel</button>
 													</div>
 													<div style="clear:both;"></div>
@@ -331,7 +331,7 @@
 													<div style="clear:both;"></div>
 													<div class="form-group pull-right">
 															<label class="control-label col-md-2 col-sm-2 col-xs-12"></label>
-															<button type="button" class="info-save  btn btn-info" id="btn_save_profile_contact_info">Save</button>&nbsp
+															<button type="button" class="info-save  btn btn-blue" id="btn_save_profile_contact_info">Save</button>&nbsp
 															<button class="btn btn-danger cancel-btn" type="button">Cancel</button>
 													</div>
 												</div>
@@ -374,7 +374,7 @@
 													<div style="clear:both;"></div>
 													<div class="form-group pull-right">
 															<label class="control-label col-md-2 col-sm-2 col-xs-12"></label>
-															<button class="info-save btn btn-info" id="btn_save_about_you">Save</button>&nbsp
+															<button class="info-save btn btn-blue" id="btn_save_about_you">Save</button>&nbsp
 															<button class="btn btn-danger cancel-btn" type="button">Cancel</button>
 													</div>
 												</div>
@@ -452,7 +452,7 @@
 													<div style="clear:both;"></div>
 													<div class="form-group pull-right">
 															<label class="control-label col-md-2 col-sm-2 col-xs-12"></label>
-															<button class="info-save  btn btn-info save-candidate-info" id="save_salary_notice_period">Save</button>&nbsp
+															<button class="info-save  btn btn-blue save-candidate-info" id="save_salary_notice_period">Save</button>&nbsp
 															<button class="btn btn-danger cancel-btn" type="button">Cancel</button>
 													</div>
 												</div>
@@ -666,7 +666,7 @@
 													<div style="clear:both;"></div>
 													<div class="form-group pull-right">
 															<label class="control-label col-md-2 col-sm-2 col-xs-12"></label>
-															<button class="info-save  btn btn-info save-candidate-info" id="btn_save_job_target">Save</button>&nbsp
+															<button class="info-save  btn btn-blue save-candidate-info" id="btn_save_job_target">Save</button>&nbsp
 															<button class="btn btn-danger cancel-btn" type="button">Cancel</button>
 													</div>
 												</div>
@@ -782,7 +782,7 @@
 												<div style="clear:both;"></div>
 												<div class="form-group pull-right">
 														<label class="control-label col-md-2 col-sm-2 col-xs-12"></label>
-														<button class="info-save btn btn-info save-candidate-info" id="save_education">Save</button>&nbsp
+														<button class="info-save btn btn-blue save-candidate-info" id="save_education">Save</button>&nbsp
 														<button class="btn btn-danger cancel-btn" type="button">Cancel</button>
 												</div>
 											</div>
@@ -948,7 +948,7 @@
 													<div style="clear:both;"></div>
 													<div class="form-group pull-right">
 															<label class="control-label col-md-2 col-sm-2 col-xs-12"></label>
-															<button class="info-save  btn btn-info save-candidate-info" id="save_experience">Save</button>&nbsp
+															<button class="info-save  btn btn-blue save-candidate-info" id="save_experience">Save</button>&nbsp
 															<button class="btn btn-danger cancel-btn" type="button">Cancel</button>
 													</div>
 												</div>
@@ -1030,7 +1030,7 @@
 												<div style="clear:both;"></div>
 													<div class="form-group pull-right">
 															<label class="control-label col-md-2 col-sm-2 col-xs-12"></label>
-															<button class="info-save  btn btn-info save-candidate-info" id="save_certification">Save</button>&nbsp
+															<button class="info-save  btn btn-blue save-candidate-info" id="save_certification">Save</button>&nbsp
 															<button class="btn btn-danger cancel-btn" type="button">Cancel</button>
 													</div>
                                     	</div>
@@ -1096,7 +1096,7 @@
 													<div style="clear:both;"></div>
 													<div class="form-group pull-right">
 															<label class="control-label col-md-2 col-sm-2 col-xs-12"></label>
-															<button class="info-save  btn btn-info save-candidate-info" id="save_language">Save</button>&nbsp
+															<button class="info-save  btn btn-blue save-candidate-info" id="save_language">Save</button>&nbsp
 															<button class="btn btn-danger cancel-btn" type="button">Cancel</button>
 													</div>
 												</div>
@@ -1175,7 +1175,7 @@
 													<div style="clear:both;"></div>
 													<div class="form-group pull-right">
 															<label class="control-label col-md-2 col-sm-2 col-xs-12"></label>
-															<button class="info-save  btn btn-info save-candidate-info" id="save_membership">Save</button>&nbsp
+															<button class="info-save  btn btn-blue save-candidate-info" id="save_membership">Save</button>&nbsp
 															<button class="btn btn-danger cancel-btn" type="button">Cancel</button>
 													</div>
 												</div>
@@ -1247,7 +1247,7 @@
 												<div style="clear:both;"></div>
 													<div class="form-group pull-right">
 															<label class="control-label col-md-2 col-sm-2 col-xs-12"></label>
-															<button class="info-save  btn btn-info save-candidate-info" id="save_training">Save</button>&nbsp
+															<button class="info-save  btn btn-blue save-candidate-info" id="save_training">Save</button>&nbsp
 															<button class="btn btn-danger cancel-btn" type="button">Cancel</button>
 													</div>
                                     	</div>
@@ -1276,7 +1276,7 @@
 													<ul>
 														<li><i class="fa fa-file-image-o"></i>  <a data-toggle="modal" data-target="#improveCvModal" href="#">How to improve Profile</a></li>
 														<li><i class="fa fa-list-alt"></i> <a data-toggle="modal" data-target="#myModal2" href="#"> View a sample Profile</a></li>							
-														<li><a target="_blank" href="<?=base_url('candidate/view_candidate')?>"><button type="submit" class="btn btn-primary cv-btn">
+														<li><a target="_blank" href="<?=base_url('candidate/view_candidate')?>"><button type="submit" class="btn btn-blue cv-btn">
                                                         Preview my Profile</button></a></li>							
 													</ul>
 												</div>

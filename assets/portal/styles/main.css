@@ -52,6 +52,12 @@ figure {
 img {
   vertical-align: middle;
 }
+.mt-0 {
+  margin-top: 0;
+}
+.mb-0 {
+  margin-bottom: 0;
+}
 .left-padding{
 	padding-left:0px!important;
 }
@@ -1367,12 +1373,14 @@ color:#FFF;
   position: absolute;
   top: -1px;
   left: 40px;
-  padding: 13px 13px 13px 15px;
+  padding: 10px 13px 11px 15px;
   margin-left: -1px;
   color: #FFF;
   background-color: #9db2c2;
 }
-
+.admin .block-space {
+  padding-right: 15px;
+}
 .left-side-collapsed .navbar-static-side ul#side-menu li ul.nav-second-level {
   display: none;
   position: absolute;
@@ -5467,6 +5475,7 @@ fieldset[disabled] .btn-yellow.active {
   color: #fff;
   background-color: #0298d0;
   border: 1px solid #0298d0;
+  text-transform: capitalize;
 }
 .btn-blue:hover,
 .btn-blue:focus,
