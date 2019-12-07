@@ -34,6 +34,9 @@
     </script>
 </head>
 <body>
+    <div id="dialog" title="Confirmation">  
+        <!-- Messaage generated depends on confirmation onclick -->
+    </div>
     <div>
         <!--BEGIN BACK TO TOP-->
         <a id="totop" href="#"><i class="fa fa-angle-up"></i></a>

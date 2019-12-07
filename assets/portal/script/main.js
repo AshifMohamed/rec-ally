@@ -667,12 +667,12 @@ $(function () {
         form.find('#question').text(section_content.find('.cn-question').text().trim());
         form.find('#job_profile_question_id').val(section_content.find('#cn_job_profile_question_id').val());
     }); 
-    $('.delete-question').click(function(){
-        var result = confirm('Do you want to delete the question?');
-        if(result)
-            return true;
-        return false;  
-    });
+    // $('.delete-question').click(function(){
+    //     var result = confirm('Do you want to delete the question?');
+    //     if(result)
+    //         return true;
+    //     return false;  
+    // });
 
     $('.add-question').click(function(){
         var form = $('#question_profile_form');

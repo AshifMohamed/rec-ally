@@ -24,9 +24,7 @@
         padding-right: 0 !important;
     }
 </style>
-<div id="dialog" title="Confirmation">  
-    
-</div>
+
 <!--BEGIN CONTENT-->
 <div class="page-content admin">
     <div id="tab-general">
@@ -2256,18 +2254,5 @@
         statusbar: false,
     });
 
-    function confirmation(url, message){
-        $("#dialog").dialog({
-            buttons : {
-                "Yes" : function() {
-                window.location.href = url;
-                },
-                "No" : function() {
-                $(this).dialog("close");
-                }
-            }
-            });
-            $("#dialog").html(message);
-            $("#dialog").dialog("open");
-    }
+    
 </script>
