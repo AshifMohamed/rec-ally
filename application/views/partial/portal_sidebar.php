@@ -32,7 +32,7 @@
                 </li>
                 <li>
                     <a href="<?=base_url().$user_type;?>/saved_jobs">
-                        <i class="fa fa-eye">
+                        <i class="fa fa-file">
                             <div class="icon-bg bg-pink"></div>
                         </i>
                         <span class="menu-title">Saved Positions</span>
@@ -40,7 +40,7 @@
                 </li>
                 <li>
                     <a href="<?=base_url().$user_type;?>/settings">
-                        <i class="fa fa-eye">
+                        <i class="fa fa-gear">
                             <div class="icon-bg bg-pink"></div>
                         </i>
                         <span class="menu-title">Settings</span>
