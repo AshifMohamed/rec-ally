@@ -311,7 +311,7 @@ class Account_model extends CI_Model
 	public function get_employers_count($is_active=null)
 	{
 		$this->db->query("set sql_big_selects=1");
-		$this->db->select('co.*,a.*,c.*,up.*,l.email as login_email');
+		$this->db->select('co.*');
 		$this->db->from('company_profile co');
 		$this->db->join('user_profile up', 'up.user_profile_id = co.user_profile_id');
 		$this->db->join('login l', 'l.login_id = up.login_id');
@@ -324,8 +324,9 @@ class Account_model extends CI_Model
 			$this->db->where('up.is_active', $is_active);
 		$this->db->group_by('co.company_profile_id');
 		//print $this->db->get_compiled_select();exit;
-		$query = $this->db->get();
-		return $this->db_results_fn($query);
+		return $this->db->count_all_results();
+		// $query = $this->db->get();
+		// return $this->db_results_fn($query);
 	}
 
 	public function get_employers($is_active=null)
@@ -344,6 +345,30 @@ class Account_model extends CI_Model
 			$this->db->where('up.is_active', $is_active);
 		$this->db->group_by('co.company_profile_id');
 		$query = $this->db->get();
+		return $this->db_results_fn($query);
+	}
+
+	public function get_candidates_dt($is_active=null,$limit=0,$offset=0)
+	{
+		$this->db->query("set sql_big_selects=1");
+		$this->db->select('ca.first_name,ca.last_name,up.user_profile_id,up.is_active,up.registered_date,l.email as login_email,cy.country'); //a.*,c.*,cy.country,
+		$this->db->from('candidate_profile ca');
+		$this->db->join('user_profile up', 'up.user_profile_id = ca.user_profile_id');
+		$this->db->join('login l', 'l.login_id = up.login_id');
+		$this->db->join('address_profile_map apm', 'apm.user_profile_id = ca.user_profile_id','left');
+		$this->db->join('address a', 'a.address_id = apm.address_id','left');
+		//$this->db->join('contact_profile_map cpm', ' cpm.user_profile_id = ca.user_profile_id','left');
+		//$this->db->join('contact c', 'c.contact_id = cpm.contact_id','left');
+		$this->db->join('country cy', 'cy.country_id = a.country_id','left');
+		$this->db->where('up.is_deleted',0);
+		if($is_active != null)
+			$this->db->where('up.is_active', $is_active);
+		if($limit!=0)
+			$this->db->limit($limit,$offset);
+		$this->db->group_by('ca.candidate_profile_id');
+		// print $this->db->get_compiled_select();exit;
+		$query = $this->db->get();
+		// print 1;	exit;
 		return $this->db_results_fn($query);
 	}
 
@@ -372,7 +397,7 @@ class Account_model extends CI_Model
 	public function get_candidates_count($is_active=null,$limit=0,$offset=0)
 	{
 		$this->db->query("set sql_big_selects=1");
-		$this->db->select('ca.*,up.is_active,up.registered_date,l.email as login_email,cy.country'); //a.*,c.*,cy.country,
+		$this->db->select('up.user_profile_id'); //a.*,c.*,cy.country,
 		$this->db->from('candidate_profile ca');
 		$this->db->join('user_profile up', 'up.user_profile_id = ca.user_profile_id');
 		$this->db->join('login l', 'l.login_id = up.login_id');
@@ -387,11 +412,14 @@ class Account_model extends CI_Model
 		if($limit!=0)
 			$this->db->limit($limit,$offset);
 		$this->db->group_by('ca.candidate_profile_id');
+		// print $this->db->get_compiled_select();exit;
 		//$query = $this->db->get();
 		//$row = $query->row();
 		//print_r($query->result());exit;
-		$query = $this->db->get();
-		return $this->db_results_fn($query);
+		// exit;
+		return $this->db->count_all_results();
+		// $query = $this->db->get();
+		// return $this->db_results_fn($query);
 	}
 
 	public function get_administrators($is_active=null)

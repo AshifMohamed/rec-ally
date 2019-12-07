@@ -675,17 +675,17 @@
                                                 <img src="<?= base_url() ?>assets/portal/images/pre_loader.gif"> Please
                                                 Wait...
                                             </div>
-                                            <table id="candidates_table" class="display hidden table table-striped table-hover table-bordered" cellspacing="0"
+                                            <table id="candidates_table" class="display table table-striped table-hover table-bordered" cellspacing="0"
                                                    width="100%">
                                                 <thead>
-                                                <tr>
-                                                    <th>Name</th>
-                                                    <th>Email</th>
-                                                    <th>Country</th>
-                                                    <th class="hidden">UserProfile ID</th>
-                                                    <th>Registered Date</th>
-                                                    <th>Action</th>
-                                                </tr>
+                                                    <tr>
+                                                        <th data-name="user_profile_id">UserProfile ID</th>
+                                                        <th data-name="name">Name</th>
+                                                        <th data-name="email">Email</th>
+                                                        <th data-name="country">Country</th>
+                                                        <th data-name="registered_date">Registered Date</th>
+                                                        <th data-name="action">Action</th>
+                                                    </tr>
                                                 </thead>
                                                 
                                                 <tbody>
@@ -1361,6 +1361,8 @@
             $('#information_requests').DataTable({
                 "order": [[6, "desc"]]
             });
+
+            
         });
 
 
@@ -1513,9 +1515,9 @@
                 for (var i = 1; i <= 2; i++) {
 
                     if (i == 1)
-                        percentage = <?=count($active_companies_registered)?>;
+                        percentage = <?=$active_companies_registered?>;
                     else if (i == 2)
-                        percentage = <?=count($active_candidates_registered)?>;
+                        percentage = <?=$active_candidates_registered?>;
 
                     var child = document.getElementById('circles-' + i),
                         circle = Circles.create({
@@ -2120,42 +2122,73 @@
 
     });
 
-    $(window).load(function () {
+    $(document).ready(function () {
 
-        $.ajax({
-            url: '<?=base_url() . ADMIN_PATH_NAME?>/get_candidates',
-            type: 'GET',
-            dataType: 'json',
-            success: function (result) {
-                //result = JSON.parse(result);
-                //console.log(result);
-                //var parsed_result = JSON.parse(result);
-                $(result).each(function (index, row) {
-                    var is_active = 'false';
-                    var is_checked = ''
-                    if (row.is_active == 1) {
-                        is_active = 'true';
-                        is_checked = 'checked'
-                    }
-                    //console.log(row.country );
-                    if (row.country == null)
-                        row.country = '';
-                        $('<tr><td>' + row.first_name + ' ' + row.last_name + '</td><td>' + row.login_email + '</td><td class="hidden">' + row.user_profile_id + '</td><td>' + row.country + '</td><td>' + row.registered_date + '</td><td width="14%"><a style="margin-right:10px;" href="' + admin_path + '/login_to_account/' + row.user_profile_id + '?type=candidate" onclick="if(confirm(\'Are you sure to sign into the selected account?\')) return true; else return false;"><span class="label label-yellow">Login</span></a><a href="' + admin_path + '/delete_profile?id=' + row.user_profile_id + '" onclick="if(confirm(\'Are you sure to delete the account?\')) return true; else return false;"><span class="label label-red">Delete</span></a><div class="toggle-candidate account_status toggle-blue pull-right" data-toggle="tooltip" data-original-title="Active/Deactive" data-href="' + admin_path + '/update_profile_status?id=' + row.user_profile_id + '>&status=' + is_active + '"></div><input id="is_candidate_active" name="is_candidate_active" class="hidden" type="checkbox" value="' + is_active + '" ' + is_checked + '/></td></tr>').appendTo('#candidates_table tbody');
-                });
-                $('#candidates_table').DataTable();
-                set_toggles('.toggle-candidate');
-                $('#candidates_table').removeClass('hidden');
-                $('.candidate_table_loader').remove();
-                $('#candidates_table').find('[data-toggle="tooltip"]').tooltip();
-                //<input id="is_candidate_active" name="is_candidate_active" class="hidden" type="checkbox" value="'+$(this)[0].is_active ? true : false+'" '+(this)[0].is_active ? "checked" : ""+' />
-                //
-            },
-            error: function (err) {
-                console.log(err);
-            },
+        $('#candidates_table').DataTable({
+                "processing": true,
+                "serverSide": true,
+                "ajax": admin_path + "/get_candidates_dt",
+                "columnDefs": [
+                    {
+                        "targets": [ 0 ],
+                        "visible": false,
+                        "searchable": false
+                    },
+                ],
+                 "drawCallback": function( settings ) {
+                    let table = $('#candidates_table');
+                    let dt = $('#candidates_table').DataTable();
+                    let is_active = 1;
+                    let is_checked = 1;
+                    table.find('tbody tr').each(function(index, el) {
+                        let user_profile_id = dt.cells({ row: index, column: 0 }).data()[0];
+
+                        $(this).find('td').last().append('<a style="margin-right:10px;" href="' + admin_path + '/login_to_account/' + user_profile_id + '?type=candidate" onclick="if(confirm(\'Are you sure to sign into the selected account?\')) return true; else return false;"><span class="label label-yellow">Login</span></a><a href="' + admin_path + '/delete_profile?id=' + user_profile_id + '" onclick="if(confirm(\'Are you sure to delete the account?\')) return true; else return false;"><span class="label label-red">Delete</span></a><div class="toggle-candidate account_status toggle-blue pull-right" data-toggle="tooltip" data-original-title="Active/Deactive" data-href="' + admin_path + '/update_profile_status?id=' + user_profile_id + '>&status=' + is_active + '"></div><input id="is_candidate_active" name="is_candidate_active" class="hidden" type="checkbox" value="' + is_active + '" ' + is_checked + '/>');
+                    });
+                    set_toggles('.toggle-candidate');
+                    setTimeout(function(){
+                        table.find('thead th').last().css('width', '160px!important');
+                    },100);
+                }
+        });
+        $('.candidate_table_loader').remove();
+        // let page = 1;
+
+        // $.ajax({
+        //     url: '<?=base_url() . ADMIN_PATH_NAME?>/get_candidates_dt',
+        //     type: 'GET',
+        //     dataType: 'json',
+        //     data: {page:page},
+        //     success: function (result) {
+        //         //result = JSON.parse(result);
+        //         //console.log(result);
+        //         //var parsed_result = JSON.parse(result);
+        //         $(result).each(function (index, row) {
+        //             var is_active = 'false';
+        //             var is_checked = ''
+        //             if (row.is_active == 1) {
+        //                 is_active = 'true';
+        //                 is_checked = 'checked'
+        //             }
+        //             //console.log(row.country );
+        //             if (row.country == null)
+        //                 row.country = '';
+        //                 $('<tr><td>' + row.first_name + ' ' + row.last_name + '</td><td>' + row.login_email + '</td><td class="hidden">' + row.user_profile_id + '</td><td>' + row.country + '</td><td>' + row.registered_date + '</td><td width="14%"><a style="margin-right:10px;" href="' + admin_path + '/login_to_account/' + row.user_profile_id + '?type=candidate" onclick="if(confirm(\'Are you sure to sign into the selected account?\')) return true; else return false;"><span class="label label-yellow">Login</span></a><a href="' + admin_path + '/delete_profile?id=' + row.user_profile_id + '" onclick="if(confirm(\'Are you sure to delete the account?\')) return true; else return false;"><span class="label label-red">Delete</span></a><div class="toggle-candidate account_status toggle-blue pull-right" data-toggle="tooltip" data-original-title="Active/Deactive" data-href="' + admin_path + '/update_profile_status?id=' + row.user_profile_id + '>&status=' + is_active + '"></div><input id="is_candidate_active" name="is_candidate_active" class="hidden" type="checkbox" value="' + is_active + '" ' + is_checked + '/></td></tr>').appendTo('#candidates_table tbody');
+        //         });
+        //         $('#candidates_table').DataTable();
+        //         set_toggles('.toggle-candidate');
+        //         $('#candidates_table').removeClass('hidden');
+        //         $('.candidate_table_loader').remove();
+        //         $('#candidates_table').find('[data-toggle="tooltip"]').tooltip();
+        //         //<input id="is_candidate_active" name="is_candidate_active" class="hidden" type="checkbox" value="'+$(this)[0].is_active ? true : false+'" '+(this)[0].is_active ? "checked" : ""+' />
+        //         //
+        //     },
+        //     error: function (err) {
+        //         console.log(err);
+        //     },
         });
 
-    });
+    // });
 
     function delete_contact_request(id,row)
         {
