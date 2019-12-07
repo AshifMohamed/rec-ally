@@ -1378,7 +1378,9 @@ color:#FFF;
   color: #FFF;
   background-color: #9db2c2;
 }
-
+.admin .block-space {
+  padding-right: 15px;
+}
 .left-side-collapsed .navbar-static-side ul#side-menu li ul.nav-second-level {
   display: none;
   position: absolute;
