@@ -50,7 +50,7 @@ $active_record = TRUE;
 
 $db['default'] = array(
     'dsn'   => '',
-    'hostname' => 'localhost',
+    'hostname' => 'localhost:85',
     'username' => 'root',
     'password' => '',
     'database' => 'recruitment_portal',

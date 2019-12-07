@@ -67,7 +67,7 @@
     });
 </script>
 
-<body class="login-page">
+<body class="login-page" style="background-image: url(<?php echo base_url(); ?>assets/img/bg-pattern.png)">
     
     <main>
         

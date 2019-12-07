@@ -1,7 +1,7 @@
 #php_value memory_limit 256M
 RewriteEngine On
 
-RewriteBase /recruitment-ally/
+RewriteBase /recruitment-ally/rec-ally/
 
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
