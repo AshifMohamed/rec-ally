@@ -1077,51 +1077,30 @@
                                             </div>
                                             <form id="form_create_edit_advertisement"
                                                   action="<?= base_url() . ADMIN_PATH_NAME ?>/save_administrator"
-                                                  method="POST" class="form-horizontal" role="form">
-                                                <input type="hidden" name="admin_team_id"
-                                                       id="admin_team_id" value="0">
-                                                <input type="hidden" name="user_profile_id"
-                                                       id="user_profile_id" value="0">
+                                                  method="POST" class="form-horizontal" role="form">  
                                                 <div class="modal-body">
-                                                    <input type="hidden" value="0"
-                                                           id="user_profile_id"/>
                                                     <div class="form-group">
                                                         <div class="col-sm-12">
-                                                            <label for="name">Name</label>
-                                                            <input type="text" name="name" id="name"
-                                                                   class="form-control" value=""
-                                                                   required="required"
-                                                                   placeholder="Enter Administrator's Name">
+                                                            <label for="image_name">Advertisement</label>
+                                                            <input id="image_name" name="image_name" placeholder="Inlcude some Image" type="file">
                                                         </div>
                                                     </div>
                                                     <div class="form-group">
                                                         <div class="col-sm-12">
-                                                            <label for="email">Email</label>
-                                                            <input type="email" name="email" id="email"
-                                                                   class="form-control" value=""
-                                                                   required="required"
-                                                                   placeholder="Enter Email">
+                                                            <label for="from_date">From</label>
+                                                            <input id="from_date" name="from_date" placeholder="" class="form-control" type="text">
                                                         </div>
                                                     </div>
                                                     <div class="form-group">
                                                         <div class="col-sm-12">
-                                                            <label for="password">Password</label>
-                                                            <input type="password" name="password"
-                                                                   id="password" class="form-control"
-                                                                   value="" required="required"
-                                                                   placeholder="Enter Password">
+                                                            <label for="to_date">To</label>
+                                                            <input id="to_date" name="to_date" placeholder="" class="form-control" type="text">
                                                         </div>
                                                     </div>
                                                     <div class="form-group">
                                                         <div class="col-sm-12">
-                                                            <label for="confirm_password">Confirm
-                                                                Password</label>
-                                                            <input type="password"
-                                                                   name="confirm_password"
-                                                                   id="confirm_password"
-                                                                   class="form-control" value=""
-                                                                   required="required"
-                                                                   placeholder="Re-Enter Password">
+                                                            <label for="time">Time Period (In Hours)</label>
+                                                                <input id="time" name="time" placeholder="" class="form-control" type="number">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -1130,7 +1109,7 @@
                                                             data-dismiss="modal">Close
                                                     </button>
                                                     <button type="submit" class="btn btn-blue"
-                                                            id="btn_save_administrator">Save
+                                                            id="btn_save_advertisement">Save
                                                     </button>
                                                 </div>
                                             </form>
@@ -1298,6 +1277,12 @@
             autoOpen: false,
             modal: true
             });
+
+        $("#from_date,#to_date").datepicker({
+        changeMonth: true,
+        changeYear: true,
+        dateFormat: 'yy-mm-dd'
+        });
 
 //         $('#view_service').on('show.bs.modal', function(e) {
 // //("dfasfdasf");

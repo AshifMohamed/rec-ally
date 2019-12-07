@@ -762,5 +762,51 @@ class Admin extends CI_Controller
 		exit; 
 	}
 
+	public function save_advertisement()
+	{
+		$id = 0;
+		$image_name = $this->input->post('image_name');
+		$from_date = $this->input->post('from_date');
+		$to_date = $this->input->post('to_date');
+		$time = $this->input->post('time');
+
+		if(!empty($name) && !empty($email) && !empty($password))
+		{
+			
+			$advertisement_data = array(
+				'id' => 0,
+				'image_name' => $image_name,
+				'from_date' => $from_date,
+				'to_date' => $to_date,
+				'time' => $time,
+			);
+			
+			$admin_data = array(
+				'admin_team_id' => $admin_id,
+				'user_profile_id' => $user_profile_id,
+				'name' => $name,
+			);
+
+			$id = $this->account_model->insert_data($advertisement_data,'id','advertisement');
+		}
+		else
+		// set_message('Please make sure all fields are complete','alert-danger');
+		// redirect(base_url().ADMIN_PATH_NAME,'refresh');
+		$data['message'] = "Failed";
+		print json_encode($data['message']);
+		exit; 
+	}
+
+	public function update_advertisement_start_time()
+	{
+		$id = $this->input->get('id');
+		$start_time = 12;//get current timestamp
+		if(isset($id))
+		{
+			$this->account_model->updata_record('advertisement','id',array('id'=>$id,'start_time'=>$start_time));
+		}
+		exit; 
+	}
+
 }
 ?>

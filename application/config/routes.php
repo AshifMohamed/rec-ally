@@ -184,6 +184,8 @@ $route[ADMIN_PATH_NAME.'/get_employers']                        = "Admin/get_emp
 $route[ADMIN_PATH_NAME.'/get_candidates']                       = "Admin/get_candidates";
 $route[ADMIN_PATH_NAME.'/delete_company']                       = "Admin/delete_company";
 $route[ADMIN_PATH_NAME.'/delete_info_request']                  = "Admin/delete_info_request";
+$route[ADMIN_PATH_NAME.'/save_advertisement']                   = "Admin/save_advertisement";
+$route[ADMIN_PATH_NAME.'/update_advertisement']                 = "Admin/update_advertisement";
 
 /* End of file routes.php */
 /* Location: ./application/config/routes.php */
