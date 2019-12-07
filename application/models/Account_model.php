@@ -1865,6 +1865,20 @@ class Account_model extends CI_Model
         return $this->db_results_fn($query);
     }
 
+	public function get_today_advertisements()
+    {
+// 		SELECT * FROM `advertisement` WHERE
+// from_date = CURDATE() AND to_date >= from_date
+		$where = "from_date=CURDATE() AND to_date >= from_date ";
+
+        $this->db->select('*');
+        $this->db->from('advertisement');
+		$this->db->where($where);
+	//	$this->db->where('to_date >=','from_date');
+        $query = $this->db->get();
+        return $this->db_results_fn($query);
+	}
+	
     public function get_dashboard_advertisements()
     {
         $this->db->select('*');

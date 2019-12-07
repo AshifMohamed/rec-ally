@@ -1071,16 +1071,16 @@
                                                 <button type="button" class="close" data-dismiss="modal"
                                                         aria-hidden="true">&times;
                                                 </button>
-                                                <h4 class="modal-title">Add New Administrator</h4>
+                                                <h4 class="modal-title">Add New Advertisement</h4>
                                             </div>
                                             <form id="form_create_edit_advertisement"
-                                                  action="<?= base_url() . ADMIN_PATH_NAME ?>/save_administrator"
-                                                  method="POST" class="form-horizontal" role="form">  
+                                                  action="<?= base_url() . ADMIN_PATH_NAME ?>/save_advertisement"
+                                                  method="POST" class="form-horizontal" role="form" enctype="multipart/form-data">  
                                                 <div class="modal-body">
                                                     <div class="form-group">
                                                         <div class="col-sm-12">
-                                                            <label for="image_name">Advertisement</label>
-                                                            <input id="image_name" name="image_name" placeholder="Inlcude some Image" type="file">
+                                                            <label for="advertisement_image">Advertisement</label>
+                                                            <input id="advertisement_image" name="advertisement_image" placeholder="Inlcude some Image" type="file">
                                                         </div>
                                                     </div>
                                                     <div class="form-group">
@@ -1098,7 +1098,7 @@
                                                     <div class="form-group">
                                                         <div class="col-sm-12">
                                                             <label for="time">Time Period (In Hours)</label>
-                                                                <input id="time" name="time" placeholder="" class="form-control" type="number">
+                                                                <input id="time" name="time" placeholder="" class="form-control" type="number" required>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -1106,7 +1106,7 @@
                                                     <button type="button" class="btn btn-danger"
                                                             data-dismiss="modal">Close
                                                     </button>
-                                                    <button type="submit" class="btn btn-blue"
+                                                    <button type="button" class="btn btn-blue"
                                                             id="btn_save_advertisement">Save
                                                     </button>
                                                 </div>
@@ -1135,10 +1135,7 @@
                                             <td><?= $advertisement->from_date ?></td>
                                             <td><?= $advertisement->to_date ?></td>
                                             <td><?= $advertisement->time ?></td>
-                                            <td><span class="label label-info edit-administrator"
-                                                      data-target="#add_new_administrator"
-                                                      data-toggle="modal">Edit</span>&nbsp;&nbsp;<span
-                                                        class="label label-red">Delete</span></td>
+                                            <td><span class="label label-red">Delete</span></td>
                                         </tr>
                                     <?php endforeach; ?>
                                     </tbody>
@@ -1282,6 +1279,61 @@
         dateFormat: 'yy-mm-dd'
         });
 
+        $('#btn_save_advertisement').click(function(e){
+            
+         //   e.preventDefault();
+            var thisForm = $(this).parents('form:first');    
+            var formData = new FormData(document.getElementById("form_create_edit_advertisement"));
+            console.log("FormData :",formData);
+			var action = thisForm.attr('action');
+		
+			$.ajax({
+				type:'POST', 
+				url:action,
+				data: formData,
+                dataType: 'json',
+                contentType: false, // NEEDED, DON'T OMIT THIS (requires jQuery 1.6+)
+                processData: false,
+				success:function(result){
+                    
+                    if(result.status && result.status == "Success")
+                    {
+                     
+                        let data = result.data ? result.data : null;
+                        var myTable = $('#advertisement_table').DataTable();
+                        if(data)
+                        {
+                            myTable.row.add( [
+                                    data.id,
+                                    data.image_name,
+                                    data.from_date,
+                                    data.to_date,
+                                    data.time,
+                                    '<span class="label label-red">Delete</span>'
+                                ] ).draw( false );
+                                myTable.column(0).visible(false);
+                            toastr.success(data.message || "Advertisement Posted Successfully");
+                            return true;
+                        }
+                        else{
+                            toastr.warning(data.message || "Could not Post an Advertisement. Please try again later");
+                            return false;
+                        }
+                    }
+                    else{
+                        toastr.warning("Could not Post an Advertisement. Please try again later");
+                        return false;
+                    }
+				},
+				error:function(err){
+
+                    return false;
+				}, 
+			});
+			return true;
+	
+	    });
+
 //         $('#view_service').on('show.bs.modal', function(e) {
 // //("dfasfdasf");
 // console.log("Cameeeeeeeeeee Modalll");
@@ -1342,7 +1394,7 @@
         });
 
         $(window).load(function () {
-            $('#candidates_pending_activation, #table_edit_view_polls,#companies_pending_approval, #newsletter_subscribers,#employer_table,#team_table, #admin_table, #job_listings_table').DataTable();
+            $('#candidates_pending_activation, #table_edit_view_polls,#companies_pending_approval, #newsletter_subscribers,#employer_table,#team_table, #admin_table, #job_listings_table, #advertisement_table').DataTable();
             $('#information_requests').DataTable({
                 "order": [[6, "desc"]]
             });
@@ -2185,7 +2237,7 @@
                             
                             if(res == "Success")
                             {
-                                var myTable = $('#information_requests').DataTable();
+                                var myTable = $('#employer_table').DataTable();
                                 if (typeof(row) == "object") {
                                 let tr = $(row).closest("tr").get(0);
                                 myTable.row( tr ).remove().draw( false );

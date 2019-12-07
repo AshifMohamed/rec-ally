@@ -94,6 +94,8 @@ $route['register/employer']                                     = "Account/regis
 
 $route['people/(:any)/(:any)']                                   = "Portal/public_candidate_profile_view/$1/$2";
 
+$route['get_advertisements']                                   = "Portal/get_advertisements";
+
 /* Candidate Pages */
 $route['candidate']                                             = "Portal";
 $route['candidate/dashboard']                                   = "Portal";

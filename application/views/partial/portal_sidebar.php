@@ -69,6 +69,13 @@
                     </li>   
                 </ul>									
 			</div>
+            <div>
+                <?php $this->load->view('partial/advertisement_space.php'); ?>
+                <!-- <ul>
+                    <li><a data-toggle="modal" data-target="#improveCvModal" href="#"><button class="btn btn-primary cv-btn">How to improve Profile</button></a>
+                    </li>   
+                </ul>									 -->
+			</div>
             <?php }
              else if(get_user_type() != 'candidate'){ ?>
                 <ul id="side-menu" class="nav">

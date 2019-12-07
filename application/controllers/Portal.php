@@ -3472,6 +3472,13 @@ class Portal extends CI_Controller
             	unlink($file);
             }
 	}
+
+	public function get_advertisements()
+	{
+		$data['advertisements'] = $this->account_model->get_today_advertisements();
+		print json_encode($data['advertisements']);
+		exit;
+	}
 }
 
 ?>

@@ -764,15 +764,30 @@ class Admin extends CI_Controller
 
 	public function save_advertisement()
 	{
+		$image_name = '';
+		if(!empty($_FILES['advertisement_image']['tmp_name']))
+		{
+			$result = $this->do_upload_advertisement('1024','768','advertisement_image','advertisements');
+			if(isset($result['error']))
+			{
+				$data['message'] = $result['error'];
+				$data['status'] = 'Failed';
+				print json_encode($data);
+				exit;
+			}
+			else
+			{
+				$image_name = $result['file_name'];
+			}
+		}
+		
 		$id = 0;
-		$image_name = $this->input->post('image_name');
 		$from_date = $this->input->post('from_date');
 		$to_date = $this->input->post('to_date');
 		$time = $this->input->post('time');
 
-		if(!empty($name) && !empty($email) && !empty($password))
-		{
-			
+		if(isset($from_date) && isset($to_date) && isset($time) && !empty($from_date) && !empty($to_date) && !empty($time))
+		{		
 			$advertisement_data = array(
 				'id' => 0,
 				'image_name' => $image_name,
@@ -781,20 +796,43 @@ class Admin extends CI_Controller
 				'time' => $time,
 			);
 			
-			$admin_data = array(
-				'admin_team_id' => $admin_id,
-				'user_profile_id' => $user_profile_id,
-				'name' => $name,
-			);
-
 			$id = $this->account_model->insert_data($advertisement_data,'id','advertisement');
+
+			$advertisement_data['id'] = $id;
+
+			$data['message'] = 'Advertisement Successfully Posted';
+			$data['status'] = 'Success';
+			$data['data'] = $advertisement_data;
 		}
 		else
-		// set_message('Please make sure all fields are complete','alert-danger');
-		// redirect(base_url().ADMIN_PATH_NAME,'refresh');
-		$data['message'] = "Failed";
-		print json_encode($data['message']);
+		{
+			$data['message'] = 'One or More Fields Are empty';
+			$data['status'] = 'Failed';
+		}
+		print json_encode($data);
 		exit; 
+	}
+
+	private function do_upload_advertisement($max_width = '1024',$max_height = '768',$input_name,$path='',$additional_types='')
+	{
+		$config['upload_path'] =  './uploads/'.$path;
+		$config['allowed_types'] = 'jpg|png';
+		$config['max_size']	= '10000';
+		$config['file_name'] = uniqid().$input_name;
+
+		$this->load->library('upload', $config);
+		$this->upload->initialize($config); // load new config setting
+
+		if ( ! $this->upload->do_upload($input_name))
+		{
+			$error = array('error' => $this->upload->display_errors());
+			return $error;
+		}
+		else
+		{
+			$data = array('file_name' => $this->upload->data('file_name'));
+			return $data;
+		}
 	}
 
 	public function update_advertisement_start_time()
